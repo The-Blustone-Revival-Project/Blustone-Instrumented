@@ -96,4 +96,5 @@ value. Only the signed instrumented APK is uploaded.
 
 The GitHub repository has an active push webhook for the project Discord
 channel. Its endpoint is managed in the repository settings and is not stored
-in this repository.
+in this repository. The GitHub integration endpoint uses Discord's `/github`
+suffix; the base webhook endpoint is reserved for explicit backfill messages.
