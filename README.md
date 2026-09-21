@@ -91,3 +91,9 @@ gh release create $version `
 
 The release tag and title must use the same `<app-version>+<build-number>`
 value. Only the signed instrumented APK is uploaded.
+
+## Discord notifications
+
+The GitHub repository has an active push webhook for the project Discord
+channel. Its endpoint is managed in the repository settings and is not stored
+in this repository.
