@@ -1,0 +1,6 @@
+# Local APK and release staging. Release uploads are GitHub assets, not repo content.
+/artifacts/
+
+# Collector runtime output may contain account or device state.
+/collector/data/*
+!/collector/data/.gitkeep

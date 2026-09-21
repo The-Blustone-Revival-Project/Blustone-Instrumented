@@ -1,0 +1,13 @@
+services:
+  blustone-instrumentation-collector:
+    build:
+      context: ./collector
+    container_name: blustone-instrumentation-collector
+    environment:
+      PORT: "8099"
+      DATA_DIR: /data
+    ports:
+      - "127.0.0.1:8099:8099"
+    volumes:
+      - ./collector/data:/data
+    restart: unless-stopped
