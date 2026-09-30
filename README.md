@@ -29,6 +29,31 @@ Use the instrumented build when you need to:
 - capture evidence from an Android Emulator or BlueStacks session; or
 - preserve runtime observations for later offline analysis.
 
+## Log filtering (important when reading a session)
+
+The game's native engine is extremely chatty at `*:V`. Its resource manager
+emits thousands of `RANN [RSM] ... is registered.` / `Removing Res:` lines per
+second while a title or loading animation is on screen. On its own that noise
+evicts every useful line - native assertions, `BLUSTONE_*` tags, LevelDB
+lookup traces - from the collector's bounded event ring before anyone can read
+it, which makes a session look like it produced "no information".
+
+The build therefore filters at the source, in `Telemetry`:
+
+- **Noise drop**: native `RANN [RSM]` render/resource-manager lines are never
+  queued, never written to the local fallback stream, and never posted.
+- **Repeat suppression**: any remaining line is keyed on a coarse shape (log
+  tag plus the first few words, digits collapsed). The first 5 occurrences of a
+  shape are always forwarded, then the shape is dropped, so a chatty loop costs
+  5 lines instead of thousands while a genuinely new message family is still
+  captured.
+- **Visibility**: the filter reports what it dropped through periodic
+  `android_log_filtered` events (`dropped_noise`, `dropped_repeat`).
+
+`BLUSTONE_INSTRUMENTED`, `BLUSTONE_DB_TRACE`, `BLUSTONE_ARM`, and
+`BLUSTONE_RESOURCE_GUARD` lines are never filtered. If you need raw logcat
+anyway, read it directly with `adb logcat` rather than through the collector.
+
 ## How to use it
 
 1. Download `BLUSTONE-Instrumented.apk` from the
@@ -53,11 +78,27 @@ Use the instrumented build when you need to:
    <http://127.0.0.1:8099/healthz>, and collected data is stored locally under
    `collector/data/`.
 
+   ```powershell
+   Invoke-WebRequest http://127.0.0.1:8099/v1/events?limit=2000
+   Invoke-WebRequest http://127.0.0.1:8099/v1/artifacts
+   ```
+
+   Events carry their text in `data.line` for `android_log` events. Filter that
+   field for `BLUSTONE`, `ASSERTION`, `__bGlobalAssert`, and `.cpp` to see the
+   interesting lines.
+
 6. Stop the collector when finished:
 
    ```powershell
    docker compose down
    ```
+
+## Native debug level
+
+The game engine logs at `RMDBG_NONE` by default. The preserved `MainActivity`
+raises it to `RMDBG_LOG(FULL)` from `dispatchTouchEvent`, so a single tap on the
+game window enables the engine's own log output. Without a tap you only get the
+pre-GL framework lines.
 
 ## Data handling
 
