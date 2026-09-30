@@ -1,4 +1,4 @@
-# BLUSTONE Instrumented
+﻿# BLUSTONE Instrumented
 
 BLUSTONE Instrumented is a side-by-side diagnostic Android build for
 authorized research into the BLUSTONE client. It lets the original
@@ -105,3 +105,21 @@ pre-GL framework lines.
 The collector is intended for local use. Captured artifacts can contain
 account, device, or other private application state. Keep `collector/data/`
 local, and do not commit or share its contents without reviewing them first.
+
+## Preserving the native CDN index
+
+Earlier builds ran an "A/B diagnostic" on every launch that replaced
+`files/local/CDN.db` with a fixed pre-repair snapshot. That stopped the native
+CDN manager (`CPVCDN2`) from ever keeping the index it wrote during the
+previous session, and gave it the same mid-download state on every start - which
+is a plausible way to make it wait forever for a download resume.
+
+That restore is now opt-in:
+
+```powershell
+python tools/build-instrumented-apk.py --restore-pre-repair-cdn --install
+```
+
+Default builds leave the native CDN index untouched. The value is compiled in
+as `BuildConfig.RESTORE_PRE_REPAIR_CDN` and is recorded in the build's
+`BUILD-METADATA.json`.
