@@ -4,3 +4,6 @@
 # Collector runtime output may contain account or device state.
 /collector/data/*
 !/collector/data/.gitkeep
+
+# Local publish scratch
+/publish*
