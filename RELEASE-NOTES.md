@@ -1,77 +1,70 @@
-﻿# 2.8.0.1+4
+﻿# 2.8.0.1+5
 
-Two instrumentation additions that exist to answer one question the project
-could not previously answer: **why is the client hung?**
+Two changes. The first is a fix; the second is the diagnostic that made the
+remaining bug visible at all.
 
-## 1. Thread blocking-state probe
+## Fix: the launcher was missing four `url_list` keys
 
-The client stalls on the title screen. Everything observed from outside said
-"asleep", which does not distinguish the causes that matter:
+`CPVDataMgr` resolves URLs by `url_key`, and the binary carries the failure
+string `cannot find cdn url`. A key the client looks up but the replica does not
+advertise leaves it with no address and no request.
 
-- blocked on a lock or condition variable (a callback that will never be
-  signalled), versus
-- waiting on a socket, versus
-- waiting on a timer, versus
-- genuinely idle.
+The launcher response advertised only `_SR`, `ad_unit_id_1`, `d_unit_id_1`,
+`maintenance`, `api` and `cdn`. The working community private server advertises
+`Main`, `auth`, `sns_list`, `cdn` and `resource` — so `Main`, `auth`, `sns_list`
+and especially `resource` (the CDN base used to build `/<name>_<stamp>.pkg`)
+were all missing. The login response already had the right five; only the
+launcher response was wrong.
 
-Telemetry now samples `/proc/self/task/<tid>/{stat,wchan,comm}` for every
-thread on each heartbeat and emits a `thread_states` event. Reading its own
-`/proc` needs no root, so this works inside the app.
+With all five added the client completes login, shows the initial 23 MB data
+download prompt, runs the whole lobby bootstrap, and reaches the village, the
+Airport, the Expedition Area, the Snowfield stage map and Prepare for Battle.
+Airport progress reads `1/30` instead of `0/30`.
 
-This immediately produced the answer. On the stalled client:
+## New: `--assert-log-continue`
 
-```
-main thread   tid 5309   state S   wchan SyS_epoll_wait
-94 threads: 70 futex_wait_queue_me, 12 SyS_epoll_wait, 3 hrtimer_nanosleep, 3 running
-```
+Until now a wrong replica response was indistinguishable from a hang. The
+shipped patch set stubs `_RMAssert` (0x10B3ABC) to a no-op and inverts two
+call-site conditionals, so a failing assertion is stepped over *silently*.
 
-The main thread is parked in the HTTP event loop, **not** on a mutex, and the
-process is not deadlocked. Combined with the socket evidence (one
-`CLOSE_WAIT` to the replica, no pending outbound request) this says the engine
-is *waiting* for a transfer or callback that will not arrive, rather than
-blocked on a lock. That redirected the investigation away from "deadlock" and
-toward "the CDN step completes and then nothing calls the next step".
-
-## 2. `logcat -b stderr`
-
-The reader now also captures the `stderr` buffer. That is the channel a native
-trace stub would use, and it also picks up anything the engine writes directly
-to stdout/stderr.
-
-## 3. `--keep-asserts` build flag
-
-The shipped native patch set makes the game's assertion machinery silent:
-`RMAssert` (0x10B3ABC) is stubbed to `movs r0,#0; bx lr`, and two call-site
-conditionals (0x107FA10, 0x784CFE) are inverted. A failing assertion is
-therefore stepped over silently, which makes "the replica sent something wrong"
-look exactly like "the client hung".
+`--assert-log-continue` keeps the real reporter and replaces only the
+terminating `blx` at `0x10b3b5c` with a branch to the function's own epilogue at
+`0x10b3b4c`. The assertion is still logged with its source file and line, the
+process is not killed, and the client shows an on-screen ASSERTION box it
+previously could not survive.
 
 ```powershell
-python tools/build-instrumented-apk.py --keep-asserts --install
+python tools/build-instrumented-apk.py --assert-log-continue --install
 ```
 
-leaves all three live. **Result: nothing fires.** The stall is not a silenced
-assertion, so this stays off by default. It is worth keeping because the next
-missing-response failure will be silent otherwise.
+This is what turned the remaining mission bug from invisible into specific:
 
-The build script now runs the native patcher itself, so the flags always
-produce a coherent `libnative_core` instead of reusing a stale override.
+```text
+[AST] [RequestStart]
+(sStageID.size() > 1) is FALSE
+ASSERTION Failed on 'SRMStageSync.cpp(67)'
+```
 
-## Collector changes (this repository)
+`CSRSyncMStage::RequestStart` is being sent with an empty `stage_id`. Execution
+may still fault where the caller dereferences the value it just asserted on —
+that is fine, the assertion is in the log first, naming the parser and line.
 
-- `GET /v1/events/search?q=&event=&since=&limit=` - substring search over the
-  ring, so a specific line does not have to be found by paging the newest 2000.
-- `GET /v1/stats` - adds `event_types` and `log_tags` histograms that are
-  cumulative for the life of the collector. Counts survive ring eviction, so
-  "there were 12 CPVCDN lines an hour ago" stays answerable.
-- `data/notable.ndjson` - lines matching assertions, `BLUSTONE_*`, `CPVCDN`,
-  `PV_CDN_*`, `[AST]`/`[CDN]`/`[JET]`, fatal signals and crashes are also
-  appended to a file that is never rotated. The ring is bounded and the client
-  is noisy; without this a one-off failure leaves no trace at all.
+`--keep-asserts` no longer returns early, so the video / `UI_MA_L1`
+compatibility patches always apply; it now only controls the three assertion
+patches. (Leaving all assertions live makes the client die on the known
+BlueStacks `UI_MA_L1` video fault at the lobby bootstrap, which is why the
+earlier version of that flag was useless.)
 
-## Server changes (in the main workspace, not this repo)
+## Collector
 
-`BLUSTONE_TRACE_CONNECTIONS=1` tracks TCP connections at the socket level, so a
-client that opens a connection and never speaks HTTP becomes visible instead of
-looking like silence. Keep-alive/header timeouts are now explicit and long
-rather than Node's 5 s defaults.
+Unchanged since `2.8.0.1+4`: `/v1/events/search`, cumulative `event_types` and
+`log_tags` histograms, and `collector/data/notable.ndjson`.
+
+## Verified
+
+- `python tools/build-instrumented-apk.py --assert-log-continue --install`
+  builds, signs and installs; the patched library is byte-checked and the
+  literal pool at `0x10b3b60` is left untouched.
+- Village -> Airport -> cruise -> Expedition Area -> Snowfield -> Prepare for
+  Battle all reachable, and the Begin Battle tap produces the assertion above
+  with the game still running.

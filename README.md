@@ -144,3 +144,21 @@ Lines matching assertions, `BLUSTONE_*`, `CPVCDN`, `PV_CDN_*`, `[AST]`,
 `[CDN]`, `[JET]`, fatal signals and crashes are additionally appended to
 `collector/data/notable.ndjson`, which is never rotated. The ring is bounded and
 the client is noisy, so that file is the durable evidence trail.
+
+## Seeing why the client refuses to continue
+
+The engine's own assertion reporter is silenced in the default build, so a wrong
+replica response used to look exactly like a hang. Build with:
+
+```powershell
+python tools/build-instrumented-apk.py --assert-log-continue --install
+```
+
+This keeps `ASSERTION Failed on 'file(line)'` logging and the on-screen
+assertion box, but does not exit. The failure may still fault where the caller
+dereferences the value it just asserted on - the assertion is in the log first,
+naming the parser and source line, which is the point.
+
+`--keep-asserts` leaves every assertion fully live, including the exit. It is
+useful for confirming the video/`UI_MA_L1` compatibility patches are what keeps
+BlueStacks alive, but the client will die on the first real assertion.
