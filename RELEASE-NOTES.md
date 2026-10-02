@@ -1,79 +1,77 @@
-﻿# 2.8.0.1+3
+﻿# 2.8.0.1+4
 
-Two fixes. Both are instrumentation defects that were suppressing evidence, not
-game-logic changes: no change to the native library, the resource seed, or the
-`10.0.2.2:8080` CDN redirect.
+Two instrumentation additions that exist to answer one question the project
+could not previously answer: **why is the client hung?**
 
-## 1. The telemetry stream was unusable
+## 1. Thread blocking-state probe
 
-**Symptom.** Every session's event ring was 100% `RANN [RSM]` lines. Grouping
-the last 2000 events by tag gave 1997/2000 `RANN`. No `BLUSTONE_*` line, no
-native assertion and no LevelDB lookup survived - the diagnostic channel the
-whole project depends on was effectively blind, and a session failing in a
-specific place looked like it had produced nothing.
+The client stalls on the title screen. Everything observed from outside said
+"asleep", which does not distinguish the causes that matter:
 
-**Cause.** The engine logs its resource manager at `*:V`, emitting
-`[RSM] 'BATCHDRAW<n>'(0x...), type:18 is registered.` with a matching
-`Removing Res:` line roughly every 17 ms while a loading animation plays. A
-title screen alone produces thousands per minute. The collector keeps a bounded
-ring, so the useful lines were evicted before anyone could read them.
+- blocked on a lock or condition variable (a callback that will never be
+  signalled), versus
+- waiting on a socket, versus
+- waiting on a timer, versus
+- genuinely idle.
 
-**Fix** (in `Telemetry`):
+Telemetry now samples `/proc/self/task/<tid>/{stat,wchan,comm}` for every
+thread on each heartbeat and emits a `thread_states` event. Reading its own
+`/proc` needs no root, so this works inside the app.
 
-- native `RANN [RSM]` render/resource-manager lines are dropped at the source,
-  before they are queued, so they never reach the local fallback stream or the
-  collector;
-- remaining lines are repeat-suppressed on a shape of `tag + first 4 message
-  words` with digits collapsed - the first 5 occurrences of a shape are always
-  forwarded, then it is dropped;
-- the filter reports what it discarded through periodic `android_log_filtered`
-  events (`dropped_noise` / `dropped_repeat`), so it is never silently hiding
-  evidence.
+This immediately produced the answer. On the stalled client:
 
-`BLUSTONE_INSTRUMENTED`, `BLUSTONE_DB_TRACE`, `BLUSTONE_ARM` and
-`BLUSTONE_RESOURCE_GUARD` are never filtered. With the filter in place the
-engine's own startup log becomes readable, including the `Debug Log Level`
-line and the `[ERR] [ADS]` failure that explain part of the current stall.
-
-Also documented in the README: a single tap makes the preserved `MainActivity`
-raise the engine to `RMDBG_LOG(FULL)` (it is `RMDBG_NONE` otherwise), and
-event text lives in `data.line`.
-
-## 2. A diagnostic mode was left permanently enabled
-
-`restorePreRepairCdn` is commented as an "A/B diagnostic mode" that restores
-the pre-repair `CDN.db` snapshot, but it ran on **every launch**. That meant
-the diagnostic snapshot overwrote whatever the native CDN manager (`CPVCDN2`)
-had written during the previous session, so the engine could never accumulate
-its own CDN index and every launch presented it with the same fixed
-mid-download state.
-
-That matters because the native HTTP layer has resume support - the binary
-contains `Couldn't resume download`, `File already completely downloaded`,
-`partial download completed, closing connection` and a `rewinding stream ...
-bytecount =` trace. A snapshot that records an in-flight download is exactly
-the state in which the client can wait indefinitely for a resume that never
-arrives, and the current BlueStacks session does hang immediately after
-`GET /reslist_*.list` with no further request and no pending socket.
-
-The restore is now opt-in at build time:
-
-```powershell
-python tools/build-instrumented-apk.py --restore-pre-repair-cdn --install
+```
+main thread   tid 5309   state S   wchan SyS_epoll_wait
+94 threads: 70 futex_wait_queue_me, 12 SyS_epoll_wait, 3 hrtimer_nanosleep, 3 running
 ```
 
-The default build leaves the native CDN index alone. The switch is a generated
-`BuildConfig.RESTORE_PRE_REPAIR_CDN` constant rather than a checked-in file, so
-the value used is visible in the build metadata
-(`analysis/instrumented-apk/BUILD-METADATA.json`).
+The main thread is parked in the HTTP event loop, **not** on a mutex, and the
+process is not deadlocked. Combined with the socket evidence (one
+`CLOSE_WAIT` to the replica, no pending outbound request) this says the engine
+is *waiting* for a transfer or callback that will not arrive, rather than
+blocked on a lock. That redirected the investigation away from "deadlock" and
+toward "the CDN step completes and then nothing calls the next step".
 
-Honest note: this is a real defect and worth fixing on its own merits, but it
-did **not** by itself unblock the current stall - the client still hangs at the
-same point with the restore disabled. Recorded here so nobody re-derives it.
+## 2. `logcat -b stderr`
 
-## Verified
+The reader now also captures the `stderr` buffer. That is the channel a native
+trace stub would use, and it also picks up anything the engine writes directly
+to stdout/stderr.
 
-- `python tools/build-instrumented-apk.py --install` succeeds and signs.
-- The app launches, the collector receives events, and the filtered stream shows
-  the engine's real startup log.
-- The replica's own suite is unchanged by this release.
+## 3. `--keep-asserts` build flag
+
+The shipped native patch set makes the game's assertion machinery silent:
+`RMAssert` (0x10B3ABC) is stubbed to `movs r0,#0; bx lr`, and two call-site
+conditionals (0x107FA10, 0x784CFE) are inverted. A failing assertion is
+therefore stepped over silently, which makes "the replica sent something wrong"
+look exactly like "the client hung".
+
+```powershell
+python tools/build-instrumented-apk.py --keep-asserts --install
+```
+
+leaves all three live. **Result: nothing fires.** The stall is not a silenced
+assertion, so this stays off by default. It is worth keeping because the next
+missing-response failure will be silent otherwise.
+
+The build script now runs the native patcher itself, so the flags always
+produce a coherent `libnative_core` instead of reusing a stale override.
+
+## Collector changes (this repository)
+
+- `GET /v1/events/search?q=&event=&since=&limit=` - substring search over the
+  ring, so a specific line does not have to be found by paging the newest 2000.
+- `GET /v1/stats` - adds `event_types` and `log_tags` histograms that are
+  cumulative for the life of the collector. Counts survive ring eviction, so
+  "there were 12 CPVCDN lines an hour ago" stays answerable.
+- `data/notable.ndjson` - lines matching assertions, `BLUSTONE_*`, `CPVCDN`,
+  `PV_CDN_*`, `[AST]`/`[CDN]`/`[JET]`, fatal signals and crashes are also
+  appended to a file that is never rotated. The ring is bounded and the client
+  is noisy; without this a one-off failure leaves no trace at all.
+
+## Server changes (in the main workspace, not this repo)
+
+`BLUSTONE_TRACE_CONNECTIONS=1` tracks TCP connections at the socket level, so a
+client that opens a connection and never speaks HTTP becomes visible instead of
+looking like silence. Keep-alive/header timeouts are now explicit and long
+rather than Node's 5 s defaults.

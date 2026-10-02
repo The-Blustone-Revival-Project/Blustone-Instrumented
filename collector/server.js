@@ -20,6 +20,54 @@ let received = 0;
 let rejected = 0;
 let artifactsReceived = 0;
 
+// Durable, never-evicted stream for the lines that actually matter. The ring is
+// bounded and the client is noisy, so without this a failure that happens once
+// leaves no trace at all.
+const notableFile = path.join(dataDir, "notable.ndjson");
+const notablePatterns = [
+  /BLUSTONE/,
+  /\bASSERT/i,
+  /bGlobalAssert/,
+  /\.cpp\b/,
+  /CPVCDN/i,
+  /PV_CDN_/,
+  /\[AST\]/,
+  /\[CDN\]/,
+  /\[JET\]/,
+  /\bSIGSEGV\b|\bSIGABRT\b|\bSIGFPE\b|\bSIGBUS\b/,
+  /Fatal signal/,
+  /tombstone/,
+  /uncaught/i,
+  /\bTraceback\b/,
+  /Exception/,
+  /\bdlopen\b|\bundefined symbol\b/,
+  /thread_states/,
+];
+const eventTypeCounts = new Map();
+const logTagCounts = new Map();
+let notableCount = 0;
+
+/** android_log lines look like "... I TAG    : message"; pull the tag out. */
+function logTagOf(event) {
+  if (!event || event.event !== "android_log") return null;
+  const line = event.data && typeof event.data.line === "string" ? event.data.line : "";
+  const match = line.match(/^\S+\s+\S+\s+\d+\s+\d+\s+[VDIWEF]\s+([^:]+):/);
+  return match ? match[1].trim() : null;
+}
+
+function isNotable(event) {
+  if (!event) return false;
+  if (event.event === "thread_states" || event.event === "thread_states_error") return true;
+  const line = event.data && typeof event.data.line === "string" ? event.data.line : "";
+  if (!line) return false;
+  return notablePatterns.some((pattern) => pattern.test(line));
+}
+
+function bump(map, key) {
+  if (!key) return;
+  map.set(key, (map.get(key) || 0) + 1);
+}
+
 fs.mkdirSync(dataDir, { recursive: true });
 fs.mkdirSync(artifactDir, { recursive: true });
 
@@ -68,6 +116,19 @@ function appendEvents(events, request) {
   if (normalized.length) {
     fs.appendFileSync(eventFile, normalized.map((event) => JSON.stringify(event)).join("\n") + "\n", "utf8");
     received += normalized.length;
+  }
+  for (const event of normalized) {
+    bump(eventTypeCounts, event && event.event);
+    bump(logTagCounts, logTagOf(event));
+    if (isNotable(event)) {
+      notableCount += 1;
+      try {
+        fs.appendFileSync(notableFile, JSON.stringify(event) + "\n", "utf8");
+      } catch (error) {
+        // A failure to persist evidence must not drop the event itself.
+        process.stderr.write(`notable append failed: ${error && error.message}\n`);
+      }
+    }
   }
   return normalized;
 }
@@ -137,7 +198,34 @@ const server = http.createServer((request, response) => {
     return sendJson(response, 200, { ok: true, service: "blustone-instrumentation-collector", received, rejected, event_file: eventFile });
   }
   if (request.method === "GET" && url.pathname === "/v1/stats") {
-    return sendJson(response, 200, { received, rejected, artifacts_received: artifactsReceived, event_file: eventFile, artifact_file: artifactFile, ring_size: ring.length });
+    return sendJson(response, 200, {
+      received,
+      rejected,
+      artifacts_received: artifactsReceived,
+      event_file: eventFile,
+      artifact_file: artifactFile,
+      notable_file: notableFile,
+      notable_count: notableCount,
+      ring_size: ring.length,
+      // Cumulative for the life of the collector, so a line that has already
+      // been evicted from the ring is still counted here.
+      event_types: Object.fromEntries([...eventTypeCounts].sort((a, b) => b[1] - a[1])),
+      log_tags: Object.fromEntries([...logTagCounts].sort((a, b) => b[1] - a[1]).slice(0, 40)),
+    });
+  }
+  if (request.method === "GET" && url.pathname === "/v1/events/search") {
+    const query = String(url.searchParams.get("q") || "").toLowerCase();
+    const eventName = String(url.searchParams.get("event") || "");
+    const since = Number(url.searchParams.get("since") || 0);
+    const requested = Number(url.searchParams.get("limit") || 200);
+    const limit = Math.max(1, Math.min(2000, Number.isFinite(requested) ? requested : 200));
+    const matched = ring.filter((event) => {
+      if (eventName && event.event !== eventName) return false;
+      if (since && Number(event.ts) < since) return false;
+      if (!query) return true;
+      return JSON.stringify(event).toLowerCase().includes(query);
+    });
+    return sendJson(response, 200, { query, event: eventName, count: matched.length, events: matched.slice(-limit) });
   }
   if (request.method === "GET" && url.pathname === "/v1/events") {
     const requested = Number(url.searchParams.get("limit") || 200);

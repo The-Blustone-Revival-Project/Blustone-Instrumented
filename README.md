@@ -123,3 +123,24 @@ python tools/build-instrumented-apk.py --restore-pre-repair-cdn --install
 Default builds leave the native CDN index untouched. The value is compiled in
 as `BuildConfig.RESTORE_PRE_REPAIR_CDN` and is recorded in the build's
 `BUILD-METADATA.json`.
+
+## Reading a stalled session
+
+The client currently stalls on the title screen. Two collector endpoints make
+that diagnosable instead of guesswork:
+
+- `GET /v1/events/search?q=<text>&event=<name>&limit=<n>` searches the event
+  ring instead of paging it.
+- `GET /v1/stats` includes `event_types` and `log_tags` histograms that are
+  cumulative for the life of the collector, so a line that has already been
+  evicted from the ring is still counted.
+
+`thread_states` events report every thread's kernel blocking state. On a stalled
+client this is the decisive datum: the main thread sitting in
+`SyS_epoll_wait` means the engine is *waiting* for something, whereas
+`futex_wait_queue_me` would mean it is deadlocked on a lock.
+
+Lines matching assertions, `BLUSTONE_*`, `CPVCDN`, `PV_CDN_*`, `[AST]`,
+`[CDN]`, `[JET]`, fatal signals and crashes are additionally appended to
+`collector/data/notable.ndjson`, which is never rotated. The ring is bounded and
+the client is noisy, so that file is the durable evidence trail.
