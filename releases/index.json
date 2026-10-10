@@ -1,0 +1,270 @@
+[
+  {
+    "version": "2.8.0.1+1",
+    "title": "2.8.0.1+1: Initial side-by-side diagnostic build",
+    "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/tag/2.8.0.1%2B1",
+    "known_broken": false,
+    "assets": [
+      {
+        "name": "BLUSTONE-Instrumented.apk",
+        "bytes": 1093924385,
+        "digest": "sha256:79befe705c72f81f9988486c4145da81605ec66241f2b99b6988bd42953dceeb",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B1/BLUSTONE-Instrumented.apk"
+      }
+    ]
+  },
+  {
+    "version": "2.8.0.1+3",
+    "title": "2.8.0.1+3: Filter telemetry noise and expose native evidence",
+    "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/tag/2.8.0.1%2B3",
+    "known_broken": false,
+    "assets": [
+      {
+        "name": "BLUSTONE-Instrumented.apk",
+        "bytes": 1093924385,
+        "digest": "sha256:6540fdfb1f3af453656346eb6441e6dc5fcfd95fbe05f008150096c5c13aa117",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B3/BLUSTONE-Instrumented.apk"
+      }
+    ]
+  },
+  {
+    "version": "2.8.0.1+4",
+    "title": "2.8.0.1+4: Observe thread blocking and native animation failures",
+    "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/tag/2.8.0.1%2B4",
+    "known_broken": false,
+    "assets": [
+      {
+        "name": "BLUSTONE-Instrumented.apk",
+        "bytes": 1093928481,
+        "digest": "sha256:4dd1f492714f2409f4899c8cdaacdbce84d86d3ace46556e479aad222515909f",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B4/BLUSTONE-Instrumented.apk"
+      }
+    ]
+  },
+  {
+    "version": "2.8.0.1+5",
+    "title": "2.8.0.1+5: Restore launcher URL keys and keep assertions visible",
+    "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/tag/2.8.0.1%2B5",
+    "known_broken": false,
+    "assets": [
+      {
+        "name": "BLUSTONE-Instrumented.apk",
+        "bytes": 1093928481,
+        "digest": "sha256:315e785ecd02ef946967c02d588c73db647ca3c5909dda693f65b3b21b4248db",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B5/BLUSTONE-Instrumented.apk"
+      }
+    ]
+  },
+  {
+    "version": "2.8.0.1+6",
+    "title": "2.8.0.1+6: Historical assertion tracer (broken build)",
+    "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/tag/2.8.0.1%2B6",
+    "known_broken": true,
+    "assets": [
+      {
+        "name": "BLUSTONE-Instrumented.apk",
+        "bytes": 1093928481,
+        "digest": "sha256:2b7fd42cde1c37e0e4142fa63fb0c919f488324664da177ad72cdde6261114f5",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B6/BLUSTONE-Instrumented.apk"
+      }
+    ]
+  },
+  {
+    "version": "2.8.0.1+7",
+    "title": "2.8.0.1+7: Observe native Gym state without mutation",
+    "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/tag/2.8.0.1%2B7",
+    "known_broken": false,
+    "assets": [
+      {
+        "name": "BLUSTONE-Instrumented.apk",
+        "bytes": 1094331118,
+        "digest": "sha256:d534b52de3c334a4a46bb8504ebcaa260b288690a8064ee336ec35574e2ea471",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B7/BLUSTONE-Instrumented.apk"
+      },
+      {
+        "name": "BUILD-METADATA.json",
+        "bytes": 1701,
+        "digest": "sha256:e5a3f63648efbee8aafa73d77d693c94d789f76c26a9a654ede1fa925ee9dc39",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B7/BUILD-METADATA.json"
+      },
+      {
+        "name": "SHA256SUMS.txt",
+        "bytes": 93,
+        "digest": "sha256:8478591d2ad2cfa49d129f658b48753375b7a017558a465081d7d4f1d2908dce",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B7/SHA256SUMS.txt"
+      }
+    ]
+  },
+  {
+    "version": "2.8.0.1+8",
+    "title": "2.8.0.1+8: Recover interrupted Gym onboarding",
+    "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/tag/2.8.0.1%2B8",
+    "known_broken": false,
+    "assets": [
+      {
+        "name": "BLUSTONE-Instrumented.apk",
+        "bytes": 1094331118,
+        "digest": "sha256:8c1a794b5e49cc47e89f05aa6765da9b3a852acad91bf7ce759bad162a762c1e",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B8/BLUSTONE-Instrumented.apk"
+      },
+      {
+        "name": "BUILD-METADATA.json",
+        "bytes": 1736,
+        "digest": "sha256:e51c289abb67eab8f103a4f2cc9fd4524da92413cc7793fc5987c81afbcd494c",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B8/BUILD-METADATA.json"
+      },
+      {
+        "name": "SHA256SUMS.txt",
+        "bytes": 93,
+        "digest": "sha256:b60b6b587835f46ea8547562145e9598c12a6a9fde08ab725e3522deedc9343d",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B8/SHA256SUMS.txt"
+      }
+    ]
+  },
+  {
+    "version": "2.8.0.1+9",
+    "title": "2.8.0.1+9: Restore English Episode layouts",
+    "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/tag/2.8.0.1%2B9",
+    "known_broken": false,
+    "assets": [
+      {
+        "name": "BLUSTONE-Instrumented.apk",
+        "bytes": 1094787703,
+        "digest": "sha256:f525c0287745d92b18afef63d2d82eef6d2032d87f27a7c2e5edea798cc34348",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B9/BLUSTONE-Instrumented.apk"
+      },
+      {
+        "name": "BUILD-METADATA.json",
+        "bytes": 1745,
+        "digest": "sha256:bb8eec440331128ae71781661fdf28e959e53a4972ba86e0a61be0feb0be674c",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B9/BUILD-METADATA.json"
+      },
+      {
+        "name": "SHA256SUMS.txt",
+        "bytes": 180,
+        "digest": "sha256:69d468c004f9c870ee920e2f279ee83e55ac196a6b19aca7d1af4aaf4b2dfd22",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B9/SHA256SUMS.txt"
+      }
+    ]
+  },
+  {
+    "version": "2.8.0.1+10",
+    "title": "2.8.0.1+10: Guard stale Search Partner callbacks",
+    "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/tag/2.8.0.1%2B10",
+    "known_broken": false,
+    "assets": [
+      {
+        "name": "BLUSTONE-Instrumented.apk",
+        "bytes": 1094787703,
+        "digest": "sha256:ff099f124f044d98504133036357b050494a942a173414483f5555f324e40b9f",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B10/BLUSTONE-Instrumented.apk"
+      },
+      {
+        "name": "BUILD-METADATA.json",
+        "bytes": 1898,
+        "digest": "sha256:bf3c4fe127d689157640a78471068cc140fca009f8c106e54fb014bb233db54d",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B10/BUILD-METADATA.json"
+      },
+      {
+        "name": "SHA256SUMS.txt",
+        "bytes": 180,
+        "digest": "sha256:5784d4264ee0f562eeffe6a93a0f4ff1da600c7ac05270416544782a872f8d62",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B10/SHA256SUMS.txt"
+      }
+    ]
+  },
+  {
+    "version": "2.8.0.1+11",
+    "title": "2.8.0.1+11: Search and Episode diagnostics",
+    "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/tag/2.8.0.1%2B11",
+    "known_broken": false,
+    "assets": [
+      {
+        "name": "BLUSTONE-Instrumented.apk",
+        "bytes": 1094791799,
+        "digest": "sha256:08f605d56685f62a8ef7d1beb7685470cc099f935c56e19d7945fc38ca35c6a6",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B11/BLUSTONE-Instrumented.apk"
+      },
+      {
+        "name": "BUILD-METADATA.json",
+        "bytes": 2374,
+        "digest": "sha256:ac67384bca95e4bac42fd8dd8af9f168f96b1aa75ace8590ab66fc7721e4739a",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B11/BUILD-METADATA.json"
+      },
+      {
+        "name": "SHA256SUMS",
+        "bytes": 178,
+        "digest": "sha256:fc658dd3233d909e061ad2fc0d4a3c694516462f23c4cef77606104bdac843f3",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B11/SHA256SUMS"
+      }
+    ]
+  },
+  {
+    "version": "2.8.0.1+12",
+    "title": "2.8.0.1+12: Defer unavailable Partner tutorial",
+    "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/tag/2.8.0.1%2B12",
+    "known_broken": false,
+    "assets": [
+      {
+        "name": "BLUSTONE-Instrumented.apk",
+        "bytes": 1094791799,
+        "digest": "sha256:b6189295b23f547d02514fbeeed7576aeeb1df5d0ae9120adc747aa1bbda0016",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B12/BLUSTONE-Instrumented.apk"
+      },
+      {
+        "name": "BUILD-METADATA.json",
+        "bytes": 2616,
+        "digest": "sha256:195b0200087abdde264221d92d6d9ff24407880f163d9f2a76447d0fb8f10a60",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B12/BUILD-METADATA.json"
+      },
+      {
+        "name": "SHA256SUMS",
+        "bytes": 178,
+        "digest": "sha256:db27a21dfd7d073307f26c392f349e98a075ed5ed9c7284edbcc9e36b25b3cf9",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B12/SHA256SUMS"
+      }
+    ]
+  },
+  {
+    "version": "2.8.0.1+13",
+    "title": "2.8.0.1+13: Preserve CDN cache with uncompressed bootstrap",
+    "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/tag/2.8.0.1%2B13",
+    "known_broken": false,
+    "assets": [
+      {
+        "name": "BLUSTONE-Instrumented.apk",
+        "bytes": 1094800188,
+        "digest": "sha256:6435a8094cb04f73abe2e3c29f7b20ee9150dabdde22c72f2b4fc5c3d8b86b2e",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B13/BLUSTONE-Instrumented.apk"
+      }
+    ]
+  },
+  {
+    "version": "2.8.0.1+14",
+    "title": "2.8.0.1+14: Preserve orphan SST during exact CDN migration",
+    "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/tag/2.8.0.1%2B14",
+    "known_broken": false,
+    "assets": [
+      {
+        "name": "BLUSTONE-Instrumented.apk",
+        "bytes": 1094800188,
+        "digest": "sha256:5ed4521a23bb450c30c13e4363e9f335e4346a1e5a83602f03a7f0a4969a1768",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B14/BLUSTONE-Instrumented.apk"
+      }
+    ]
+  },
+  {
+    "version": "2.8.0.1+15",
+    "title": "2.8.0.1+15: Correct CDN table-size recovery",
+    "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/tag/2.8.0.1%2B15",
+    "known_broken": false,
+    "assets": [
+      {
+        "name": "BLUSTONE-Instrumented.apk",
+        "bytes": 1094796092,
+        "digest": "sha256:5d0d409ab148a2a74c6e075a28751895071ee671d4c97efbd1049c3221a3dd03",
+        "url": "https://github.com/The-Blustone-Revival-Project/Blustone-Instrumented/releases/download/2.8.0.1%2B15/BLUSTONE-Instrumented.apk"
+      }
+    ]
+  }
+]

@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blustone JET Workshop</title>
+  <style>
+    :root { color-scheme: dark; --bg: #0b1020; --panel: #121a2b; --panel2: #172238; --line: #2a3855; --text: #e8eefc; --muted: #91a1bf; --accent: #74b9ff; --accent2: #b8f2e6; --warn: #f6c177; }
+    * { box-sizing: border-box; }
+    html { height: 100%; }
+    body { margin: 0; width: 100%; height: 100vh; height: 100dvh; overflow: hidden; display: grid; grid-template-rows: auto minmax(0, 1fr); background: radial-gradient(circle at 15% 0%, #18294a 0, transparent 36rem), var(--bg); color: var(--text); font: 14px/1.45 system-ui, -apple-system, Segoe UI, sans-serif; }
+    button, input, select { font: inherit; color: inherit; }
+    button { border: 1px solid var(--line); background: var(--panel2); border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+    button:hover { border-color: var(--accent); }
+    .topbar { position: relative; z-index: 4; display: flex; align-items: center; gap: 18px; padding: 14px 20px; border-bottom: 1px solid var(--line); background: rgba(11,16,32,.92); backdrop-filter: blur(14px); }
+    .brand { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+    .logo { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: linear-gradient(135deg, #73b4ff, #a5f3d7); color: #08101f; font-weight: 900; }
+    h1, h2, h3, p { margin: 0; }
+    h1 { font-size: 16px; letter-spacing: .02em; }
+    .subtitle { color: var(--muted); font-size: 12px; }
+    .root { min-width: 0; flex: 1; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .layout { display: grid; grid-template-columns: 360px minmax(0, 1fr); min-height: 0; height: auto; overflow: hidden; }
+    aside { min-width: 0; min-height: 0; border-right: 1px solid var(--line); background: rgba(14,22,40,.72); padding: 16px; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
+    main { min-width: 0; min-height: 0; padding: 24px; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
+    .filters { display: grid; gap: 9px; margin-bottom: 14px; }
+    input, select { width: 100%; border: 1px solid var(--line); border-radius: 8px; background: #0d1629; padding: 9px 10px; outline: none; }
+    input:focus, select:focus { border-color: var(--accent); }
+    .filter-row { display: flex; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 12px; align-items: center; }
+    .filter-row label { display: flex; gap: 7px; align-items: center; }
+    .filter-row input { width: auto; }
+    .count { color: var(--muted); font-size: 12px; margin: 8px 2px; }
+    .file-list { display: grid; gap: 6px; }
+    .file { width: 100%; text-align: left; padding: 10px; border-radius: 9px; background: transparent; border-color: transparent; }
+    .file:hover, .file.selected { background: var(--panel2); border-color: var(--line); }
+    .file-name { font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .file-dir { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; margin-top: 2px; }
+    .file-meta { display: flex; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 11px; margin-top: 6px; }
+    .badge { color: var(--accent2); }
+    .empty { min-height: 65vh; display: grid; place-items: center; text-align: center; color: var(--muted); }
+    .empty-inner { max-width: 560px; }
+    .empty h2 { color: var(--text); margin-bottom: 10px; }
+    .detail-head { display: flex; gap: 14px; justify-content: space-between; align-items: start; margin-bottom: 18px; }
+    .detail-title { min-width: 0; }
+    .detail-title h2 { font-size: 23px; overflow-wrap: anywhere; }
+    .path { color: var(--muted); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; margin-top: 5px; overflow-wrap: anywhere; }
+    .actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .chips { display: flex; gap: 7px; flex-wrap: wrap; margin: 12px 0 18px; }
+    .chip { border: 1px solid var(--line); border-radius: 999px; padding: 4px 9px; color: var(--muted); font-size: 12px; }
+    .grid { display: grid; gap: 14px; min-width: 0; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .card { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: rgba(18,26,43,.82); padding: 16px; }
+    .card h3 { font-size: 13px; color: var(--accent2); margin-bottom: 10px; }
+    .player { display: grid; place-items: center; min-width: 0; min-height: 180px; overflow: hidden; border: 1px dashed var(--line); border-radius: 9px; background: #0a1120; padding: 12px; }
+    .media-viewport { position: relative; display: grid; place-items: center; width: 100%; height: clamp(180px, 52vh, 620px); min-width: 0; min-height: 180px; max-height: 620px; overflow: hidden; contain: layout paint; isolation: isolate; border: 1px dashed var(--line); border-radius: 9px; background: #0a1120; }
+    .media-viewport video, .media-viewport img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; min-width: 0; min-height: 0; max-width: 100%; max-height: 100%; object-fit: contain; object-position: center; }
+    .media-viewport canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; min-width: 0; min-height: 0; max-width: 100%; max-height: 100%; }
+    .media-viewport:fullscreen { width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none; border: 0; border-radius: 0; background: #050914; }
+    .media-viewport:fullscreen video, .media-viewport:fullscreen img { max-width: 100vw; max-height: 100vh; }
+    .fullscreen-btn { position: absolute; top: 10px; right: 10px; z-index: 2; padding: 6px 9px; background: rgba(23,34,56,.9); }
+    .font-preview { display: grid; align-content: center; gap: 14px; width: 100%; height: 100%; min-width: 0; overflow: auto; padding: 22px; }
+    .font-sample { color: var(--text); font-size: clamp(32px, 8vw, 92px); line-height: 1.2; overflow-wrap: anywhere; }
+    .font-sample-secondary { color: var(--muted); font-size: clamp(18px, 3vw, 34px); line-height: 1.35; overflow-wrap: anywhere; }
+    .code-preview { max-height: 560px; overflow: auto; white-space: pre; }
+    .shader-status { position: absolute; left: 10px; right: 10px; bottom: 8px; z-index: 2; padding: 3px 6px; background: rgba(8,16,31,.72); overflow-wrap: anywhere; }
+    .json-table-wrap { max-height: 520px; overflow: auto; }
+    .json-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .json-table th, .json-table td { border-bottom: 1px solid var(--line); padding: 7px 8px; text-align: left; vertical-align: top; }
+    .json-table th { position: sticky; top: 0; background: var(--panel2); color: var(--accent2); }
+    .player audio { width: min(100%, 540px); }
+    .player-note { color: var(--muted); text-align: center; }
+    pre { margin: 0; max-height: 440px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font: 12px/1.55 ui-monospace, SFMono-Regular, Consolas, monospace; color: #d8e4ff; }
+    .hex { white-space: pre; }
+    details { border-top: 1px solid var(--line); padding-top: 10px; margin-top: 10px; }
+    summary { cursor: pointer; color: var(--muted); }
+    .media-item { display: grid; gap: 8px; min-width: 0; margin-bottom: 12px; }
+    .media-label { color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
+    .media-item a { color: var(--accent); font-size: 12px; }
+    .layer { display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); padding: 9px 0; }
+    .layer:first-child { border-top: 0; padding-top: 0; }
+    .layer-name { overflow-wrap: anywhere; }
+    .layer-size { color: var(--muted); white-space: nowrap; }
+    .notice { color: var(--warn); font-size: 12px; }
+    .error { color: #ff9d9d; padding: 12px; border: 1px solid #713d4a; border-radius: 9px; background: #281721; }
+    @media (max-width: 860px) {
+      .layout { display: flex; flex-direction: column; }
+      aside { flex: 0 0 auto; max-height: 38dvh; border-right: 0; border-bottom: 1px solid var(--line); padding: 12px; }
+      main { flex: 1 1 auto; padding: 16px; }
+      .topbar { flex-wrap: wrap; gap: 8px 14px; padding: 12px 14px; }
+      .root { order: 3; flex-basis: 100%; }
+      .detail-head { flex-direction: column; }
+      .actions { justify-content: flex-start; }
+      .grid { grid-template-columns: minmax(0, 1fr); }
+      .media-viewport { height: clamp(180px, 48dvh, 520px); max-height: 520px; }
+      .empty { min-height: 45dvh; }
+    }
+    @media (max-width: 520px) {
+      .brand { min-width: 0; }
+      .brand > div:last-child { min-width: 0; }
+      h1 { font-size: 14px; }
+      .detail-title h2 { font-size: 19px; }
+      .card { padding: 12px; }
+      .file-meta { flex-wrap: wrap; }
+      .filter-row { align-items: flex-start; }
+      .media-viewport { min-height: 160px; height: 42dvh; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><div class="logo">J</div><div><h1>Blustone JET Workshop</h1><div class="subtitle">local, read-only resource viewer</div></div></div>
+    <div id="root" class="root">Scanning…</div>
+    <button id="refresh">Refresh</button>
+  </header>
+  <div class="layout">
+    <aside>
+      <div class="filters">
+        <input id="search" type="search" placeholder="Search filename or path…">
+        <select id="kind"><option value="">All detected kinds</option></select>
+        <div class="filter-row"><label><input id="unique" type="checkbox"> hide likely duplicates</label><span id="shown"></span></div>
+      </div>
+      <div id="count" class="count"></div>
+      <div id="file-list" class="file-list"></div>
+    </aside>
+    <main id="detail">
+      <div class="empty"><div class="empty-inner"><h2>Select a JET file</h2><p>The viewer will identify embedded media, inflate the confirmed zlib layer, and show readable records, strings, and hex for the remaining native formats.</p></div></div>
+    </main>
+  </div>
+  <script>
+    const state = { files: [], current: null };
+    const $ = (id) => document.getElementById(id);
+    const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const fmtBytes = (value) => { let n = Number(value); const units = ['B','KiB','MiB','GiB']; let i = 0; while (n >= 1024 && i < units.length - 1) { n /= 1024; i++; } return `${n.toFixed(i ? 1 : 0)} ${units[i]}`; };
+    const urlFor = (route, params) => `${route}?${new URLSearchParams(params)}`;
+
+    async function loadFiles(refresh = false) {
+      $('file-list').innerHTML = '<div class="count">Scanning JET files…</div>';
+      const response = await fetch(`/api/files${refresh ? '?refresh=1' : ''}`);
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || 'Could not scan files');
+      state.files = data.files;
+      $('root').textContent = data.root;
+      const kinds = [...new Set(state.files.map((file) => file.kind))].sort();
+      $('kind').innerHTML = '<option value="">All detected kinds</option>' + kinds.map((kind) => `<option>${esc(kind)}</option>`).join('');
+      renderList();
+    }
+
+    function filteredFiles() {
+      const query = $('search').value.trim().toLowerCase();
+      const kind = $('kind').value;
+      const unique = $('unique').checked;
+      const seen = new Set();
+      return state.files.filter((file) => {
+        if (kind && file.kind !== kind) return false;
+        if (query && !`${file.name} ${file.path}`.toLowerCase().includes(query)) return false;
+        if (unique) { if (seen.has(file.fingerprint)) return false; seen.add(file.fingerprint); }
+        return true;
+      });
+    }
+
+    function renderList() {
+      const files = filteredFiles();
+      $('count').textContent = `${files.length.toLocaleString()} shown · ${state.files.length.toLocaleString()} total`;
+      $('shown').textContent = files.length ? `${files.length.toLocaleString()}` : '';
+      $('file-list').innerHTML = files.map((file) => `<button class="file ${state.current === file.path ? 'selected' : ''}" data-path="${esc(file.path)}"><div class="file-name">${esc(file.name)}</div><div class="file-dir">${esc(file.directory)}</div><div class="file-meta"><span>${fmtBytes(file.size)}</span><span class="badge">${esc(file.kind)}</span></div></button>`).join('');
+      document.querySelectorAll('.file').forEach((button) => button.addEventListener('click', () => selectFile(button.dataset.path)));
+    }
+
+    function card(title, body, extra = '') { return `<section class="card"><h3>${title}</h3>${body}${extra}</section>`; }
+
+    function syncFullscreenLabels() {
+      const active = document.fullscreenElement;
+      document.querySelectorAll('.fullscreen-btn').forEach((button) => {
+        const target = button.closest('.media-viewport');
+        const isActive = active && target === active;
+        button.textContent = isActive ? 'Exit fullscreen' : 'Fullscreen';
+        button.setAttribute('aria-label', isActive ? 'Exit fullscreen' : 'View fullscreen');
+      });
+    }
+
+    function installFullscreenControls() {
+      document.querySelectorAll('.fullscreen-btn').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const target = button.closest('.media-viewport');
+          if (!target || !target.requestFullscreen) return;
+          try {
+            if (document.fullscreenElement === target) await document.exitFullscreen();
+            else if (!document.fullscreenElement) await target.requestFullscreen();
+          } catch (error) {
+            console.warn('Fullscreen preview unavailable', error);
+          }
+          syncFullscreenLabels();
+        });
+      });
+      syncFullscreenLabels();
+    }
+
+    async function installFontPreviews() {
+      if (!window.FontFace || !document.fonts) return;
+      for (const preview of document.querySelectorAll('.font-preview')) {
+        const family = preview.dataset.fontFamily;
+        const source = preview.dataset.fontSrc;
+        if (!family || !source) continue;
+        try {
+          const face = new FontFace(family, `url("${source}")`);
+          await face.load();
+          document.fonts.add(face);
+          const status = preview.querySelector('.font-status');
+          if (status) status.textContent = 'Font loaded locally';
+        } catch (error) {
+          const status = preview.querySelector('.font-status');
+          if (status) status.textContent = 'Browser could not load this font; use the download link below.';
+          console.warn('Font preview unavailable', error);
+        }
+      }
+    }
+
+    function shaderStage(gl, type, source) {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        const message = gl.getShaderInfoLog(shader) || 'shader compilation failed';
+        gl.deleteShader(shader);
+        throw new Error(message);
+      }
+      return shader;
+    }
+
+    function installShaderPreviews(shaderSources) {
+      document.querySelectorAll('.shader-canvas').forEach((canvas) => {
+        const source = shaderSources[canvas.dataset.layerIndex];
+        const status = canvas.parentElement.querySelector('.shader-status');
+        if (!source) return;
+        try {
+          const gl = canvas.getContext('webgl', {antialias: true, preserveDrawingBuffer: true});
+          if (!gl) throw new Error('WebGL is unavailable in this browser');
+          const width = Math.max(320, Math.floor(canvas.clientWidth * devicePixelRatio));
+          const height = Math.max(180, Math.floor(canvas.clientHeight * devicePixelRatio));
+          canvas.width = width;
+          canvas.height = height;
+          const program = gl.createProgram();
+          gl.attachShader(program, shaderStage(gl, gl.VERTEX_SHADER, source.vertex));
+          gl.attachShader(program, shaderStage(gl, gl.FRAGMENT_SHADER, source.fragment));
+          gl.linkProgram(program);
+          if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program) || 'shader link failed');
+          gl.useProgram(program);
+          const positions = gl.createBuffer();
+          gl.bindBuffer(gl.ARRAY_BUFFER, positions);
+          gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+          const position = gl.getAttribLocation(program, 'avPos');
+          if (position >= 0) { gl.enableVertexAttribArray(position); gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0); }
+          const uvs = gl.createBuffer();
+          gl.bindBuffer(gl.ARRAY_BUFFER, uvs);
+          gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0,1, 1,1, 0,0, 1,0]), gl.STATIC_DRAW);
+          const uv = gl.getAttribLocation(program, 'avTexUV');
+          if (uv >= 0) { gl.enableVertexAttribArray(uv); gl.vertexAttribPointer(uv, 2, gl.FLOAT, false, 0, 0); }
+          const colors = gl.createBuffer();
+          gl.bindBuffer(gl.ARRAY_BUFFER, colors);
+          gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1]), gl.STATIC_DRAW);
+          const color = gl.getAttribLocation(program, 'avColor');
+          if (color >= 0) { gl.enableVertexAttribArray(color); gl.vertexAttribPointer(color, 4, gl.FLOAT, false, 0, 0); }
+          const identity = new Float32Array([1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]);
+          for (const name of ['umProjection', 'umModelview']) { const uniform = gl.getUniformLocation(program, name); if (uniform) gl.uniformMatrix4fv(uniform, false, identity); }
+          const texture = gl.createTexture();
+          gl.activeTexture(gl.TEXTURE0);
+          gl.bindTexture(gl.TEXTURE_2D, texture);
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+          gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 2, 2, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([40,80,140,255, 150,220,230,255, 150,220,230,255, 40,80,140,255]));
+          const sampler = gl.getUniformLocation(program, 'usTextureID');
+          if (sampler) gl.uniform1i(sampler, 0);
+          gl.viewport(0, 0, width, height);
+          gl.clearColor(0.03, 0.05, 0.1, 1);
+          gl.clear(gl.COLOR_BUFFER_BIT);
+          gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+          if (status) status.textContent = 'WebGL shader compiled and rendered';
+        } catch (error) {
+          if (status) status.textContent = `Shader preview unavailable: ${error.message || error}`;
+        }
+      });
+    }
+
+    function drawMotionFrame(canvas, motion, timestamp) {
+      const ctx = canvas.getContext('2d');
+      const width = canvas.width = Math.max(480, Math.floor(canvas.clientWidth * devicePixelRatio));
+      const height = canvas.height = Math.max(220, Math.floor(canvas.clientHeight * devicePixelRatio));
+      const scale = devicePixelRatio;
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = '#08101f'; ctx.fillRect(0, 0, width, height);
+      ctx.strokeStyle = 'rgba(116,185,255,.16)'; ctx.lineWidth = scale;
+      for (let x = 0; x < width; x += 48 * scale) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke(); }
+      for (let y = 0; y < height; y += 48 * scale) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke(); }
+      const points = (motion.keyframes || []).filter((item) => Number.isFinite(item.x) && Number.isFinite(item.y));
+      const duration = Math.max(Number(motion.duration) || 1, 1);
+      const now = (timestamp / 1000) % duration;
+      let current = points[0] || {x: 0, y: 0};
+      for (const point of points) if (point.time <= now) current = point;
+      const xs = points.map((point) => point.x); const ys = points.map((point) => point.y);
+      const minX = Math.min(-10, ...xs); const maxX = Math.max(10, ...xs); const minY = Math.min(-10, ...ys); const maxY = Math.max(10, ...ys);
+      const mapX = (value) => 24 * scale + ((value - minX) / Math.max(maxX - minX, 1)) * (width - 48 * scale);
+      const mapY = (value) => height - 24 * scale - ((value - minY) / Math.max(maxY - minY, 1)) * (height - 48 * scale);
+      if (points.length > 1) { ctx.strokeStyle = '#74b9ff'; ctx.lineWidth = 2 * scale; ctx.beginPath(); points.forEach((point, index) => index ? ctx.lineTo(mapX(point.x), mapY(point.y)) : ctx.moveTo(mapX(point.x), mapY(point.y))); ctx.stroke(); }
+      ctx.fillStyle = '#b8f2e6'; ctx.beginPath(); ctx.arc(mapX(current.x || 0), mapY(current.y || 0), 7 * scale, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#e8eefc'; ctx.font = `${12 * scale}px system-ui`; ctx.fillText(`${motion.name || 'motion'} · ${now.toFixed(2)} / ${duration.toFixed(2)}s`, 12 * scale, 18 * scale);
+      canvas._motionFrame = requestAnimationFrame((next) => drawMotionFrame(canvas, motion, next));
+    }
+
+    function installMotionPreviews(motionSources) {
+      const start = (canvas) => { if (!canvas._motionFrame) canvas._motionFrame = requestAnimationFrame((time) => drawMotionFrame(canvas, motionSources[canvas.dataset.layerIndex], time)); };
+      const observer = new IntersectionObserver((entries) => entries.forEach((entry) => entry.isIntersecting ? start(entry.target) : (cancelAnimationFrame(entry.target._motionFrame), entry.target._motionFrame = null)), {threshold: 0.1});
+      document.querySelectorAll('.motion-canvas').forEach((canvas) => observer.observe(canvas));
+    }
+
+    function renderJsonResource(resource) {
+      try {
+        const value = JSON.parse(resource.text.replace(/^\uFEFF/, '').trim());
+        const rows = Array.isArray(value) ? value : [value];
+        if (!rows.length || typeof rows[0] !== 'object' || rows[0] === null) return `<pre class="code-preview">${esc(JSON.stringify(value, null, 2))}</pre>`;
+        const keys = [...new Set(rows.flatMap((row) => Object.keys(row)))].slice(0, 8);
+        return `<div class="json-table-wrap"><table class="json-table"><thead><tr>${keys.map((key) => `<th>${esc(key)}</th>`).join('')}</tr></thead><tbody>${rows.slice(0, 300).map((row) => `<tr>${keys.map((key) => `<td>${esc(typeof row[key] === 'object' ? JSON.stringify(row[key]) : row[key])}</td>`).join('')}</tr>`).join('')}</tbody></table></div><div class="subtitle">${rows.length} records${rows.length > 300 ? ' · first 300 shown' : ''}</div>`;
+      } catch { return `<pre class="code-preview">${esc(resource.text)}</pre>`; }
+    }
+
+    document.addEventListener('fullscreenchange', syncFullscreenLabels);
+
+    function renderDetail(data) {
+      const media = data.media || [];
+      const layers = data.layers || [];
+      let fontPreviewIndex = 0;
+      const shaderSources = {};
+      const motionSources = {};
+      layers.forEach((layer, index) => { if (layer.shader) shaderSources[index] = layer.shader; if (layer.motion) motionSources[index] = layer.motion; });
+      const mediaBody = media.length ? media.map((item) => {
+        const src = urlFor('/api/blob', {path: data.path, variant: item.id});
+        let player = `<a href="${src}&download=1">download ${esc(item.suffix)}</a>`;
+        if (item.mime.startsWith('video/')) player = `<div class="media-viewport"><button type="button" class="fullscreen-btn">Fullscreen</button><video controls preload="metadata" src="${src}"></video></div><a href="${src}&download=1">download ${esc(item.suffix)}</a>`;
+        else if (item.mime.startsWith('audio/')) player = `<audio controls preload="none" src="${src}"></audio><a href="${src}&download=1">download ${esc(item.suffix)}</a>`;
+        else if (item.mime.startsWith('image/')) player = `<div class="media-viewport"><button type="button" class="fullscreen-btn">Fullscreen</button><img loading="lazy" alt="${esc(item.label)}" src="${src}"></div><a href="${src}&download=1">download ${esc(item.suffix)}</a>`;
+        else if (item.mime.startsWith('font/')) {
+          const family = `JetFontPreview${fontPreviewIndex++}`;
+          player = `<div class="media-viewport"><button type="button" class="fullscreen-btn">Fullscreen</button><div class="font-preview" data-font-src="${esc(src)}" data-font-family="${family}"><div class="font-sample" style="font-family:'${family}'">Aa Bb 0123</div><div class="font-sample-secondary" style="font-family:'${family}'">The quick brown fox · 가나다 · 漢字</div><div class="font-status subtitle">Loading font preview…</div></div></div><a href="${src}&download=1">download ${esc(item.suffix)}</a>`;
+        }
+        return `<div class="media-item"><div class="media-label">${esc(item.label)} · ${fmtBytes(item.size)} · offset ${item.offset}</div>${player}</div>`;
+      }).join('') : '<div class="player"><div class="player-note">No standard browser-playable payload was recognized in this file.</div></div>';
+      const layerBody = layers.map((layer) => `<div class="layer"><span class="layer-name">${esc(layer.source)}<br><span class="subtitle">${esc(layer.kind)}</span></span><span class="layer-size">${fmtBytes(layer.size)}</span></div>`).join('');
+      const textResources = data.textResources || [];
+      const text = textResources.length ? card('Readable decoded text/resources', textResources.map((resource, index) => `<details ${index === 0 ? 'open' : ''}><summary>${esc(resource.kind)} · ${esc(resource.source)}</summary><pre class="code-preview">${esc(resource.text)}</pre></details>`).join('')) : (data.text ? card('Readable decoded text', `<pre class="code-preview">${esc(data.text)}</pre>`) : '');
+      const spineLayers = layers.filter((layer) => layer.spine);
+      const spine = spineLayers.length ? card('Spine animation resources', spineLayers.map((layer) => `<details><summary>${esc(layer.source)} · ${esc(layer.spine.version)}</summary><pre>${esc((layer.spine.strings || []).join('\n'))}</pre></details>`).join('')) : '';
+      const shaderLayers = Object.entries(shaderSources);
+      const shader = shaderLayers.length ? card('GLSL surface preview', shaderLayers.map(([index, source]) => `<details open><summary>Shader resource ${Number(index) + 1}</summary><div class="media-viewport shader-viewport"><button type="button" class="fullscreen-btn">Fullscreen</button><canvas class="shader-canvas" data-layer-index="${index}"></canvas><div class="shader-status subtitle">Compiling shader…</div></div></details>`).join('')) : '';
+      const motionLayers = Object.entries(motionSources);
+      const motion = motionLayers.length ? card('Motion timeline preview', motionLayers.map(([index, source]) => `<details ${Number(index) === Number(motionLayers[0][0]) ? 'open' : ''}><summary>${esc(source.name || 'motion')} · ${(source.keyframes || []).length} keyframes</summary><div class="media-viewport motion-viewport"><button type="button" class="fullscreen-btn">Fullscreen</button><canvas class="motion-canvas" data-layer-index="${index}"></canvas></div></details>`).join('')) : '';
+      const jsonResources = textResources.filter((resource) => resource.kind === 'JSON resource');
+      const jsonPreview = jsonResources.length ? card('Structured JSON preview', jsonResources.map((resource, index) => `<details ${index === 0 ? 'open' : ''}><summary>${esc(resource.source)}</summary>${renderJsonResource(resource)}</details>`).join('')) : '';
+      const strings = data.strings?.length ? card('Printable strings', `<details open><summary>${data.strings.length} strings</summary><pre>${esc(data.strings.join('\n'))}</pre></details>`) : '';
+      const hex = layers.map((layer) => `<details><summary>${esc(layer.source)} · hex preview</summary><pre class="hex">${esc(layer.hex)}</pre></details>`).join('');
+      const metadata = JSON.stringify({kind: data.kind, size: data.size, sha256: data.sha256, header: data.header, layers: layers.map((layer) => ({source: layer.source, size: layer.size, kind: layer.kind, i2: layer.i2, spine: layer.spine}))}, null, 2);
+      const variants = (data.variants || []).filter((item) => item.id !== 'raw').map((item) => `<a href="${urlFor('/api/blob', {path: data.path, variant: item.id, download: '1'})}">download ${esc(item.label)} (${fmtBytes(item.size)})</a>`).join('<br>');
+      $('detail').innerHTML = `<div class="detail-head"><div class="detail-title"><h2>${esc(data.name)}</h2><div class="path">${esc(data.path)}</div></div><div class="actions"><a href="${urlFor('/api/blob', {path: data.path, variant: 'raw', download: '1'})}"><button>Download original</button></a></div></div><div class="chips"><span class="chip">${esc(data.kind)}</span><span class="chip">${fmtBytes(data.size)}</span><span class="chip">SHA-256 ${esc(data.sha256.slice(0, 16))}…</span></div><div class="grid">${shader}${motion}${jsonPreview}${text}${spine}${card('Playable/embedded payloads', mediaBody)}${card('Decoded layers', layerBody || '<div class="notice">No decoded layer.</div>', variants ? `<details><summary>Decoded downloads</summary><div>${variants}</div></details>` : '')}</div><div class="grid" style="margin-top:14px">${strings}${card('Hex / metadata', `<pre>${esc(metadata)}</pre>${hex}`)}</div>`;
+      installFullscreenControls();
+      installFontPreviews();
+      if (shaderLayers.length) installShaderPreviews(shaderSources);
+      if (motionLayers.length) installMotionPreviews(motionSources);
+    }
+
+    async function selectFile(path) {
+      state.current = path;
+      renderList();
+      $('detail').innerHTML = '<div class="empty"><div class="empty-inner"><h2>Decoding…</h2><p>Reading only the selected source file.</p></div></div>';
+      try {
+        const response = await fetch(urlFor('/api/file', {path}));
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Could not decode file');
+        renderDetail(data);
+      } catch (error) {
+        $('detail').innerHTML = `<div class="error">${esc(error.message || error)}</div>`;
+      }
+    }
+
+    $('search').addEventListener('input', renderList);
+    $('kind').addEventListener('change', renderList);
+    $('unique').addEventListener('change', renderList);
+    $('refresh').addEventListener('click', () => loadFiles(true).catch((error) => { $('file-list').innerHTML = `<div class="error">${esc(error.message)}</div>`; }));
+    loadFiles().catch((error) => { $('file-list').innerHTML = `<div class="error">${esc(error.message)}</div>`; });
+  </script>
+</body>
+</html>

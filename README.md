@@ -162,3 +162,7 @@ naming the parser and source line, which is the point.
 `--keep-asserts` leaves every assertion fully live, including the exit. It is
 useful for confirming the video/`UI_MA_L1` compatibility patches are what keeps
 BlueStacks alive, but the client will die on the first real assertion.
+
+## Client source and reproducible local tooling
+
+The migrated diagnostic Java/native source, seed assets, build/patch tools, and host regression tests are now included. See [migrated build documentation](docs/build/MIGRATED-SOURCE.md). Private signing keys, toolchains, build inputs and retained fixtures stay under ignored `local/`. Existing release metadata was preserved; this local-only migration does not rebuild, install or publish an APK.

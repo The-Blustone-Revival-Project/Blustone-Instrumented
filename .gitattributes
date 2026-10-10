@@ -1,0 +1,11 @@
+# Preserve exact source/data bytes: provenance and release hashes must survive checkout.
+* -text whitespace=cr-at-eol
+
+# Preserve literal whitespace in imported evidence; it is part of the source bytes.
+assets/** -whitespace
+
+# Historical imported sources retain original formatting.
+src/EnglishLocale.java -whitespace
+stubs/** -whitespace
+tools/jet-viewer/start-* -whitespace
+docs/legacy/** -whitespace

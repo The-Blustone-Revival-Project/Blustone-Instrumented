@@ -7,3 +7,17 @@
 
 # Local publish scratch
 /publish*
+
+# Migration preservation and private inputs: never publish.
+/local/
+/var/
+/.env
+__pycache__/
+*.pyc
+*.jks
+*.keystore
+
+
+# Runtime logs are private and regenerated.
+*.log
+/logs/
