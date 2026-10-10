@@ -20,13 +20,13 @@ param(
 )
 $ErrorActionPreference='Stop'
 $visualRoot=Split-Path $PSScriptRoot -Parent
-$visualAdb=Join-Path $PSScriptRoot 'android-sdk/platform-tools/adb.exe'
-$visualPython=Join-Path $PSScriptRoot 'python-venv/Scripts/python.exe'
+$visualAdb=Join-Path $visualRoot 'local/toolchains/android-sdk/platform-tools/adb.exe'
+$visualPython=Join-Path $visualRoot 'local/toolchains/python-venv/Scripts/python.exe'
 $visualGuard=Join-Path $PSScriptRoot 'battle-hud-guard.py'
 $visualSkillGuard=Join-Path $PSScriptRoot 'battle-skill-button-guard.py'
 $visualDir=[IO.Path]::GetFullPath($EvidenceDir)
-$visualAllowed=[IO.Path]::GetFullPath((Join-Path $visualRoot 'analysis/testing'))+[IO.Path]::DirectorySeparatorChar
-if(-not $visualDir.StartsWith($visualAllowed,[StringComparison]::OrdinalIgnoreCase)){throw 'Evidence must stay under analysis/testing'}
+$visualAllowed=[IO.Path]::GetFullPath((Join-Path $visualRoot 'local/captures/testing'))+[IO.Path]::DirectorySeparatorChar
+if(-not $visualDir.StartsWith($visualAllowed,[StringComparison]::OrdinalIgnoreCase)){throw 'Evidence must stay under local/captures/testing'}
 if(Test-Path -LiteralPath $visualDir){throw 'Use a fresh evidence directory'}
 if($PauseAfterBursts -ge $MaxBursts){throw 'Pause milestone must precede the burst limit'}
 if($BeginBattle -and $ResumeBattle){throw 'Begin and Resume are mutually exclusive'}

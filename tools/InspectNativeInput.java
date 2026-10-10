@@ -1355,7 +1355,11 @@ public class InspectNativeInput {
     System.out.print(result);
   }
   static Map<Long,String> uiTypes(long base) throws Exception {
-    String guards=java.nio.file.Files.readString(java.nio.file.Path.of("analysis/research/ui-updatable-vptr-guards.json"));
+    // DataDump owns recovered evidence; read it without writing/copying the
+    // source. A different checkout layout can supply an explicit JVM property.
+    String guardPath=System.getProperty("blustone.uiGuards",
+      "../Blustone-DataDump/findings/resources/ui-updatable-vptr-guards.json");
+    String guards=java.nio.file.Files.readString(java.nio.file.Path.of(guardPath));
     if(guards.length()>65536) throw new IllegalStateException("oversized UI class guards");
     Map<Long,String> types=new HashMap<>();
     var matcher=java.util.regex.Pattern.compile("\"0x([0-9a-fA-F]{8})\"\\s*:\\s*\"([^\"\\r\\n]+)\"").matcher(guards);

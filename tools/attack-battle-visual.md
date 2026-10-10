@@ -5,10 +5,11 @@ preparation or active battle. This controller checks the exact instrumented
 PID/foreground and a captured 1080×1920 HUD before each bounded12-touch burst
 at695,900. It uses the existing shell RapidTouch.jar, with no JDWP attachment,
 APK change, native calls or memory writes. Evidence must be a fresh directory
-under analysis/testing. Other resolutions are rejected.
+under local/captures/testing. Toolchains are read from local/toolchains;
+both paths belong to this checkout. Other resolutions are rejected.
 
 ```powershell
-& tools/attack-battle-visual.ps1 -ExpectedCombatId CB0401 -ExpectedEnemyCount 2 -ExpectedClientPid 16117 -BeginBattle -MaxBursts 150 -EvidenceDir "$PWD/analysis/testing/fresh-replay"
+& tools/attack-battle-visual.ps1 -ExpectedCombatId CB0401 -ExpectedEnemyCount 2 -ExpectedClientPid 16117 -BeginBattle -MaxBursts 150 -EvidenceDir "$PWD/local/captures/testing/fresh-replay"
 ```
 
 Those encounter/PID values are an example from a completed run. Refresh them
@@ -53,7 +54,7 @@ On a stop or burst bound,
 inspect the fresh frame and live state before continuing. Read original win
 dialogue and verify native Read/persisted clear separately.
 
-Regression: tools/python-venv/Scripts/python.exe tools/tests/test_battle_hud_guard.py
+Regression: local/toolchains/python-venv/Scripts/python.exe tools/tests/test_battle_hud_guard.py
 checks34 distinct annotated actual frames (37 inspections), including low
 enemy25HP, Nene's death while Karl remains alive, preparation,
 intro/loading, launcher, menus, pause, loss and both-defeated/win dialogue.

@@ -8,7 +8,9 @@ This repository is part of the three-repo Blustone revival split. The user autho
 
 local/ and var/ are private/large preservation storage and must stay ignored. Never publish account tokens, device cookies, saves, raw private telemetry or signing keys. Do not blindly git add the repository. Recovered proprietary and third-party data does not inherit the authored-code LICENSE automatically.
 
-The battle continuation is paused. E6 Story04 remains uncleared; E7 is prepared but inactive. Do not start battles or operate a device as part of file migration. Historical PIDs are not live evidence.
+The user resumed the revival goal on 2026-10-11. Work only in Server and Instrumented; DataDump is read-only evidence and the retained original folder is not an edit target. E6 Story04 remains uncleared; E7 is prepared but inactive. Historical PIDs are not live evidence. Read docs/CONTINUATION.md for current runtime checks and pending work.
+
+During a battle, repeatedly attack the active battle scene; do not leave combat idle while analyzing. On the verified1080x1920 view, (695,900) is an ordinary attack point. Confirm the expected stage and live HUD before attacks; stop at results or stage changes. Never spam menus, preparation, results or the exit door. Root exclusively owns device inputs; research/review agents must not operate ADB/UI. Collector/Docker/inference remain offline; do not start them.
 
 Original app/native files are immutable; diagnostic changes are side-by-side. Always select an explicit ADB serial. No casual reinstall or clear. A future rebuilt instrumented APK requires an explicitly authorized GitHub release under the standing project instructions; no rebuild/install/release was performed during this migration.
 
