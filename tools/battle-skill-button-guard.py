@@ -15,7 +15,7 @@ HERE = Path(__file__).resolve().parent
 SPEC = importlib.util.spec_from_file_location('battle_hud_guard', HERE / 'battle-hud-guard.py')
 HUD = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(HUD)
-TEMPLATES = {3: ('shield3', 'sword3'), 4: ('heart4', 'heart4-front', 'heart4-front-hit', 'heart4-bench')}
+TEMPLATES = {3: ('shield3', 'sword3'), 4: ('heart4', 'heart4-front', 'heart4-front-hit', 'heart4-bench', 'heart4-bench-live')}
 SIZE = 137
 
 def white_mask(image):
@@ -61,7 +61,7 @@ def inspect(path, x, y, cost, expected_enemies, rage=None):
         # context cannot authorize a rear button against the airship backdrop.
         if name.startswith('heart4-front') and y > 700:
             continue
-        if name == 'heart4-bench' and y < 1300:
+        if name.startswith('heart4-bench') and y < 1300:
             continue
         with Image.open(HERE / 'skill-button-templates' / (name + '.png')) as source:
             template = source.convert('RGB')

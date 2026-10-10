@@ -1,0 +1,17 @@
+{
+  "source": "private live CB0602 attempt bench-heal-live-001 contact frame01",
+  "source_sha256": "c7c5c49b918bb7dc9866ad502ba31e21fdd4bb38150718fe9bbd2561c1f1d398",
+  "crop_box": [
+    262,
+    1389,
+    399,
+    1526
+  ],
+  "alignment_anchor": [
+    330,
+    1457
+  ],
+  "calibration_frame": "before-contact-01.png",
+  "held_out_frame": "before-contact-02.png",
+  "native_eligibility": "unproved"
+}

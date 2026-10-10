@@ -19,7 +19,7 @@ GUARD = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(GUARD)
 REGION = (250, 1300, 390, 1550)  # Inclusive permitted button centers only.
 DIGIT_BOX = (76, 63, 116, 110)
-NAMES = ('heart4', 'heart4-bench')
+NAMES = ('heart4', 'heart4-bench', 'heart4-bench-live')
 
 
 def components(mask):
@@ -134,7 +134,12 @@ def inspect(path, expected_enemies, rage=None):
     if not candidates:
         result['reason'] = 'retained_button_appearance_not_confirmed'
         return result
-    best = max(candidates, key=lambda row: row[3] + row[4] - row[5] / 255)
+    # Preserve the existing alignment when an earlier retained appearance
+    # already passes. Crop anchors differ slightly across appearances; a new
+    # background sample should not move an already accepted physical point.
+    first_name = next(name for name in NAMES if any(row[0] == name for row in candidates))
+    best = max((row for row in candidates if row[0] == first_name),
+               key=lambda row: row[3] + row[4] - row[5] / 255)
     if any((row[1] - best[1]) ** 2 + (row[2] - best[2]) ** 2 > 16 ** 2 for row in candidates):
         result['reason'] = 'ambiguous_button_match'
         return result

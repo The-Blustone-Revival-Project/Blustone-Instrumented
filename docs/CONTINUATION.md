@@ -1,5 +1,14 @@
 # Revival continuation after relocation
 
+Latest: bench-heal-native-2026-10-11.md records native bench healing VERIFIED
+into Nene: one normal3551436 contact, original cut-in/reserve1000005, cost4,
+receiverHP624.671997→1172.988525 while giverbench1577. Net548.316528; exact heal
+amount unproved. Earlier pending statements below are historical. E6 victory
+and repeated healing still require earned native validation.
+Run ended in native loss/safe E6map; no active battle/helper. Next perform one
+fresh ordinary campaign replay win and verify all four predicted level thresholds
+through earned10EXP, rather than consuming locked hunters or retuning stats.
+
 The user resumed the goal on2026-10-11, explicitly limiting edits to
 Blustone-Server and Blustone-Instrumented. Blustone-DataDump is read-only evidence;
 the retained ChatGPT/Blustone folder must remain untouched. Older copied notes

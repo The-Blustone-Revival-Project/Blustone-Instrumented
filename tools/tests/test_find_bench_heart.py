@@ -39,6 +39,18 @@ class BenchHeartFinder(unittest.TestCase):
                 self.assertFalse(result['visible_button'])
                 self.assertIsNone(result['safe_center'])
 
+    def test_relocated_live_appearance_and_held_out_frame(self):
+        live = ROOT / 'local/captures/testing/bench-heal-live-001/contact'
+        for name, expected in [('before-contact-01.png', [330, 1457]),
+                               ('before-contact-02.png', [331, 1448])]:
+            with self.subTest(name=name):
+                result = FINDER.inspect(live / name, 5)
+                self.assertTrue(result['visible_button'])
+                self.assertEqual(result['safe_center'], expected)
+                self.assertEqual(result['template'], 'heart4-bench-live')
+                self.assertLessEqual(result['measurements']['circle_context_luminance_error'], 18)
+        self.assertFalse(FINDER.inspect(live / 'before-contact-00.png', 5)['visible_button'])
+
     def test_explicit_funding_and_request_bounds(self):
         path = BASE / 'episode-bench-heal-002/before-contact-00.png'
         self.assertEqual(FINDER.inspect(path, 5, 3.99)['reason'], 'insufficient_caller_supplied_rage')
