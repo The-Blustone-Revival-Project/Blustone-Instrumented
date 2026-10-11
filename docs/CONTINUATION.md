@@ -1,4 +1,33 @@
-## Latest continuation: release verification, Likes and Guild readiness (2026-10-11)
+## Latest continuation: live Likes and optional material stats (2026-10-11)
+
+69-check full suite, new Gem-focused check, build and encrypted compiled
+historical-profile/restart verification pass (70 checks now registered). New BLUSTONE_MATERIAL_STAT_PROFILE defaults to neutral;
+archive-2019-projection is an explicit opt-in for eight audited material refs.
+Inactive current-e6-materials-archive has identical139 resources/stamp1634683.
+Twelve historical fields retain unknown level/equipment state; no final-version
+base/growth/skill claim. Six existing refs, skills, selectors, growth increments
+and whole progressed-save bytes are preserved. See material-stat-projection doc.
+
+Tested source is now ACTIVE under live current-e6-materials/neutral material
+stats: wrapper24936/listener52540,139/stamp1634683, client27165/same+15 APK.
+Fresh read-only Village frame/screenshot and all three no-active-battle saves
+guarded reload. Authenticated live Like-count and reference reads pass; entire
+private save bytes stayed EXACT across reload/reads. Likes/monster guard source
+is active; no new monster selection, archive profile, Guild profile or roster
+grant. No emulator input or restart; pending Escape resumption request unchanged.
+
+Parallel native audits: Audrey encounter fixed-damage graph differs from text
+2000/0 inference and includes variant-specific effects; no ordinary promotion.
+Gem family IDs1..12, eight stat normalizations and repeated complete-set
+aggregation are recovered in an inactive pure parser/calculator; focused check
+and build pass. Original Gem catalog/balance/rolls/prices remain missing.
+Journal ReadDialog is local owner-scoped persistence keyed by movie_res,
+written on popup deactivation; no playback/stage-completion inference and no
+HTTP read route. Original archive catalog/gate joins remain unknown.
+Goal ACTIVE; edit Server/Instrumented only, DataDump read-only, original intact.
+Collector/Docker/inference offline. No APK rebuild/install/release occurred.
+
+## Historical continuation: release verification, Likes and Guild readiness (2026-10-11)
 
 GitHub Latest DataDump is tag2026-10-11/source49a89bc; all five downloaded
 assets match fresh GitHub SHA-256 and sizes. Normalized records and curated
