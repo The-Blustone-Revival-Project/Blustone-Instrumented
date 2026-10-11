@@ -5,12 +5,20 @@ assets match fresh GitHub SHA-256 and sizes. Normalized records and curated
 tables report zero changes. Audit tagged findings, not the sibling's dirty
 working tree; estimates remain distinct from original gameplay data.
 
-67 configured server checks and build pass. Persistent directed local Likes
+68 configured server checks and build pass. Persistent directed local Likes
 now have authenticated native count/toggle receipts, coherent profile/list
 projections, distinct-actor ownership, restart and whole-graph rollback tests.
 Repeated ToggleLike requests toggle again; no native intent/nonce exists.
 Compiled encrypted disposable Like lifecycle and restart pass. Native UI
 validation remains pending; the new Likes source has NOT been hot-loaded.
+
+Release follow-up fixed the monster actor/package confusion:64 original actor
+namespaces have22 exact owner-pack mappings; M022 belongs to M008.jet. Explicit
+opt-ins require selected/deliverable pinned owner bytes, including the real
+folded-tree prerequisites. Default M001, neutral stats, inventory and levels
+stay unchanged. Focused/full68 checks/build and encrypted compiled M022 DTO,
+owner bytes/hash/ranges/restart pass. Source only, no live activation or native
+monster rendering claim.
 
 Six original Guild picker IDs GD_IMG_1..6 and ten S2 sprite resources are pinned
 against original UI/native/package evidence. Creation action1's client gold
