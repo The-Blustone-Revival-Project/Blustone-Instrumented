@@ -1,24 +1,35 @@
+## Current continuation 2026-10-11: offline expansion after stopped controls
 
-## Current continuation 2026-10-11: release audit and parallel coverage
+Computer Use was stopped by the human Escape key; no subsequent game inputs
+are authorized by the automatic continuation alone. Continue offline work.
+Live listener39084 was verified as Server/dist/src/server.js; wrapper25012,
+profilecurrent-e6-materials139/stamp1634683, client27165. Native14-map count
+verified. Navigation fix activated after captured Library crash, but Library
+UI verification remains pending. No active battle/helper; preserve all locked
+Hunters, earned progress and private save. Read docs/card-library-navigation-2026-10-11.md
+in Server for original empty-vector cause and explicit local trace-navigation policy.
 
-BlueStacks restoration is resolved. Corrected native campaign return is verified
-(see Server/docs/campaign-origin-fix-2026-10-11.md). The new DataDump2026-10-11
-release was downloaded and hash-verified; tagged findings add interpretations,
-not new measured stat tuples. Read Server/docs/datadump-character-stat-audit-2026-10-11.md.
+Server candidate current-e6-materials18 is prepared/inactive150/stamp1634685,
+with11 hash-pinned original packages,18 references and no ownership/pool changes.
+Compiled encrypted fixture verification passed including all11 package bytes/ranges
+and process restart. E7 independently passed strict encrypted fixture verification
+including17 originals/156packages/stamp1634684. These checks used disposable
+single-game fixtures, not current live save/native downloader. Direct compiled
+listener verified; Windows launcher forwarding is not claimed by this verifier.
 
-Active Server profile current-e6-materials, wrapper16712/listener39976,139packages/
-stamp1634683, same installed+15APK. Native reference container14 is VERIFIED,
-original001..004 prefixes unchanged. Hunter Library entry crashed in original
-CSRCardBookPageDraw::SetRole offset8630b5/LR862ead; root captured the crash and
-recovered client26868. Library completeness is NOT verified; investigation ongoing.
-No new owned Hunters, recruitment pool changes or stat retuning. After activation
-only main AP regeneration/AP-BP clocks changed; other2games exact.
+Current source includes later FC1/API-documentation changes that were not loaded
+into listener39084; do not treat the rebuilt dist files as a hot reload.
 
-Evidence Instrumented/local/captures/testing/materials-native-001/. No active
-battle/helper. Root owns device inputs; parallel agents continue character-book,
-social block-array reconstruction and fishingLU001/LU003 consumer evidence.
-Old minimized-window holds and PIDs below are historical. DataDump remains
-read-only and the original workspace untouched. Goal remains ACTIVE.
+FC1 display reference now uses original IT_BT fullsize150 art as explicit local
+display choice, based nativeFC1button/IT_BT_S header crosswalk. Original GetItem
+assignment/native reward pixels remain pending. New social blocking persistence
+is tested; native UI/other social feature filtering remain incomplete. Fishing
+LU001/LU003 identities and LU003 main label recovered; catches/prices stillmissing.
+DataDump2026-10-11 audit confirms no new measured stats justify retuning.
+
+Goal ACTIVE. Edit only Server/Instrumented; DataDump read-only, retained original
+untouched. Collector/Docker/inference remain offline. Older PID/minimized-window
+requests below are historical. No APK rebuild/install/release owed.
 
 # Repository working instructions
 
