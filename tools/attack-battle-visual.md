@@ -8,6 +8,11 @@ APK change, native calls or memory writes. Evidence must be a fresh directory
 under local/captures/testing. Toolchains are read from local/toolchains;
 both paths belong to this checkout. Other resolutions are rejected.
 
+Exact ordinary replay `n_01_01` is also allowlisted with one expected enemy,
+separate campaign HUD guard and Begin point800,1820. Campaign skill/exchange
+plans are rejected. See docs/campaign-replay-control-2026-10-11.md for native
+open/closed-bench evidence and limits. Other campaign IDs remain unsupported.
+
 ```powershell
 & tools/attack-battle-visual.ps1 -ExpectedCombatId CB0401 -ExpectedEnemyCount 2 -ExpectedClientPid 16117 -BeginBattle -MaxBursts 150 -EvidenceDir "$PWD/local/captures/testing/fresh-replay"
 ```

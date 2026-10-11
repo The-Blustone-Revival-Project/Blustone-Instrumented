@@ -1,5 +1,14 @@
 # Revival continuation after relocation
 
+Latest continuation: campaign-replay-control-2026-10-11.md. One native campaign
+replay awarded10EXP to each party Hunter; native reloaded team levels6/6/7/12,
+strength26243 verified. Server hidden-origin duplicate link/rewards corrected and
+activated10020/55192; all48tests/build/encrypted compiled restart passed. Native
+corrected return path still PENDING because minimized BlueStacks restoration failed
+twice. No active battle/helper. User restoration question pending; no further game
+inputs until reliable visible state. Savegold13600/VIP80 includes recorded old
+originbug500gold/twofixturetickets and incidental nativeDay7+100gold/20VIP.
+
 Latest: bench-heal-native-2026-10-11.md records native bench healing VERIFIED
 into Nene: one normal3551436 contact, original cut-in/reserve1000005, cost4,
 receiverHP624.671997→1172.988525 while giverbench1577. Net548.316528; exact heal

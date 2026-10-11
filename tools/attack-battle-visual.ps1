@@ -1,9 +1,9 @@
 # Root-only fallback after a fresh visual check of the expected preparation/HUD.
 # No JDWP. Pixel signatures do not establish native combat ID/pause/armed state.
 param(
- # Legacy parameter name retained; one explicitly verified Arena identity is
- # supported alongside Episode IDs. Caller must verify native preparation.
- [Parameter(Mandatory=$true)][ValidatePattern('^(CB[0-9]{4}|b_00_01)$')][string]$ExpectedCombatId,
+ # Legacy parameter name retained. Arena and one ordinary campaign replay
+ # are allowlisted beside Episode IDs; caller must verify native preparation.
+ [Parameter(Mandatory=$true)][ValidatePattern('^(CB[0-9]{4}|b_00_01|n_01_01)$')][string]$ExpectedCombatId,
  [Parameter(Mandatory=$true)][ValidateRange(1,5)][int]$ExpectedEnemyCount,
  [Parameter(Mandatory=$true)][ValidatePattern('^\d+$')][string]$ExpectedClientPid,
  [Parameter(Mandatory=$true)][string]$EvidenceDir,
@@ -23,6 +23,7 @@ $visualRoot=Split-Path $PSScriptRoot -Parent
 $visualAdb=Join-Path $visualRoot 'local/toolchains/android-sdk/platform-tools/adb.exe'
 $visualPython=Join-Path $visualRoot 'local/toolchains/python-venv/Scripts/python.exe'
 $visualGuard=Join-Path $PSScriptRoot 'battle-hud-guard.py'
+if($ExpectedCombatId -eq 'n_01_01'){$visualGuard=Join-Path $PSScriptRoot 'campaign-hud-guard.py'}
 $visualSkillGuard=Join-Path $PSScriptRoot 'battle-skill-button-guard.py'
 $visualDir=[IO.Path]::GetFullPath($EvidenceDir)
 $visualAllowed=[IO.Path]::GetFullPath((Join-Path $visualRoot 'local/captures/testing'))+[IO.Path]::DirectorySeparatorChar
@@ -30,9 +31,10 @@ if(-not $visualDir.StartsWith($visualAllowed,[StringComparison]::OrdinalIgnoreCa
 if(Test-Path -LiteralPath $visualDir){throw 'Use a fresh evidence directory'}
 if($PauseAfterBursts -ge $MaxBursts){throw 'Pause milestone must precede the burst limit'}
 if($BeginBattle -and $ResumeBattle){throw 'Begin and Resume are mutually exclusive'}
-if($ExpectedCombatId -eq 'b_00_01' -and ($SkillPlanFile -or $ExchangePlanFile)){
- throw 'Arena layout supports ordinary attack/pause only; skill/exchange geometry is not validated'
+if($ExpectedCombatId -in @('b_00_01','n_01_01') -and ($SkillPlanFile -or $ExchangePlanFile)){
+ throw 'Arena/campaign replay support ordinary attack/pause only; skill/exchange geometry is not validated'
 }
+if($ExpectedCombatId -eq 'n_01_01' -and $ExpectedEnemyCount -ne 1){throw 'Known campaign replay requires exactly one expected enemy'}
 if($SkillPlanFile -and $ExchangePlanFile){throw 'Use separate observed runs for skill and exchange plans'}
 if($PauseAfterSkill -and (-not $SkillPlanFile -or $PauseAfterBursts -gt 0)){throw 'PauseAfterSkill requires one skill plan and no burst pause'}
 if($PauseAfterExchange -and -not $ExchangePlanFile){throw 'PauseAfterExchange requires one exchange plan'}
@@ -89,7 +91,7 @@ New-Item -ItemType Directory -Path $visualDir|Out-Null
 if($SkillPlanFile){$visualSkillPlan|ConvertTo-Json|Set-Content (Join-Path $visualDir 'skill-plan.json')}
 if($visualExchangePlan){$visualExchangePlan|ConvertTo-Json|Set-Content (Join-Path $visualDir 'exchange-plan.json')}
 $visualPending=@()
-$visualHudLayout=if($ExpectedCombatId -eq 'b_00_01'){'arena'}else{'standard'}
+$visualHudLayout=if($ExpectedCombatId -eq 'b_00_01'){'arena'}elseif($ExpectedCombatId -eq 'n_01_01'){'campaign'}else{'standard'}
 function Retain-VisualHelper($process,[string]$operation,$stdoutTask=$null,$stderrTask=$null,$file=$null) {
  # Retain the object/streams while this shell lives, and durable identity for
  # root to inspect after a thrown timeout. No new input or app restart follows.
@@ -138,7 +140,10 @@ function Capture-VisualFrame([string]$path) {
 Confirm-VisualForeground
 Write-Output "Visual fallback expected=$ExpectedCombatId enemies=$ExpectedEnemyCount client=$ExpectedClientPid; encounter/roster were verified by caller, not by pixels."
 if($BeginBattle){
- Invoke-VisualAdb @('shell','input','tap','540','1820') 'Begin input'|Out-Null
+ # Ordinary preparation has separate Dispatch and Begin buttons. Use its
+ # caller-verified right Begin button; the center point is the gap there.
+ $visualBeginX=if($ExpectedCombatId -eq 'n_01_01'){'800'}else{'540'}
+ Invoke-VisualAdb @('shell','input','tap',$visualBeginX,'1820') 'Begin input'|Out-Null
 }
 if($ResumeBattle){
  # Explicit opt-in only after caller verifies the normal Paused screen.
