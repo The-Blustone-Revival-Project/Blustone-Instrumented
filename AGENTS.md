@@ -1,3 +1,25 @@
+
+## Current continuation 2026-10-11: release audit and parallel coverage
+
+BlueStacks restoration is resolved. Corrected native campaign return is verified
+(see Server/docs/campaign-origin-fix-2026-10-11.md). The new DataDump2026-10-11
+release was downloaded and hash-verified; tagged findings add interpretations,
+not new measured stat tuples. Read Server/docs/datadump-character-stat-audit-2026-10-11.md.
+
+Active Server profile current-e6-materials, wrapper16712/listener39976,139packages/
+stamp1634683, same installed+15APK. Native reference container14 is VERIFIED,
+original001..004 prefixes unchanged. Hunter Library entry crashed in original
+CSRCardBookPageDraw::SetRole offset8630b5/LR862ead; root captured the crash and
+recovered client26868. Library completeness is NOT verified; investigation ongoing.
+No new owned Hunters, recruitment pool changes or stat retuning. After activation
+only main AP regeneration/AP-BP clocks changed; other2games exact.
+
+Evidence Instrumented/local/captures/testing/materials-native-001/. No active
+battle/helper. Root owns device inputs; parallel agents continue character-book,
+social block-array reconstruction and fishingLU001/LU003 consumer evidence.
+Old minimized-window holds and PIDs below are historical. DataDump remains
+read-only and the original workspace untouched. Goal remains ACTIVE.
+
 # Repository working instructions
 
 This repository is part of the three-repo Blustone revival split. The user authorized pushes and release publication on 2026-10-10. Publish only reviewed project content; retain the original workspace and ignored private archives. Preserve the original workspace and all originals/private captures.
