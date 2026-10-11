@@ -1,3 +1,37 @@
+## Latest continuation: discovery and Boutique guard proposal (2026-10-11)
+
+Source now supports real local friend suggestions/search and candidate public
+briefs before friendship, with same-server/block/relationship exclusions.
+Native request/receipt paging fields are proved; ordering, matching, limits
+and candidate friend_id0 are explicitly local policy. Compiled encrypted
+discovery/brief/search/request/accepted exclusion and prior cleanup pass.
+63 configured checks/build pass; Guild flat boot data and Skin empty read
+contracts also pass compiled encryption/refusal checks. New source is NOT
+hot-loaded into listener41604; live remains54060/41604/current-e6-materials
+139/stamp1634683/client27165 from the prior activation.
+
+Four native Default_ skin IDs and seven original costume art pairs/22 hashes
+are recovered; paid IDs/prices/bonuses remain unknown. Empty/null skin records
+are coldboot-equivalent and native factories build defaults. Existing unknown
+saved non-default styles refuse reads instead of being erased. Boutique UI
+is not safe to claim: SetBonus computes0/0 atELF1041b50 when bonus/paid-skin
+counts are zero. Instrumented has a PROPOSAL_ONLY conditional width guard,
+4 host tests including actual Thumb/VFP execution (18 positive/8 signed-zero
+cases), preserving registers/flags and original positive math. No cave has
+been approved; no library/APK/install/release changed. Do not open Boutique
+until placement/integration/native validation is resolved.
+
+Guild my_guild is flat PLAY_DATA; no local affiliations, fees, participants
+or reward data are invented. Native GUILD art is imported but not selected.
+Guild/GvG mutations refuse; not a playable Guild/GvG claim.
+
+An asynchronous request to resume BlueStacks inputs after the reported Escape
+stop is pending; no approval has arrived. Continue independent code/evidence
+work and hold game inputs. Native Library/social validation and E6S04 remain
+pending. Goal ACTIVE; edit only Server/Instrumented, DataDump read-only,
+original/private evidence preserved. Collector/Docker/inference remain offline.
+A future rebuilt instrumented APK still requires a regular GitHub release.
+
 ## Latest continuation: server activation and friend cleanup (2026-10-11)
 
 The tested functional server code is now active under the same
