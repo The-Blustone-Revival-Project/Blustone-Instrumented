@@ -27,6 +27,14 @@ is tested; native UI/other social feature filtering remain incomplete. Fishing
 LU001/LU003 identities and LU003 main label recovered; catches/prices stillmissing.
 DataDump2026-10-11 audit confirms no new measured stats justify retuning.
 
+Bulk /gym/RankUpBundle is now reconstructed in source: original scene99/100
+select sourcegrades1/2, groups4/5 produce nextgrade, original quoteformula with
+existing localpricefixtures. Protectedroster/productionnamespace/restart/
+atomicrollback tests pass; liveUI and original prices/selection remainpending.
+54gameplaychecks (53fullsuite plus focusednewbatchcheck), fourprofilesuites
+and build pass. Compiled materials18 GetItem bindings/fourroles also verified;
+native Library rendering remainsunverified. No live Hunters touched.
+
 Goal ACTIVE. Edit only Server/Instrumented; DataDump read-only, retained original
 untouched. Collector/Docker/inference remain offline. Older PID/minimized-window
 requests below are historical. No APK rebuild/install/release owed.
