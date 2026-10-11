@@ -1,4 +1,34 @@
-## Latest continuation: configured Hunter sale workflow (2026-10-11)
+## Latest continuation: guarded equipment references (2026-10-11)
+
+Full75 configured checks/build and encrypted compiled --fixture
+--exercise-equipment verification pass. Original equipment mode100 units and
+CalcStatByEquip exact slot/rank growth are recovered;15 normalized fields,
+ten-level bands and HP/ATK/DEF-only growth. Native TYPE field strings, locales
+and owned Awake text selector are closed; final Hunter-prefix binding remains
+unproved. Do not equate equipment id with CHAR_STR keys.
+
+Original equipment material catalog pins150 owner Q packs/450 record names,
+header offsets/lengths/flags, payload/source hashes and full EOF reproduction.
+BLUSTONE_EQUIPMENT_REFERENCE_JSON optionally supplies explicit per-Hunter rows
+through GetCard. Known ordinary identities/native row grammar and separately
+selected deliverable hash-pinned owners are mandatory; default references
+remain exact. No original numeric rows, prices or legal training limits have
+been recovered. Authored fixtures are local policy, not original balance.
+
+Configured/reference tests preserve all unrelated refs and whole progressed
+save bytes. Compiled C001 authored weapon DTO, normalized growth projection,
+C001_Q original50808-byte SHA/inner-outer MD5/ranges and restart pass. This
+is host protocol/material proof; no native equipment popup/rendering claim.
+No upgrade, owned rank/level, stat grant, source profile or live save change.
+
+Live remains wrapper24936/listener52540/current-e6-materials139/stamp1634683,
+client27165/same+15 APK. New sale/equipment source is NOT hot-loaded; explicit
+profit/equipment rows are absent from every shipped launch profile. Inputs
+remain held after Escape; existing resumption request unanswered. Goal ACTIVE.
+Server/Instrumented writable, DataDump read-only, original/private preserved;
+no APK build/install/release and collector/Docker/inference stay offline.
+
+## Historical continuation: configured Hunter sale workflow (2026-10-11)
 
 Full71 configured checks/build pass. Authenticated /shop/SellCard now persists
 exact owned-source removal and native absolute gold/additive item receipts,
