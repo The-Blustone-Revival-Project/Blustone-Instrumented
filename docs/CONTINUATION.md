@@ -1,3 +1,39 @@
+## Latest continuation: server activation and friend cleanup (2026-10-11)
+
+The tested functional server code is now active under the same
+current-e6-materials profile: wrapper54060/listener41604,139 packages,
+stamp1634683. Client27165 was not restarted or given game inputs. Read-only
+fast input snapshot and fresh screenshot confirmed Village before activation.
+All three gameStates, account records, transport keys and session bindings
+were exactly preserved across reload. No live roster, reward or progress edit.
+
+Local friendship now supports request, recipient acceptance, sender cancel,
+recipient reject and either-party unfriend. Original deletion request key
+is target_friend_id_list; receipt key is friend_id_list. Atomic ownership
+batches, durable tombstones, stale retries and restart are tested. Bulk
+acceptance remains unsupported; no list-accept grammar was recovered.
+
+60 configured gameplay checks and build pass. Compiled encrypted disposable
+cleanup/accept/re-request/stale-delete and bulk rank-up flows pass after
+restart. Quest reference/instance reads now return authenticated empty native
+collections; missing production daily/linear rewards refuse2001. Production
+quest IDs/conditions/rewards remain absent, not fabricated from debug samples.
+Equipment level/rank price grammar is recovered, but original prices/stat
+curves are missing; no equipment enhancement is enabled. Public Korean fish
+names are research leads only, with no item IDs or invented settlement.
+
+Full Village UI graph reader refused a bound/cycle; fast --input --frame
+worked (7 reads,0.200s) and screenshot remained Village. Do not treat graph
+walking or native Library/social/rendering verification as completed.
+Computer Use/game inputs remain stopped; server reload was not emulator
+control. Native verification and prepared18-reference/E7 activation are
+pending. Source API descriptions were regenerated after functional activation.
+
+Goal remains ACTIVE. Edit only Server/Instrumented; DataDump read-only and
+retained original untouched. Collector/Docker/inference remain offline.
+No APK rebuild/install or release was required. Older runtime notes below
+are historical; verify current PIDs before further work.
+
 ## Latest offline continuation 2026-10-11
 
 Persistent local FriendRequest/recipientAccept/GetList wrapper/incoming scalar
