@@ -1,4 +1,33 @@
-## Latest continuation: guarded equipment references (2026-10-11)
+## Latest continuation: equipment name closure and quote contracts (2026-10-11)
+
+Full77 configured checks/build and encrypted compiled equipment/quote/restart
+proof pass. Equipment localization is NOW CLOSED: prior empty-initialization
+interpretation was wrong. ELF6c7efc copies CSRCardInfo Hunter ID; getters append
+optional Awake suffix and field, yielding001|WEAPON or004_1|WEAPON. Corrected
+helper/source lookup/tests/docs; pinned original calls and five actual Thumb/VFP
+copy cases pass. No APK/library patch. See equipment-localization native audit.
+
+Authenticated equipment price reads publish detached native ret_data arrays
+from explicit immutable constructor/env tables; missing tables return[].
+No original price values invented. Unknown positive material IDs, malformed
+options/rows and duplicate keys refuse startup preserving saves. Upgrade
+endpoints now refuse2001 after auth, replacing generic mock success; no
+owned equipment, roster, gold or item mutation. Native wire part1..3, target
+uint64 and lossless decimal source vector are recovered. Absolute receipts,
+next-level/next-rank pricing and Guild-benefit discount consumer identified;
+source eligibility, source-capture link and Guild qualification still gate
+full transactions. No paid-upgrade or native popup claim.
+
+Compiled disposable authored17/23 quote arrays, reference/artwork hashes/ranges,
+restart and exact save bytes around upgrade refusals pass. No shipped profile
+sets profit, equipment rows or prices. Live wrapper24936/listener52540 stays
+current-e6-materials139/stamp1634683/client27165/same+15 APK; new sale/equipment
+source NOT hot-loaded. No live reload/profile/save/input changes this turn.
+Escape resumption question still pending; keep game inputs held. Goal ACTIVE.
+Server/Instrumented writable, DataDump read-only, retained original/private
+preserved; collector/Docker/inference offline, no APK build/install/release.
+
+## Historical continuation: guarded equipment references (2026-10-11)
 
 Full75 configured checks/build and encrypted compiled --fixture
 --exercise-equipment verification pass. Original equipment mode100 units and
