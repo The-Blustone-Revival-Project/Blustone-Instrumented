@@ -1,4 +1,37 @@
-## Latest continuation: equipment name closure and quote contracts (2026-10-11)
+## Latest continuation: persisted equipment upgrades (2026-10-11)
+
+Full80 configured checks/build pass. Twelve actual native fee-arithmetic cases
+pass; no-Guild branch returns exact uint32 quote and both popup buttons use
+price_type2 gold. Rank cap transition1/10 to2/10 preserves level. Final popup
+empty Hunter vector serializes as source_inst_ids:null, now correctly decoded.
+General requester JSON capture through success RemoveCard is closed, but
+nonempty-source eligibility is still unsupported; card_qty0/no sources only.
+
+Configured equipment references plus explicit immutable prices now support
+authenticated level/rank upgrades for ordinary no-Guild accounts. Validate
+current/destination stats, reachable bands, gold, combined unlocked materials
+and active/Mirage target commitments before mutation. Absolute native receipts
+use user.gold.cur, user.card and USER.ITEM[{inst_id,qty}], NOT sale top-level
+item. Independent original-byte review caught that nesting error; corrected
+planner/tests verify it. Snapshot failure restores original roster/item arrays
+and wallet; all parts, book/decks/allocators/unrelated accounts preserved.
+
+Encrypted compiled disposable --exercise-equipment-upgrade verifies9->10,
+rank1->2 preserving10, then11; authored gold100->83->60->31 and known item
+quantity3->2->1->0. Exact selected fields/fees and restart/source-art hashes
+pass. Level identical successful bodies can advance again if quotes exist;
+no recovered expected-level/intent and no universal retry-idempotence claim.
+Original numerical equipment/price tables, joined-Guild qualification and
+native popup/combat-impact validation remain missing/pending. No shipped
+profile enables these fixture inputs and no live upgrade occurred.
+
+New source remains NOT hot-loaded into wrapper24936/listener52540; live stays
+current-e6-materials139/stamp1634683/client27165/same+15 APK. No live reload,
+profile/save/roster/input changes; Escape resumption request still unanswered.
+Goal ACTIVE; Server/Instrumented writable, DataDump read-only, original/private
+preserved. Collector/Docker/inference offline; no APK build/install/release.
+
+## Historical continuation: equipment name closure and quote contracts (2026-10-11)
 
 Full77 configured checks/build and encrypted compiled equipment/quote/restart
 proof pass. Equipment localization is NOW CLOSED: prior empty-initialization
