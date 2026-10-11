@@ -1,4 +1,30 @@
-## Latest continuation: live Likes and optional material stats (2026-10-11)
+## Latest continuation: configured Hunter sale workflow (2026-10-11)
+
+Full71 configured checks/build pass. Authenticated /shop/SellCard now persists
+exact owned-source removal and native absolute gold/additive item receipts,
+behind explicit immutable GetExtra.card_sell_profit rows. Constructor option
+hunterSaleProfits or BLUSTONE_CARD_SELL_PROFIT_JSON supplies local policy/data;
+no original prices and no default values invented. Default empty rows refuse.
+Locks, leader/all decks, active campaign/arena/search, Mirage carry, reserved
+IDs, unknown rewards, overflow and duplicate/replayed sources are guarded.
+Whole-game rollback, exact book/history/allocator preservation and restart pass.
+Compiled encrypted --fixture --exercise-sale verifies authored gold13 per source,
+rank5 versus minimum-reference-rank1 selection, protected refusal, exact26gold
+credit, replay refusal and exact unrelated fields after restart. No live sale.
+
+Equipment native audit closes slots0/1/2, owned rank/level fields and original
+thumbnail suffixes _WEP/_AMOR/_ACCRY;150 original packs/450 resource names.
+Original equipment reference stats, level-growth and localized name joins
+remain missing. See hunter-equipment-reference-audit-2026-10-11.md in Server.
+
+New sale source is NOT hot-loaded into live wrapper24936/listener52540; live
+remains current-e6-materials139/stamp1634683, neutral material stats, client27165
+and same+15 APK. No live save/profile/price/roster change this turn. Game inputs
+stay held after Escape; pending resumption question remains unanswered.
+Goal ACTIVE; Server/Instrumented writable, DataDump read-only, original intact.
+No APK build/install/release; collector/Docker/inference remain offline.
+
+## Historical continuation: live Likes and optional material stats (2026-10-11)
 
 69-check full suite, new Gem-focused check, build and encrypted compiled
 historical-profile/restart verification pass (70 checks now registered). New BLUSTONE_MATERIAL_STAT_PROFILE defaults to neutral;
