@@ -1,4 +1,41 @@
-## Latest continuation: persisted equipment upgrades (2026-10-11)
+## Latest continuation: explicit Gem inventory and first mounting (2026-10-11)
+
+Full85 checks/build and encrypted compiled --fixture --profile current-e6-gems
+--exercise-gem-mount pass. Gem INFO/full owned ability/main/sub shape is
+recovered; authentic supplied refs require selected hash-pinned original art.
+Optional owned_gems persists explicit raw rows, never legacy scalar gem or
+auto-grants. Unknown refs/owners/duplicate occupancy/malformed data refuse
+preserving source files. Mounted Hunters protected from source consumption.
+
+Original scene proves positions1..2, second slot per-equipment rank>=3, and
+complete plural3x2 ID grids with zero placeholders. Free first installs into
+empty cells and unchanged-grid no-write retries now persist; changed old
+occupied cells, transfers/removal-fee/alternate-payment/gacha paths remain
+gated. Rollback restores prior inventory array; all wallets, cards/equipment,
+book/decks/legacy scalar unchanged. Replies echo all authoritative target Gems
+even on retry to repair lost first responses. Native receipt gems is fullrows.
+
+Important review correction: native Gem STRING IDs call strtod and round above
+2^53-1. Unsafe IDs now use JSON.rawJSON exact INTEGER tokens; scoped state
+import preserves original large integer tokens as decimal-string storage.
+Current Node22 supports codec; unsupported encoders fail rather than round.
+Tests and encrypted plaintext verify9007199254740993/maxuint64 behavior.
+
+Seven original packs/394 records/75 ranked sprites pinned; prior80 count had
+five selection markers. Inactive current-e6-gems146/stamp1634687 preflight,
+fullSHA/inner-outerMD5/ranges and restart pass. Original catalogue IDs, rolls,
+set magnitudes/prices remain missing; no native Gem pixels/combat proof.
+
+Prior tested80 source activated after fresh read-only Village/no-battle guards:
+live wrapper48628/listener49632/current-e6-materials139/stamp1634683, same
+client27165/+15 APK. Authenticated empty equipment-price/Gem reads succeeded;
+entire three-game private save bytes EXACT across reload/reads. New Gem source
+NOT hot-loaded; no live Gem data/profile/roster changes. Inputs remain held
+after Escape and original resumption request unanswered. Goal ACTIVE; edit
+Server/Instrumented only, DataDump read-only, original/private preserved;
+collector/Docker/inference offline and no APK build/install/release.
+
+## Historical continuation: persisted equipment upgrades (2026-10-11)
 
 Full80 configured checks/build pass. Twelve actual native fee-arithmetic cases
 pass; no-Guild branch returns exact uint32 quote and both popup buttons use
