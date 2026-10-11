@@ -1,4 +1,38 @@
-## Latest continuation: discovery and Boutique guard proposal (2026-10-11)
+## Latest continuation: release verification, Likes and Guild readiness (2026-10-11)
+
+GitHub Latest DataDump is tag2026-10-11/source49a89bc; all five downloaded
+assets match fresh GitHub SHA-256 and sizes. Normalized records and curated
+tables report zero changes. Audit tagged findings, not the sibling's dirty
+working tree; estimates remain distinct from original gameplay data.
+
+67 configured server checks and build pass. Persistent directed local Likes
+now have authenticated native count/toggle receipts, coherent profile/list
+projections, distinct-actor ownership, restart and whole-graph rollback tests.
+Repeated ToggleLike requests toggle again; no native intent/nonce exists.
+Compiled encrypted disposable Like lifecycle and restart pass. Native UI
+validation remains pending; the new Likes source has NOT been hot-loaded.
+
+Six original Guild picker IDs GD_IMG_1..6 and ten S2 sprite resources are pinned
+against original UI/native/package evidence. Creation action1's client gold
+gate is recovered; numeric fees and server settlement currency remain unknown.
+Inactive current-e6-guild is140 packages/stamp1634686; original pin, encrypted
+package/hash/ranges/restart and all five profile suites pass. No Guild creation,
+membership or profile activation. Guild/GvG mutations still refuse.
+
+Live discovery/Guild/Skin source was activated after a fresh read-only Village
+guard: wrapper36052/listener46096, current-e6-materials139/stamp1634683,
+client27165, same+15 APK. All three games, accounts, transport keys and session
+bindings stayed EXACT across reload; authenticated discovery/Guild/Skin reads
+also preserved entire save bytes. No game input, roster grant or progress edit.
+
+Instrumented now has a separate24-byte UInt32-context Boutique guard proposal
+at the bounded RX linker gap1d52928; eight combined host tests pass. Earlier
+PLT gap is occupied by Gym/Search guards and rejected. No native-library write,
+APK build/install/release or live Boutique validation. Game inputs stay held
+after Escape; the existing resumption question remains unanswered. Goal ACTIVE;
+Server/Instrumented writable, DataDump read-only, retained original untouched.
+
+## Historical continuation: discovery and Boutique guard proposal (2026-10-11)
 
 Source now supports real local friend suggestions/search and candidate public
 briefs before friendship, with same-server/block/relationship exclusions.
