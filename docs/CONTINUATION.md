@@ -1,3 +1,31 @@
+## Latest offline continuation 2026-10-11
+
+Persistent local FriendRequest/recipientAccept/GetList wrapper/incoming scalar
+count are implemented and tested. Actual relationship profile peers are admitted;
+unknown/cross-server/blocked targets refuse. Wholegraph rollback and restart
+pass; unknown social tick/receipt clocks remainneutral0. Cancel/reject/unfriend
+and bulkaccept stillrefuse. Mirage friendfloors remain[] because actual friend
+relationships do not establish earned highestfloors. Native socialUI pending.
+
+57gameplaychecks/fourprofile suites/build pass. Compiled encrypted disposable
+friendship and bulkrank lifecycles/restart pass, preserving unrelatedfixture
+games and exact promotedfixturefields. Transaction exercises require --fixture;
+private preserved saves are not mutationtargets. No live Hunters touched.
+
+Original skill evidence12Hunters/60slots/48art hashes retained;11 have indexed
+Episodegraphs, Dumble none. Ordinary vsEpisode Rage costs differ for several
+Hunters; no automatic adapter/skillactivation/retune. Hunter selling uses
+GetExtra.card_sell_profit byminimumreference rank, not GetLevel.sell_price.
+Missingprofitrows nowreturn authenticated2001, preventing mocksuccess/client
+rosterdeletion; isolated gatedsaleplanner remainsunconfigured. Equipment and
+Overcome separateprice/stat references stillmissing.
+
+Live runtime unchanged25012/39084/current-e6-materials139/stamp1634683; new
+source features above are NOT hot-loaded. ComputerUse remainsstopped; no game
+inputs or pendingbattle/helper. Priorstop/nativeverification boundaries below
+stillapply. EditonlyServer/Instrumented; DataDumpreadonly/originaluntouched.
+GoalACTIVE; noAPK rebuild/install/release owed.
+
 ## Current continuation 2026-10-11: offline expansion after stopped controls
 
 Computer Use was stopped by the human Escape key; no subsequent game inputs
