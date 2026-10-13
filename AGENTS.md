@@ -1,3 +1,17 @@
+## Latest continuation: configured Gem replacement and equipment caller audit (2026-10-13)
+
+Server full88 checks/build and compiled encrypted Gem removal/retry/remount/
+restart proof pass; configured set tables and old-level gold2 removal fees
+supported, originals missing/default empty. Native UI/combat still unverified.
+No live server/profile/save/client inputs changed; Escape input hold persists.
+tools/audit-equipment-rank-caller.py added: pinned read-only full executable
+Thumb/ARM immediate branch scan and decoder self-tests prove sole direct
+RequestEquipRankUp caller sends empty sources/gold2. Positive card_qty and
+nonempty source eligibility remain unsupported; indirect callers not excluded.
+See Server docs/equipment-source-caller-closure-2026-10-13.md. No library patch,
+APK build/install/release; client remains+15. DataDump read-only; collector,
+Docker and inference offline. Use two reusable agents for ongoing continuation.
+
 ## Latest continuation: explicit Gem inventory and first mounting (2026-10-11)
 
 Full85 checks/build and encrypted compiled --fixture --profile current-e6-gems
