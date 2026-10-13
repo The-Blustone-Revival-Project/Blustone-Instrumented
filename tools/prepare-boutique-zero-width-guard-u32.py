@@ -56,6 +56,12 @@ def branch_references(data, table):
                     s = first >> 10 & 1
                     i1, i2 = 1 ^ ((second >> 13 & 1) ^ s), 1 ^ ((second >> 11 & 1) ^ s)
                     target = pc + 4 + signed((s << 24) | (i1 << 23) | (i2 << 22) | ((first & 1023) << 12) | ((second & 2047) << 1), 25)
+                elif pattern == 0xC000 and second & 1 == 0:
+                    # Thumb BLX immediate aligns its PC base to a word and
+                    # uses imm10L:00. Omitting it leaves a placement audit gap.
+                    s = first >> 10 & 1
+                    i1, i2 = 1 ^ ((second >> 13 & 1) ^ s), 1 ^ ((second >> 11 & 1) ^ s)
+                    target = ((pc + 4) & ~3) + signed((s << 24) | (i1 << 23) | (i2 << 22) | ((first & 1023) << 12) | ((second & 2046) << 1), 25)
                 elif pattern == 0x8000 and (first >> 6 & 15) < 14:
                     target = pc + 4 + signed(((first >> 10 & 1) << 20) | ((second >> 11 & 1) << 19) | ((second >> 13 & 1) << 18) | ((first & 63) << 12) | ((second & 2047) << 1), 21)
             elif first & 0xF800 == 0xE000:
@@ -69,7 +75,8 @@ def branch_references(data, table):
             if pc % 4 == 0:
                 word = struct.unpack_from("<I", data, offset)[0]
                 if word & 0x0E000000 == 0x0A000000:
-                    target = pc + 8 + signed((word & 0xFFFFFF) << 2, 26)
+                    h = ((word >> 24) & 1) << 1 if word >> 28 == 15 else 0
+                    target = pc + 8 + signed(((word & 0xFFFFFF) << 2) | h, 26)
                     if CAVE <= target < CAVE_END:
                         hits.append((pc, target, "ARM"))
     return hits

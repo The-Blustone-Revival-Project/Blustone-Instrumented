@@ -1,3 +1,19 @@
+## Latest continuation: Boutique BLX audit and Guild reads (2026-10-13)
+
+Read-only Boutique UInt32 guard placement audit previously missed Thumb BLX
+and ARM BLX H bit. Both now covered;6 tests pass with independent Capstone
+branch targets and actual Thumb/VFP Unicorn equivalence/zero paths. Retained
+native SHA759481add6592a6e46a692d37e263cef791151a4897a8f98d9eff5ba3f0b6a34
+unchanged. Padding remains bounded candidate, NOT live-execution approved.
+No native patch/APK build/install/release or input; client remains+15.
+Server100 checks/build and encrypted Guild association/price/restart proof
+pass; exact compact /guild/GetUserGuilds and /reference/GetGuildPrices reads
+supported from explicit established records/quotes, originals missing/default
+empty. Creation/Update still gated; no live activation, saves/profile unchanged
+by these operations. Inputs still held after Escape. See Server AGENTS.md and
+docs/guild-association-prices-workflow-2026-10-13.md for current server contracts.
+DataDump read-only, original/private preserved; collector/Docker/inference offline.
+
 ## Latest continuation: configured Gem replacement and equipment caller audit (2026-10-13)
 
 Server full88 checks/build and compiled encrypted Gem removal/retry/remount/

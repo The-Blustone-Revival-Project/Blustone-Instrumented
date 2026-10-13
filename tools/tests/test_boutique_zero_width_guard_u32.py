@@ -4,7 +4,7 @@ import importlib.util
 import struct
 import unittest
 from pathlib import Path
-from capstone import Cs, CS_ARCH_ARM, CS_MODE_THUMB
+from capstone import Cs, CS_ARCH_ARM, CS_MODE_THUMB, CS_MODE_ARM
 from unicorn import Uc, UC_ARCH_ARM, UC_MODE_THUMB
 from unicorn.arm_const import *
 
@@ -58,6 +58,27 @@ def emulate(guarded, count, target, fpscr=0, bias=0):
             "outside_scratch": bytes(machine.mem_read(0x4000000, 0x7FC)) + bytes(machine.mem_read(stack, 0x800))}
 
 class BoutiqueU32GuardTests(unittest.TestCase):
+    def test_thumb_blx_alignment_is_included_in_placement_audit(self):
+        pc = tool.HOOK + 2
+        encode, _ = tool.generic._branch_helpers()
+        first, second = struct.unpack("<HH", encode(((pc + 4) & ~3) - 4, tool.CAVE))
+        second = (second & ~0xD001) | 0xC000
+        data = struct.pack("<HH", first, second)
+        instruction = next(Cs(CS_ARCH_ARM, CS_MODE_THUMB).disasm(data, pc))
+        self.assertEqual(instruction.mnemonic, "blx")
+        self.assertEqual(int(instruction.op_str.removeprefix("#"), 0), tool.CAVE)
+        table = {".text": (0, 0, 0, pc, 0, 4), ".plt": (0, 0, 0, 0, 0, 0)}
+        self.assertEqual(tool.branch_references(data, table), [(pc, tool.CAVE, "Thumb")])
+
+    def test_arm_blx_h_bit_is_retained(self):
+        pc = tool.CAVE - 8
+        data = struct.pack("<I", 0xFB000000)
+        instruction = next(Cs(CS_ARCH_ARM, CS_MODE_ARM).disasm(data, pc))
+        self.assertEqual(instruction.mnemonic, "blx")
+        self.assertEqual(int(instruction.op_str.removeprefix("#"), 0), tool.CAVE + 2)
+        table = {".text": (0, 0, 0, pc, 0, 4), ".plt": (0, 0, 0, 0, 0, 0)}
+        self.assertEqual(tool.branch_references(data, table), [(pc, tool.CAVE + 2, "ARM")])
+
     def test_20_byte_body_and_pinned_unsigned_context(self):
         body = tool.assemble_body()
         md = Cs(CS_ARCH_ARM, CS_MODE_THUMB)
