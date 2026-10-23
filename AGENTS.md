@@ -1,3 +1,32 @@
+## Latest continuation: paid Bright, original icons and ordinary WIN (2026-10-23)
+
+Goal ACTIVE; exclusiveBlueStackscontrol resumed. SafeVillage/no activeordinary/
+Search/Arena/helper. Currentclient7068/same+15APK, serverlistener46444/session
+66496/current-e6-materials-compatible-progression, explicitrecruit049,
+139groups/stamp1634683. ExistingJDWP8701 forward isSTALE; rebindexplicitly.
+
+Server selective8material birthgrade policy preservesold001/002rank1owners and
+allfirst6refs. Oneactualnative30greenManda draw gotBright0491000018/rank3/lock1,
+EXP0; originalbody/name/role/element/reveal verified. Currentroster11. Server
+referencefixes nowgive40originalAT/S2/I2 icons LOCAL for8selectedHunters;
+Bright1/2/3render,4/5locked. ExactBrightactive effectserial0 matchesoriginal
+SUB_SERIAL0; nativepopupcalculates756 insteadof[value], no numericretune.
+NativeHP1720/ATK829/DEF756/power7367. Actualheal/ticks STILLpending; icons
+andtextarenotactivationproof. Originalordinarybalance/growth remainunknown.
+
+Prep-party portrait->BuildTeam->selectBright->TOPLEFTBACK sendsSetDeck200;
+HOMEdiscarded selection/norequest. Currentordinarytype1[1000002,1000004,
+1000001,1000018,0];Arena4/5retainTyltyl1000005. ExistingC004-specificheal
+reader/helper cannotqualifyBright. PrepareexactC049/1000018reader or restore
+TyltylviaBack/save beforeE6healvalidation. Do notblindlyrelaxsourceguards.
+
+Snowfield9nativeWIN/one12tapburst/Brightreservebody/Victory/Next verified.
+AP58/BP10/132stars/Snowfield27/30/capsule65/BrightEXP10, green239640/paid240000,
+gold13700/honor30/teamEXP1500. Other2gamesexact. E6S04uncleared; E7/E8inactive.
+Server docs/bright-native-acquisition-2026-10-23.md ownsproof/ignoredbackups.
+No clientsource/nativepatch/APKbuild/install/release/DataDump/originalchanges.
+OnlythisInstrumentedcontext updated; Docker/Collector/inferenceuntouched.
+
 ## Latest runtime: ordinary formation guard loaded (2026-10-23)
 
 Server listener45504 replaces62012 after idle reload; same139/stamp1634683
