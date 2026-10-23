@@ -1,3 +1,46 @@
+## Sequential individual dispatch skips (2026-10-23)
+
+Goal ACTIVE. New opt-in dispatchSkipMode / BLUSTONE_DISPATCH_SKIP_MODE=
+local-manda-sequential supports BOTH currentrow andwhole-jobskip. Older
+local-manda-all STILLrefusesindividualrows buthandlesexistingrowhistory
+withcompressedwholequote. Defaultdisabled; requireslocal-timed andexpired
+capturedpass/flags0/0/exactownedjob/auth/nativecontextfields. Nativeclickedrow
+packetquotes1Manda; supportedLOCALbackendrequiresfirstunfinished/currentrow,
+notfuture/elapsed/alreadypaid. Freefirst/U32fundssum policyunchanged. Perrow
+replylistcontainsONLYselectedserial soParseSkipcannotfinishnextrowearly.
+
+OriginalsnapshotUNCHANGED; nestedrow_skips receipts {serial,completed_at,
+charged_fee:1} replayagainstoriginalschedule. Setselectedend=paidAt thenrebase
+laterbegin/end withcapturedper-runduration, matchingNextAutoCombat prediction.
+Same-secondpaymentsvalid; naturallycompletedrowsmaycreatepaidserialgaps.
+Future0/0projection retainsvectorlength+GetSkipPricedeadline. PuretestsSIMULATE
+nativeParseSkip writingONLYselectedmodelend withfuturemodelzeros (NOTnextUI
+row); predictedsourcequote matchesreplayedcompresseddeadline afterpayments.
+Wholefinishafterrows usesexactf32quote withNONDECREASINGpaid-prefixends,
+notlegacystrict-increasingschedulehelper. Future/duplicate requestsrefuseNULL;
+no successreplay/time-restamp, no extracharge. SkipdoesNOTrecoverAP, award
+EXP/gold/items/stars orreleaseHunters. OrdinaryEndusescompresseddeadline and
+collectsallcapturedrewardsonce; terminalrepairnonadditive.
+
+Schema19whileanyactiverow_skips; alloldheaders/newrowsandinvalid19capture
+refusebeforeoverwrite. Requiredquests[]/dispatches[]included. Replayvalidates
+canonicalindices/fee1/order/currenteligibility/expiredpass/clockbounds without
+readingcurrentDate. Capturednewconfigchangesdontretuneoldjobs. Modeoffcoldload
+keepshistory/holds; Endremovesactivecapturesandreturnstohighestremaining2or17.
+Realwrite+renamefailurerestoreswallet/game/journalnestedrefs. Allactualolder
+14/15/16/17cohorts ->19(mixedrow+whole) ->17 preserved/verified.
+
+Read Server docs/dispatch-row-skips-native-2026-10-23.md. Compiledfocusedpure/
+state/encryptedHTTP+legacywhole/timed/instant/allcohortchecks andbuild PASSED.
+Fullnpmtest PASSED247programs (ALL244priorplus3new). Logs
+ local/dispatch-row-skips-{focused,full-tests}-20261023.log. Originalrates,
+backendtimingpolicy/priority andnativeUI remainunverified; source-compatible
+LOCALimplementation only. No livepolicy/profile/save/process/APK/UIchanges;
+lastknown42732/67901/client27060/+15/170groups/1634693 unchanged. Taskbarrestore
+stillpending; exclusivecontrolretained/inputheld. No battle/cast/helper/restart/
+liveRPC/original/DD/phone/Docker/collector/inference/APKbuild/install/release.
+Nextnativefishingguide andnewworkflowvisual/coldreloadchecks remainpending.
+
 ## Whole-job paid dispatch finish and future-row projection (2026-10-23)
 
 Goal ACTIVE. New opt-in dispatchSkipMode/BLUSTONE_DISPATCH_SKIP_MODE=
