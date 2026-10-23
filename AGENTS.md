@@ -1,3 +1,46 @@
+## Whole-job paid dispatch finish and future-row projection (2026-10-23)
+
+Goal ACTIVE. New opt-in dispatchSkipMode/BLUSTONE_DISPATCH_SKIP_MODE=
+local-manda-all additionallyrequireslocal-timed. ONLYnativewhole-jobserial-1,
+is_tuto0/is_iap_pass0, exactownedjob, expiredcapturedpass, start<=now<original
+lastend andexactrecomputedGetSkipPrice quote. Capturedserverrate/rewards and
+freefirstManda debit remainLOCAL; cachedskip_price doesNOTpriceFinishNow.
+U32components+combinedfundschecked (nativeBHS), fee/timeI32subset; default,
+perrow/pass/tutorial/stalequote/elapsed/duplicate/context/authrefusals NULL.
+SkipdoesNOTrecover/debitAP, awardEXP/gold/items, orreleaseHunters. OrdinaryEnd
+collects once atpaidcompletion; duplicateSkip NEVERsuccessreplays(native
+ParseSkiprestampscurrenttime). LostreplyneedsRefresh+wallet/lobbyreconcile or
+coldboot; nocompletehotcacherepairclaim. PersistenterrorsHTTP500explicitNULL.
+
+DispatchJob originalsnapshot REMAINSUNCHANGED; newnestedpaid_finish holds
+{completed_at,charged_fee}, recomputedonrestoreagainstoriginalschedule/pass.
+Schema18whileanypendingpaidcapture; requiredquests[]+dispatches[]present.
+Oldheaders/newcapture, missing18capture andinvalidfee/time/pass refusebefore
+overwrite. Modeoffretainscapture+hold+completedprojection; ordinarytimedEnd
+removescapture andreturnstohighestremainingversion2or17/etc. Capturedrate
+survivesfutureconfigretune. Realwrite/renamefailure restoreswholegame/journal
+nestedrefs. Coexistenceactual14/15/16/17 ->18 ->17 passedallmaps/peersexact.
+
+NormalunpaidStart/duplicate/Refresh/Mission wire nowzerosONLYfuturequeued
+begin/end0/0; storedschedulecomplete. NativeUIrequiresBOTHnonzero toshowrow;
+itsBT_CLEAR otherwisehasnofuturegate. Existingall-nonzeroforecasts exposed
+futureSkipbuttons andlastrowSkipcouldcollapseFinishNowquote. Source-compatible
+LOCALprojection preservesarraylength, deadlineandprice; onlycompletedprefix+
+currentrowvisible. NativeNextAutoCombat canappendnextUIrow. PaidFinishprojects
+allendUTC=paidstamp whilebegin/rewards stayoriginal; neverpersistprojection
+asnormalcanonicalschedule. Per-rowcompressionstillPENDING,separatelyneeded.
+
+Read Server docs/dispatch-paid-finish-workflow-2026-10-23.md and
+ docs/dispatch-future-row-projection-native-2026-10-23.md. Fullsuite PASSED244
+programs (ALL240priorinexactorder+4new); build andtest:dispatch-paid-finish
+compiledpure/state/encryptedHTTP/ordinary/instant/allcohortchecks passed.
+Logs local/dispatch-paid-finish-{focused,full-tests}-20261023.log. No live
+policy/profile/save/server/APK change orUIinput; taskbarrestorationstillpending
+fromactivationfailure. Lastknownruntime42732/67901/client27060/+15/170groups/
+1634693 unchanged. No battle/cast/helper/restart/liveRPC/phone/original/DD/
+Docker/collector/inference/APKbuild/install/release actions. Nativefishingguide
+andallnewnativeworkflowvalidation remainpending; exclusivecontrolretained.
+
 ## Pass-entitled instant Expedition dispatch (2026-10-23)
 
 Goal ACTIVE. New opt-in BLUSTONE_DISPATCH_INSTANT_MODE=local-entitled /
