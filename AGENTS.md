@@ -1,3 +1,31 @@
+## Manda jewel removal and Windows test runner (2026-10-23)
+
+Goal ACTIVE. Gem Equip now supports explicit suppliedprice_type1/Manda quotes
+aswellasgold2. BothnativebuttonsuseSIGNEDfundscomparisons; selectedgoldbalance,
+Manda components/sum and selectedfee must fitnonnegative signed32. Freefirst
+Manda spending isLOCALpriority; sourceonlyprovescombinedfunds. Selectedcurrency
+OLDcellquotes recomputed; swapschargeeverychangedoldcell; missingquote/type4/
+crossHunter/busy/locked/duplicate/overflowrefuse. ExactGemrows+bothabsolute
+Manda scalars repairno-op/lostreplyretry; realwrite/renamefailure restoresGem
+array/gold/paid/free. NonewGemgrants/references/abilities/counter/schema.
+
+Read Server docs/gem-manda-removal-native-2026-10-23.md forbutton/request/receipt
+ARMproof. Separate config/policies/gem-removal-observed-gold-manda.json adds
+historical1/6/7/15 Manda2/15/17/40 +gold2500/15000/17500/40000; originalgoldonly
+inputUNCHANGED. FivepinnedmanualTSVanchors reused; screenshotbytesunavailable;
+no interpolation/finaltable/nativeinteractionclaim. Explicitinputonly,nodefault.
+Currentprofile/quotes/Gemstock/livewallet/save/APK unchanged/unactivated.
+
+Fullnpmtest PASSED237programs and focusedtest:gem-manda-removal passedcompiled
+pure/state/encryptedHTTP+goldregressions. New scripts/test.mjs reads curated
+ tests/suite.json, preservingALL234priorprogramsinexactorder+3newchecks and
+separateprocessisolation. Original8193charshellchainhitWindowscmd8191limit;
+shortnpmtest nowworks. Logs local/gem-manda-removal[-full]-tests-20261023.log.
+LastverifiedupperVillage; Black/wallpapercapture/activationfailureawaitstaskbar
+restoration. NoUIinputs/battle/cast/serverrestart/hostlivegameplayRPC/phone/
+original/DD/Docker/collector/inference/APKbuild/install/release actions.
+Nextnativefishingtutorial/coldreload remains pending; exclusivecontrolretained.
+
 ## Sparse Gem fee evidence accepted (2026-10-23)
 
 Optional config/policies/gem-removal-observed-gold.json supplies ONLYhistorical
