@@ -1,3 +1,44 @@
+## Atomic Mail state and exact callback contracts (2026-10-23)
+
+Goal ACTIVE. Previous goalturn made progress inaa0efb1 (atomic Supply252PASS).
+This turn fixes Mail Read/Archive/RemoveReceived failed-persistence divergence.
+Read/Archive catch restores flag0 on the SAME normalized row. Remove catch
+restores exact prior received array and previous length of SAME deleted array;
+rows, tombstones, mailbox/game objects and peers remain exact. Successful
+unread_count/target_list shapes, CSV request trailing comma, duplicate ordering,
+known deletion replay and LOCAL one-victory/no-attachment policy are unchanged.
+No wallet/resource-clock/item mutation, source/grant or save schema change.
+
+Read Server docs/mail-atomic-settlement-2026-10-23.md and mail-native-callbacks-
+and-atomicity-2026-10-23.md. Fresh original ELF audit confirms supported list/
+common/unread callbacks use ret_data named fields and uint64 target IDs/u32
+unread; no SyncUser or wallet update. Native CSRMail wrapper can mark read
+optimistically BEFOREHTTP response, so server rollback does NOTprove hot-client
+flag recovery. Native UI/cache testing remains pending.
+
+TakeAttachment is DIFFERENT /message/TakeAttachment(message_id:uint64), with
+content_result passthrough and optional NONZERO-only absolute iap_quantity/
+free_iap_quantity u32 updates. No closed game-specific item/AP application or
+app/UI claim caller was recovered. Keep attachment claims/outbound Send refused;
+do not borrow Supply/genericUser receipts or invent content_result economics.
+
+Build and focusedstate/encryptedHTTP/existingMail PASS. Real temporary-write and
+rename500 faults cover Read/Archive/single and mixed old-tombstone+fresh batch
+delete; same refs/all3account/game/save bytes preserved. No-write repeats work
+with blockedtmp; committed retries/cold tombstones/unknownbatch refusal pass.
+HTTP earns existingnotice from disposable accepted mission model completion;
+extra rows are authored test inputs only, not new production delivery. Correct
+native message_id attempt refuses the OWNED no-attachment notice unchanged.
+Full npmtest PASS254 programs (252prior +2new). Logs Server local/mail-atomic-
+{focused,full-tests}-20261023.log. Independent integration review clear.
+
+No live RPC/mail operation/save edit/profile switch/server restart/observer/
+BlueStacks input/battle/cast/APK build/install/release/original/DD/phone/Docker/
+collector/inference action. Existing process has not activated the source fix.
+BlueStacks inputs remainHELD after prior desktop captures; no new humanrestore.
+Last liveprobe was prior170/stamp1634693/listener42732; no fresh client/screen/
+battle assertion thisturn. Compatible210 and native E6S04 validation pending.
+
 ## Atomic Supply settlement and native counterproof (2026-10-23)
 
 Goal ACTIVE. Previous turn made progress in1433f0c (compatible210 bridge).
