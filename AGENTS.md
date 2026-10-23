@@ -1,3 +1,45 @@
+## Atomic Supply settlement and native counterproof (2026-10-23)
+
+Goal ACTIVE. Previous turn made progress in1433f0c (compatible210 bridge).
+This turn fixes REAL Special and Activity Supply persistence bugs: temporary
+write/rename failure could leave gold/AP and claimed flags ahead of the save.
+Special now restores prior gold and ONLY newly claimed row flags, preserving
+all nested references and previously claimed rows. Activity validates ID/clock/
+cycle before touching existing-game clocks, plans regeneration detached, then
+commits AP/BP/both anchors/daily marker together; failure restores all5 scalars.
+Native uint32 AP and charge-time bounds now refuse unsupported results before
+mutation; overflow above max_ap up to0xffffffff is preserved. LOCAL10gold/AP
+rules, UTCcycle, IDs and exact receipt shapes are unchanged. No schema change.
+
+Read Server docs/supply-atomic-settlement-2026-10-23.md and companion native
+receipt-boundaries doc. Important COUNTERPROOF: Special/Activity do NOT use
+generic SyncUser. Special gold-only user reply DOES NOT zero Manda; optional
+currency setters skip absent keys. Activity reads ONLY nested ap.cur and
+ap.ap_charge_time (u32), not prev. Do not add generic wallet scalars here.
+Login Bonus is separate and unchanged. Returned target IDs/status stay exact.
+
+Build and focused state/encrypted HTTP tests PASS. Real tmp-write+rename500
+failure checks cover single/mixed Collect All, same object/nested refs, all3
+peers/game/account/save bytes, due AP/BP recovery+residual anchors, retry/cold
+once-only claim, invalid/claimed/future/backward-clock/no-regen-write refusals,
+Manda preservation and native capacity. Last valid AP0xffffffff success also
+passes final compiled state test. Full npmtest PASS252 programs (250prior+2new).
+Logs local/supply-atomic-{focused,full-tests,final-build}-20261023.log.
+
+Reward-data audit did NOT establish new GetItem rows. Read episode-reward-item-
+join-boundary-2026-10-23.md.73text batches/3626unique extracted image rows have
+no exact SK13/SK23/CERUM03 joins; named materials/historical prices and IT_GCO
+art cannot identify their internal IDs. GC2/3/4/8 likewise remain unbound.
+No coupon pool, item metadata, original quantity or reward grant was invented.
+
+Fresh read-only BlueStacks capture via returned current window3868648 again
+showed desktop, not game; no activation/click sent. Inputs remain HELD. No live
+claim/game RPC/save edit/profile switch/server restart/observer/battle/cast,
+APK build/install/release, original/DD/phone/Docker/collector/inference action.
+Source build does not activate fixes in the existing process. Last live CDN
+probe remains prior170/stamp1634693/listener42732; client/screen/gameplay remain
+unverified. Compatible210 native activation and E6S04 remain pending. GoalACTIVE.
+
 ## Compatible E10 bridge verified (2026-10-23)
 
 Goal ACTIVE. Previous turn made progress in598fd59: original M012 recovery and
