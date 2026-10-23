@@ -1,3 +1,22 @@
+## Native original fever restoration check (2026-10-23)
+
+Goal ACTIVE, safe E6 map/Story04 uncleared, client23967/server40988/session58280,
+140groups/stamp1634691/current-e6-fever-compatible-progression, same+15APK.
+Root READ-ONLY --episode-fever --frame qualified both CFE4/CFE3_B as exact
+CSRUIImageNode/concrete emplace owners under expected RUNNER_ROOT, cached
+rank0/phase7; snapshot2.98s, observerterminal. No nativegetter/inputauthority.
+A full108-tap ordinary battle with visible FEVER then nativeLOSS returned
+through third option to E6map without crash. Exactrank2 transition NOTcaptured;
+keepcandidate/unprovedcompletefix, no further blindnullguard. All3gamesEXACT
+across trials/resourceboot/regression; entire state differs only outsidegames.
+
+Episode Nene/Captain/Mowgli/Bright/fixedKarl order survived fresh app boot and
+appeared in prep. No Brighthealclaimed. Both earliertrial outcomes/recovered
+CFE4fault and the originalassetrestoration are documented. Newfeverobserver
+hostcompile/pureownership/mode and existinghealer tests passed. JDWP8701now
+boundto23967. No helper/battle active. Server focusedbuild/HTTP+9-profile tests
+PASS; no Docker/original/DD/phone changes; no APKreleaseowed.
+
 ## Active original fever resource candidate (2026-10-23)
 
 Supersedes runtime details immediately below. Server listener40988/session58280

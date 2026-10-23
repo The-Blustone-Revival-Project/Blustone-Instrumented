@@ -41,6 +41,7 @@ public class InspectNativeInput {
   static boolean rendererLayoutOnly;
   static boolean touchLayoutOnly;
   static boolean episodeBadgeOnly;
+  static boolean episodeFeverOnly;
   static boolean arenaConfirmOnly;
   static boolean episodeTouchOnly;
   static int episodeTouchSkipEvents;
@@ -52,6 +53,12 @@ public class InspectNativeInput {
     }
   }
   static HealSourceSelection episodeHealSource;
+  static boolean parseEpisodeFeverMode(String[] args) {
+    boolean selected=args.length>1 && args[1].equals("--episode-fever");
+    if(selected && (args.length!=3 || !args[2].equals("--frame")))
+      throw new IllegalArgumentException("Episode fever requires only --frame");
+    return selected;
+  }
   static HealSourceSelection parseHealSourceSelection(String[] args) {
     String ref=null,serial=null;
     for(int i=0;i<args.length;i++) {
@@ -408,6 +415,7 @@ public class InspectNativeInput {
     }
     String materials=episodeMaterialsOnly ? episodeMaterialSnapshot(base,scene) : "";
     if(episodeBadgeOnly) materials=episodeHealSourceSnapshot(base,scene);
+    if(episodeFeverOnly) materials=episodeFeverSnapshot(base,scene);
     if(episodeHealSource!=null) materials+=episodeHealSourceSnapshot(base,scene,episodeHealSource);
     String exchange=episodeExchangeOnly ? episodeExchangeCaughtSnapshot(base,scene)+episodeExchangeReserveSnapshot(base,scene)+episodeExchangeUiSnapshot(base,scene) : "";
     if(!episodeOwnerStable(base,app,manager,current,currentControl,currentControlVptr,scene,control,controlVptr) ||
@@ -434,7 +442,7 @@ public class InspectNativeInput {
     else System.out.printf("Episode modalSnapshot=unavailable reason=%s%n",modalLimit);
     System.out.println("Episode limits: wrapper manager control branch has pair/nonexpired checks only; exact child emplace ownership verified. " +
       "Selected combat ID can persist during ending dialogue; terminal fields do not authorize attacks; scene vptr does not establish active combat.");
-    if(episodeMaterialsOnly || episodeBadgeOnly) System.out.print(materials);
+    if(episodeMaterialsOnly || episodeBadgeOnly || episodeFeverOnly) System.out.print(materials);
     System.out.print(exchange);
   }
   static String episodeInputSnapshot(long base,long game,int left,int right,long pause) throws Exception {
@@ -947,6 +955,44 @@ public class InspectNativeInput {
     for(var r:reads.entrySet()) if(u32(r.getKey())!=r.getValue()) throw new IllegalStateException("Exchange UI fields changed");
     for(var n:names.entrySet()) if(!cppString(n.getKey()+0x258,64).equals(n.getValue())) throw new IllegalStateException("Exchange UI final name changed");
     result.append("Episode exchange UI limits: typed shared-node links/repeated base consumers only; concrete child allocation and drop eligibility unproved.\n");
+    return result.toString();
+  }
+  /** Exact original make_shared<CSRUIImageNode> G7a6d58: object=control+10,
+   * primary control213b5cc, primary object213bd20. No generic owner fallback. */
+  static void qualifyFeverImageOwner(long base,long object,long control,long vptr,long controlVptr,long strong) {
+    if(object==0 || control==0 || (object&3)!=0 || (control&3)!=0 ||
+       object!=control+0x10 || vptr!=base+0x213bd20L || controlVptr!=base+0x213b5ccL || (int)strong<0)
+      throw new IllegalStateException("Episode fever UIImage emplace owner unproved or expired");
+  }
+  static String episodeFeverSnapshot(long base,long game) throws Exception {
+    Map<Long,Long> reads=new LinkedHashMap<>();Map<Long,String> names=new LinkedHashMap<>(),types=uiTypes(base);
+    long root=exchangeObserved(game+0x2c,reads),rootControl=exchangeObserved(game+0x30,reads);
+    if(!exchangeUiName(base,root,rootControl,types,reads,names).equals("SR_INGAME/INGAME_NM"))
+      throw new IllegalStateException("Episode fever UI root identity unproved");
+    long rank=exchangeObserved(game+0x208,reads),phase=exchangeObserved(game+0x2ec,reads);
+    long[] parent={root,rootControl};
+    for(String key:List.of("VIEWER","MainCamera","RUNNER_ROOT")) {
+      long[] child=exchangeUiChild(base,parent[0],key,types,reads,names);
+      if(exchangeObserved(child[0]+0x54,reads)!=parent[0] || exchangeObserved(child[0]+0x58,reads)!=parent[1])
+        throw new IllegalStateException("Episode fever path parent pair mismatch");
+      parent=child;
+    }
+    StringBuilder result=new StringBuilder(String.format(Locale.ROOT,
+      "Episode fever cachedRank208=%d phase2ec=%d rootStrongPair=verified rootConcreteAllocation=unproved nativeGettersCalled=false inputAuthorization=none%n",rank,phase));
+    for(String key:List.of("CFE4","CFE3_B")) {
+      long[] child=exchangeUiChild(base,parent[0],key,types,reads,names);
+      long object=child[0],control=child[1],vptr=exchangeObserved(object,reads),controlVptr=exchangeObserved(control,reads);
+      qualifyFeverImageOwner(base,object,control,vptr,controlVptr,exchangeObserved(control+4,reads));
+      if(exchangeObserved(object+0x54,reads)!=parent[0] || exchangeObserved(object+0x58,reads)!=parent[1])
+        throw new IllegalStateException("Episode fever image parent pair mismatch");
+      long hidden=exchangeObserved(object+0x270,reads);
+      result.append(String.format(Locale.ROOT,
+        "Episode fever image=%s class=CSRUIImageNode owner=emplace_verified hidden270=%d localHidden271=%d resourceDrawing=unproved%n",key,hidden&255,(hidden>>8)&255));
+    }
+    for(var read:reads.entrySet())if(u32(read.getKey())!=read.getValue())
+      throw new IllegalStateException("Episode fever owner/path/fields changed; discard snapshot");
+    for(var name:names.entrySet())if(!cppString(name.getKey()+0x258,64).equals(name.getValue()))
+      throw new IllegalStateException("Episode fever name changed; discard snapshot");
     return result.toString();
   }
   static String episodeCombatScalarSnapshot(long base,long actor) throws Exception {
@@ -1998,6 +2044,7 @@ public class InspectNativeInput {
     } finally {close(mem);}
   }
   public static void main(String[] args) throws Exception {
+    episodeFeverOnly=parseEpisodeFeverMode(args);
     episodeHealSource=parseHealSourceSelection(args);
     cardsOnly=args.length>1 && args[1].equals("--cards");
     arenaConfirmOnly=args.length>1 && args[1].equals("--arena-confirm");
@@ -2034,7 +2081,7 @@ public class InspectNativeInput {
     rendererLayoutOnly=args.length>1 && args[1].equals("--renderer-layout");
     touchLayoutOnly=episodeTouchOnly || (args.length>1 && args[1].equals("--touch-layout"));
     episodeMaterialsOnly=episodeSkillsOnly || episodeExchangeOnly || (args.length>1 && args[1].equals("--episode-materials"));
-    episodeSceneOnly=args.length>1 && (args[1].equals("--episode-scene") || episodeMaterialsOnly || episodeBadgeOnly);
+    episodeSceneOnly=args.length>1 && (args[1].equals("--episode-scene") || episodeMaterialsOnly || episodeBadgeOnly || episodeFeverOnly);
     AttachingConnector connector=Bootstrap.virtualMachineManager().attachingConnectors().stream()
       .filter(c -> c.name().equals("com.sun.jdi.SocketAttach")).findFirst().orElseThrow();
     var config=connector.defaultArguments();config.get("hostname").setValue("127.0.0.1");
