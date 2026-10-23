@@ -2,14 +2,17 @@
 
 Source-backed operating distinction: **DASH/type1 is the candidate for automatic
 ordinary attacks while retaining manual skill and exchange control.** Full
-AUTO/type2 installs native skill/exchange AI. No live DASH selection, mode
-transition, manual heal or new battle was verified in this investigation.
-Root's earlier AUTO clicks and tiny screenshot labels do not establish a mode.
+AUTO/type2 installs native skill/exchange AI. Episode deliberately hides both
+AUTO parents, so that source distinction does not provide an Episode toggle.
+The root later verified the hidden Episode HUD described below; live DASH
+selection, mode transition and manual healing remain unverified. Earlier AUTO
+clicks and tiny screenshot labels do not establish a mode.
 
 All native addresses use original ELF SHA256
 `c4646ac3817b0008b6ea387fde9c8279fd439343ccc272acdc5883fab9d00eec`;
 G addresses are file/code offsets plus0x10000. No UI/device/runtime/private-save
-access, APK patch, setting write or implementation change occurred here.
+access, APK patch, setting write or implementation change occurred in this
+source lane. Later native observations below are explicitly supplied by root.
 
 ## Actual ordinary/Mirage handler and mode cycle
 
@@ -40,6 +43,41 @@ GetStageSerial(TU_TYPE0x2b). Original GetStageID's TBB table Gf4282e
 index43 selects Gf428ee→n_01_06. This closes the lock toast's Snowfield6
 identity, not every producer of the initial lock panel. No forced unlock is
 authorized or needed by this source report.
+
+## Episode intentionally hides AUTO and speed controls
+
+CSRFCUIBase's constructor calls EnableIngameUIState(**0x16**) at
+G952048/G95204a. The bit consumers in CSRGameUIBase.EnableIngameUIState
+Ga355f0 are timer bit1 (Ga35610/Ga35614), COMBAT_SPEED bit2
+(Ga3561c/Ga35632/Ga35636), AUTO_TOGGLE bit4
+(Ga35678/Ga3568e/Ga35692), AUTO_LOCK bit5
+(Ga356d4/Ga356ea/Ga356ee), and COMBAT_SPEED_LOCK bit3
+(Ga35730/Ga35746/Ga3574a). Each uses the extracted bit as SetVisible's
+argument, so zero sets local-hidden271 to1.
+
+Episode.InitBeforeOpen explicitly loads its FC component from game+0x20c at
+Gb23da0 and overrides those defaults with **2** at Gb23da4/Gb23da6.
+Only timer bit1 remains enabled: speed, AUTO_TOGGLE, AUTO_LOCK and speed-lock
+are hidden. This is original client UI policy, not missing art or a failure of
+the observer. In the inspected Mirage.InitBeforeOpen G925118–G9252dc there
+is no corresponding override; do not generalize Episode's hidden controls to
+Mirage solely because both use FC UI.
+
+Root's later paused native CB0602 read positively qualified the exact current
+Episode component/fragment and ancestry: all game-root-to-BATTLE_ROOT nodes
+had effective270/local271 **0/0**; AUTO_TOGGLE and AUTO_LOCK each **1/1**;
+ALL and DASH **1/1**; OFF **1/0**; lock child **1/0**. The qualified classifier
+returned **ANCESTOR_HIDDEN**, consistent with the override. ReqMonsterRefCB's
+OFF/ALL/DASH child SetVisible calls at G9c9db2/G9c9dee/G9c9e28 can select a
+locally visible child beneath its independently hidden parent. That observation
+must not be promoted into a persisted automation/AI value or an admitted tap.
+Do not force visibility or write a setting to bypass this original policy.
+
+Root subsequently resumed manual play and received native LOSS, returning to
+the safe E6 map. No heal or Karl-skill acceptance is claimed. Root reports all
+three games and accounts exact against its pre-attempt backup. This control
+qualification does not establish combat success or a working Episode AUTO
+button; no new battle was started by this source lane.
 
 ## What native automation actually does
 
