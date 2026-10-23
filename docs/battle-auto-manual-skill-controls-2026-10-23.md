@@ -95,9 +95,34 @@ Do not read game+0x658 as a mode or apply the older click order.
 
 ## Source display readout for a future qualified HUD probe
 
-The independent read-only art lane identified original UI_XML_RO row468,
-KO/SR_INGAME/UI_LYR_NM, raw XML SHA256
-`d7b4d78385751bcc1cc1b131825f0c4c0c9013abb84e4ddb0b9f1291dad6a908`:
+The original ordinary-stage fragment UI_XML_RO row468,
+KO/SR_INGAME/UI_LYR_NM, belongs to CSRGameUIStage/UI_NORMAL. It is **not**
+the current Episode/Mirage fragment. The same AUTO/TAP artwork there does not
+prove those modes use its owner or hierarchy.
+
+Both actual combat initializers select **CSRFCUIBase** on UI_ROOT/UI:
+CSRExploreMirage.InitBeforeOpen G925172–G9251a0 and
+CSRSceneMEpisode.InitBeforeOpen Gb23c92–Gb23cc0. The returned strong pair is
+stored at game+0x20c/+0x210 (G9251b2/Gb23cd2). Original make_shared
+G928144 allocates0xa0 bytes and constructs the object at control+0x10
+(G92816e–G928174). Exact ELF primary vptrs are component0x214828c and
+emplace-control0x2147030.
+
+FC constructor G951d68 creates a **CMDrawable named UI_BATTLE**, rather than
+loading UI_NORMAL. The name literal at G951d96 is passed to make_shared
+G952f40, which allocates0x838 bytes and calls CMDrawable's constructor at
+G952f76 with object=control+0x10. FC retains this pair at +0x44/+0x48
+(G951dca); object primary vptr0x2136948, emplace-control0x2136a10.
+This is not the separate default-delete CMDrawable control used by some
+other observer paths. FC.OnAttach G952e86–G952e8c attaches that pair to
+the supplied UI node's CMNode base(+4).
+
+FC obtains CSRFCUITimer on UI_BATTLE at G951e5a. Timer constructor
+G954b1a selects **SR_BATTLE/9_UI_BT_IG**, LoadView G954b84, GetRoot
+G954b98, and the BATTLE_ROOT lookup G954bb6. It retains that exact pair at
+timer+0x74/+0x78 (G954c0a/G954c12); Timer.OnAttach
+G956f86–G956f8c attaches BATTLE_ROOT under UI_BATTLE. This closes the
+original dynamic attachment, independently of the similar normal-stage art.
 
 Source owners are Server
 `resources/reference/recovered-data/leveldb-tables/all-tables.json` and
@@ -105,20 +130,34 @@ read-only DataDump
 `sources/client-tables/recovered-data/leveldb-tables/all-tables.json`.
 Their whole-file bytes match SHA256
 `f166f857d45c6dd68e97bd4b8f055be795796400fa10ba9f040aaa1b1d8f0a78`.
+Actual FC XML row207 **KO/SR_BATTLE/9_UI_BT_IG** has raw SHA256
+`fa4cb3468b6f7510126cb3daae00efc8479151cd4686acab309331bf062be219`.
+Its typed hierarchy is:
 
-- UI_NORMAL/AUTO_TOGGLE/PA_AUTO_ALL uses rotating AUTO2_T and textbox
-  AUTO_AUTO; its EN UI_JSON text is **AUTO**,14px.
-- PA_AUTO_DASH uses the **same** rotating AUTO2_T and textbox AUTO_TAP;
-  its EN UI_JSON text is **TAP**,16px.
-- PA_AUTO_OFF uses static AUTO2_F and no textbox.
+- BATTLE_ROOT(rect)/AUTO_TOGGLE(rect)/PA_AUTO_ALL(panel): rotating
+  AUTO2_T and textbox AUTO_AUTO, original KO caption AUTO.
+- BATTLE_ROOT/AUTO_TOGGLE/PA_AUTO_DASH(panel): the same rotating
+  AUTO2_T and textbox AUTO_TAP, original KO caption TAP.
+- BATTLE_ROOT/AUTO_TOGGLE/PA_AUTO_OFF(panel): static AUTO2_F, no textbox.
+- BATTLE_ROOT/AUTO_LOCK(rect)/PA_AUTO_LOCK(panel): separate lock ancestry,
+  not a fourth sibling below AUTO_TOGGLE. AUTO_LOCK starts hidden while its
+  child panel starts locally visible. ALL/DASH/OFF start locally hidden.
+
+TIMER is a sibling of AUTO_TOGGLE/AUTO_LOCK, not their ancestor. Shared
+EN UI_JSON provides AUTO14px/TAP16px, but original XML/shared localization
+is not proof of the current live English caption or selected mode.
 
 Original INGAME_NM row462, raw SHA256
 `cbaa8506d069cd102fdb9d42473ae51562bb3139622f84902b8bbafd5f714e16`,
-supplies the UI anchor rect VIEWER→panel UICamera→rect UI_ROOT
-(visible=true)→rect UI (visible=false). This is not the fever path
-MainCamera/RUNNER_ROOT. Runtime attachment of UI_LYR_NM's fragment beneath
-that anchor was not directly verified, so a future observer must qualify the
-actual child chain and unique names rather than concatenate guessed pointers.
+supplies the anchor rect VIEWER→panel UICamera→rect UI_ROOT
+(visible=true)→rect UI (visible=false). The source-closed current chain is
+**VIEWER/UICamera/UI_ROOT/UI/UI_BATTLE/BATTLE_ROOT**, followed by the
+separate toggle/lock branches above. This is not the fever path
+MainCamera/RUNNER_ROOT. A runtime observer must still qualify the owned
+component/fragment, actual parent pairs, unique child membership and stable
+names/visibility to the exact game+0x2c/+0x30 root. Static source attachment
+is not a captured live tree. Concrete XML descendant allocation ownership
+must not be inferred from the FC and UI_BATTLE emplace allocations.
 
 For qualified panels, report both effective/inherited hidden byte+0x270 and
 local-hidden byte+0x271, plus ancestor visibility. SetVisible G7882a0 writes
