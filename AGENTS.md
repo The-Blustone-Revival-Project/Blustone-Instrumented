@@ -1,3 +1,46 @@
+## Expanded character stats and selective birth progression (2026-10-23)
+
+Goal ACTIVE. Previous turn made progress in4c7b0c5 (six added skill graphs256PASS).
+New opt-in archive-2019-expanded-projection keeps old8 numeric observations
+EXACT and adds021/024/039/041/052 (13 total). Every12 wire numeric fields match
+pinned2019TSV; shown level/gear UNKNOWN, repeated rank bases LOCAL, fixture growth
+unchanged.056Genovia source has???/non-numeric-core-stats and staysNEUTRAL
+HP1000/ATK100/DEF50.020Sienna unselected. Default observations helper remains8;
+new13 ID list frozen, source validator pin/status/timestamp/numeric checks.
+
+New expanded-material-catalogue-birth-rank-projection keeps old8 and adds the6
+skill donors with community grades0212/0242/0393/0413/0524/0564 (14 total).
+Only ordinary rows below grade filtered; numerical values/order/awakened rows
+retained.001..006/main/otherunselected rows remain exact, legacyMowgli1valid.
+Native first-stat-rank/factory contract reused. Unsupported existing owned rank
+REFUSES without rewriting/promotion; actual oldpaid052/056rank1 captures tested.
+Valid paid052/056rank4 reloads; fee30/target policy/receiptshape unchanged except
+expected rank and eligible initial skill keys. No quick-ticket authority added.
+Existing local_library_trace_<six>.rank follows first-stat display grade; other
+metadata and REAL acquisition links exact. No new redeemable trace/item/grant.
+
+Inactive current-e10-expanded-character-progression differs ONLYstat+birth
+flags from expanded-skills210. Same210 resources/order/stamp1634695, previous
+skill14mode and otherpolicies unchanged. Read Server docs/material-expanded-
+character-progression-2026-10-23.md + HTTPevidence note. Allprofilesbytepreserved.
+Build/focusedsource/pure/encryptedHTTP/oldmode checks PASS; fullnpmtestPASS259
+programs(256+3), all11profileprogramsPASS. Logs local/material-progression-
+{focused,profile-tests,full-tests}-20261023.log. Independent review clear.
+
+PRIVATEcurrent-save copies under oldexpandedskills and newcombined modes
+preserveALL3actualschema14gameobjects, copiedfiles and live source bytes. None
+currentlyownsaffectednew6. Private snapshots/summaries retained local/private.
+TheseareGLOBALreferencepolicies: otherusers' compatibleownednew6wouldreceive
+changedstats/grades; unsupportedranks refuse ratherthanmigrate. Reverifyactual
+ownershipbeforeactivation; doNOTreuse privatecopy check as universal guarantee.
+
+No liveprofile/server/client activation/RPC/input/claim/saveedit/observer/battle/
+cast/APKpatch/build/install/release/original/DD/phone/Docker/collector/inference.
+Lastliveprobeprior170/stamp1634693/listener42732; nofreshUI/PID/battleclaim.
+BlueStacksinputHELDafterprior desktopcaptures; no newrestoremessage. Native210
+boot/reference-cache/portraits/stats/skills/combat and E6S04 remainpending.
+Originalordinary stats/growth/fullskills stillincomplete. GoalACTIVE.
+
 ## Six additional original skill-graph adoptions (2026-10-23)
 
 Goal ACTIVE. Previous turn made progress in2835409(Mail254PASS). New opt-in
