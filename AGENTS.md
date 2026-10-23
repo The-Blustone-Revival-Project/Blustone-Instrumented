@@ -1,3 +1,43 @@
+## Compatible E10 bridge verified (2026-10-23)
+
+Goal ACTIVE. Previous turn made progress in598fd59: original M012 recovery and
+inactive209-group E10. This turn adds current-e10-compatible-progression with
+210groups/stamp1634695. It keeps the exact first170 resource groups and EVERY
+nonresource policy from current-restoration-fever-compatible-progression, then
+appends40 missing E10 groups. Current fever CFE_PUB is retained. No activation.
+
+Read Server docs/e10-compatible-progression-readiness-2026-10-23.md. New helper
+scripts/profiles/prepare-e10-compatible.mjs delegates to existing pure source
+preparers for73 unique provenance pins, both preferred/fallback copies, exact
+policy/order, global peer freshness, idempotence, overflow and create-only
+publication. All earlier profile bytes remain exact. All prior22 Hunter rows
+remain exact; seven neutral unowned additions020/021/024/039/041/052/056 grant
+no ownership or acquisition rights. Birth maps and real trace links unchanged.
+
+Private root verification copied CURRENT var/state.json under local/private.
+Independent source-module restore with170 and210 preserved ALL3 actual schema14
+games exactly; neither copy was rewritten and live bytes stayed unchanged.
+All prior22 references were exact. No private credentials/payloads were printed
+or committed. This was offline compatibility verification, not native gameplay.
+
+npm run test:e10-compatible PASS: server TypeScript build, source guard tests,
+compiled signed P384/AES HTTP. Disposable3-game fixture includes actual paid
+Bright049 rank3, legacy Mowgli1, distinct earned skills/decks/wallet/progression.
+Snapshot ON verified actual210 manifest, original M012/cutin PKGI1 full/raw/range,
+invalid416 and independent fresh lazy app snapshots. All11 profile test programs
+PASS. Logs local/e10-compatible-{focused,profile-regressions}-20261023.log.
+Runtime TS unchanged; prior250 runtime program PASS is a separate checkpoint.
+
+Fresh read-only live CDN probe: HTTP200/170groups/stamp1634693. Listener42732
+freshly confirmed on8080. No client PID, screen or battle state freshly verified.
+BlueStacks inputs stay HELD after prior failed activation/non-game capture;
+no new human restore reply. No battle/cast/helper/observer/game RPC/restart/live
+save or policy change, APK build/install/release, original/DD/phone/Docker/
+collector/inference changes. Future native activation must retain explicit
+local-linear-100/snapshot/recruit049 and separately configured provider overrides;
+profile defaults alone do not capture a running process's overrides. E6S04 and
+native210 boot/cache/earned later entry/combat/rewards remain pending.
+
 ## E10 original aggregate recovery and continuation (2026-10-23)
 
 Goal ACTIVE. Previous goalturn made progress: committed Guildrecords2be9092,
