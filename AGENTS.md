@@ -1,3 +1,42 @@
+## Current continuation (2026-10-23): fishing first-catch provider host-verified
+
+Goal ACTIVE. New explicit LOCAL fishing tutorial provider is IMPLEMENTED and
+host-verified, NOT yet activated or verified natively. Live server42732/exec67901
+still serves prior Mirage configuration and170/stamp1634693/+15 client27060.
+No battle/cast/helper started; last verified scene upperVillage. Latest Windows
+capture returned black/wallpaper; activation failed after freshselection+retry.
+Taskbar restore requested asynchronously; no game inputs issued. Do not infer
+current game pixels from earlier screenshots or restart to fix window capture.
+
+Read sibling Server docs/fishing-local-first-catch-2026-10-23.md for source addresses, complete
+additional env settings and guide control. The native fishing gate is27/2, NOT
+27/0. Main has27/0 cleared, noLU003/noownedfish/nocast journal. Tutorial follows
+TutorialThrow/TutorialWait and ends with sentinel-1/is_win1, withoutordinaryBegin
+or provenbaitconsumption. Do NOT preclear27/2, grantbait, inventfishIDs, or widen
+ordinarypositive-log planner to accept-1. Separate defaultdisabled mode
+local-first-catch supplies an explicit LOCAL PracticeFish+10goldautosale; FS001
+andFS001_V are originalart, authoreditem/species association remains LOCAL.
+
+Schema17 captures account tutorial policy/reference hash/soldstack/time. Entire
+fish metadata+all3prices pinned; tombstoneqty0 retained; journalrestoresmodeoff
+when referencesremain. No successreplay/additiveduplicate. Pendingordinarycast
+blocks tutorial beforeterminalduplicate cleanup10203. End doesNOTsettutorial
+flags; nativeClear27/2 remains required. Earnedrecord survivesautosale andonly
+strictlylongerordinaryrecordsreplaceit. Bothwrite/renamefailuresrollbackallrefs.
+Fullnpmtest/build passed; test:fishing-tutorial passed pure/state/encryptedHTTP,
+realbaitpurchase, duplicates/pending/rollback/schema16->17allcohortpreservation
+andordinarypracticepolicy/artpins. Laterstatechecks27/2refusal/longerrecord passed.
+Logs local/fishing-tutorial-{full-tests,focused}-20261023.log. NoAPKbuild/install/
+release owed. No live stateedit, hostgameplayRPC, original/DD/phone/Docker/
+collector/inference changes. ExistingMiragequota/historyMUSTremainunchanged.
+
+TutorialHook: pairedtaps>=0.1sec, normalphaseuntil70; STOPforcomments/furyguide,
+leavealone scripted1.5secondfury, resumeONLYnativeinstruction thenreach100.
+OrdinaryWait: oneBT_LOOTINGtap atNOW_CATCH. Keep timedinputprompt; nosource/log
+work whilecast/battleactive. Firstnativecompleteguide+resultart+End/Clearproof
+andcoldreload are NEXT, thenactual6Manda10bait purchase/ordinarycast. Never
+claim nativefirstcatch fromhosttest. Existingbattleinstructionsbelowstillapply.
+
 ## Current continuation (2026-10-23): native Mirage re-entry and schema14 durable
 
 Goal ACTIVE. Safe upper Village, no battle/helper. Exclusive BlueStacks control
