@@ -9,7 +9,8 @@ import java.util.*;
 /** Read-only, bounded in-process guest state through the instrumented APK's
  * existing JDWP connection. No game-native calls/hooks/patches; never target original
  * app. Exact version28010 pointers documented in native-live-state-reader.md.
- * Compile with tools/NativeCampaignMarkers.java alongside this source.
+ * Compile with tools/NativeCampaignMarkers.java and tools/NativeBattleControls.java
+ * alongside this source.
  * Run after adb -s127.0.0.1:5555 forward tcp:8701 jdwp:<instrumentedPID>, then
  * tap once so Activity.dispatchTouchEvent supplies a suspended Java thread. */
 public class InspectNativeInput {
