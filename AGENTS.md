@@ -38,6 +38,18 @@ third-stair heal plan did not activate; manual Captain-for-Tyltyl swap did.
 Outside-input warnings during stair1 were the human taking control, not an
 emulator mystery. Honor control handoffs and do not claim their actions.
 
+Combat source follow-up now committed: Instrumented1549917/14cf907,
+docs/battle-auto-manual-skill-controls-2026-10-23.md. Actual currentcycle
+OFF0->ALL2->DASH1->OFF0. DASH/TAP supports automaticattacks withMANUALskills/
+swaps; fullAUTO2 installs skill/exchangeAI that can spendRage/movehealers.
+OFFisstaticglyph, DASHcaptionTAP, ALLcaptionAUTO; AUTO+isnotafourthmode.
+LegacyPopup+658/(toggle+1)%3 is the WRONG handler/readout for currentMirage.
+Currentmode is UserDB BATTLE_AUTOCOMBAT per game+2ec MODE; qualified current
+PA_AUTO_* panels/local271/effective270+ancestors needed before trustingpixels.
+One DOWN/opaque255 bubble activates an eligible benchheal; noholdtime tested.
+Normalpause blocks OnTouch unlessmaskbit10, so pausedREADdoesnotprove toggle.
+NativeDASHselection/manualheal stillNOTverified; qualifybeforeanotherfight.
+
 New source progress while UI was unavailable: Instrumented commit e71ab29,
 docs/fishing-cache-repair-boundary-2026-10-23.md closes actual PLC001/distance
 selectors1..3 and thumbnail_id+"_V" (FS001/FS001_V original spritepair).
