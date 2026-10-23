@@ -59,13 +59,19 @@ public class InspectNativeInput {
       throw new IllegalArgumentException("Episode fever requires only --frame");
     return selected;
   }
+  static boolean parseEpisodeBadgeMode(String[] args) {
+    boolean selected=args.length>1 && args[1].equals("--episode-badge");
+    if(selected && !(args.length==3 && args[2].equals("--frame")) && parseHealSourceSelection(args)==null)
+      throw new IllegalArgumentException("Episode badge requires --frame and optionally one exact heal-source pair");
+    return selected;
+  }
   static HealSourceSelection parseHealSourceSelection(String[] args) {
     String ref=null,serial=null;
     for(int i=0;i<args.length;i++) {
       String arg=args[i];
       if(!arg.startsWith("--heal-source"))continue;
-      if(i<3 || args.length!=5 || !args[1].equals("--episode-skills") || !args[2].equals("--frame"))
-        throw new IllegalArgumentException("Heal source selection requires --episode-skills --frame and exactly one ref/serial pair");
+      if(i<3 || args.length!=5 || !Set.of("--episode-skills","--episode-badge").contains(args[1]) || !args[2].equals("--frame"))
+        throw new IllegalArgumentException("Heal source selection requires --episode-skills/--episode-badge --frame and exactly one ref/serial pair");
       if(arg.startsWith("--heal-source-ref=") && ref==null)ref=arg.substring("--heal-source-ref=".length());
       else if(arg.startsWith("--heal-source-serial=") && serial==null)serial=arg.substring("--heal-source-serial=".length());
       else throw new IllegalArgumentException("Unknown or duplicate heal source argument");
@@ -414,9 +420,9 @@ public class InspectNativeInput {
       modalLimit=unsafe.getMessage();
     }
     String materials=episodeMaterialsOnly ? episodeMaterialSnapshot(base,scene) : "";
-    if(episodeBadgeOnly) materials=episodeHealSourceSnapshot(base,scene);
+    if(episodeBadgeOnly) materials=episodeHealSource==null?episodeHealSourceSnapshot(base,scene):episodeHealSourceSnapshot(base,scene,episodeHealSource);
     if(episodeFeverOnly) materials=episodeFeverSnapshot(base,scene);
-    if(episodeHealSource!=null) materials+=episodeHealSourceSnapshot(base,scene,episodeHealSource);
+    if(episodeHealSource!=null && !episodeBadgeOnly) materials+=episodeHealSourceSnapshot(base,scene,episodeHealSource);
     String exchange=episodeExchangeOnly ? episodeExchangeCaughtSnapshot(base,scene)+episodeExchangeReserveSnapshot(base,scene)+episodeExchangeUiSnapshot(base,scene) : "";
     if(!episodeOwnerStable(base,app,manager,current,currentControl,currentControlVptr,scene,control,controlVptr) ||
        !episodeCombatOwnerStable(base,model,modelControl,combat,combatControl) || !cppString(combat).equals(combatId) ||
@@ -2063,8 +2069,7 @@ public class InspectNativeInput {
     if(cdnCurrentOnly && args.length>4)throw new IllegalArgumentException("Unexpected CDN metadata arguments");
     fishingHookOnly=args.length>1 && args[1].equals("--fishing-hook");
     episodeTouchOnly=args.length>1 && args[1].equals("--episode-touch");
-    episodeBadgeOnly=args.length>1 && args[1].equals("--episode-badge");
-    if(episodeBadgeOnly && (args.length!=3 || !args[2].equals("--frame"))) throw new IllegalArgumentException("Episode badge requires only --frame");
+    episodeBadgeOnly=parseEpisodeBadgeMode(args);
     for(int arg=2;arg<args.length;arg++) if(args[arg].startsWith("--source-serial=") && !episodeTouchOnly)
       throw new IllegalArgumentException("Source selection requires --episode-touch");
     if(episodeTouchOnly) {

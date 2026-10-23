@@ -9,11 +9,16 @@ public class TestHealSourceSelection {
   public static void main(String[] ignored) {
     check(InspectNativeInput.parseHealSourceSelection(new String[]{"8701","--episode-badge","--frame"})==null);
     check(InspectNativeInput.parseHealSourceSelection(new String[]{"8701","--episode-skills","--frame"})==null);
+    check(InspectNativeInput.parseEpisodeBadgeMode(new String[]{"8701","--episode-badge","--frame"}));
+    check(!InspectNativeInput.parseEpisodeBadgeMode(new String[]{"8701","--episode-skills","--frame"}));
+    var fastBright=InspectNativeInput.parseHealSourceSelection(new String[]{"8701","--episode-badge","--frame","--heal-source-ref=C049","--heal-source-serial=1000018"});
+    check(fastBright.ref().equals("C049")&&fastBright.serial()==1000018L);
+    check(InspectNativeInput.parseEpisodeBadgeMode(new String[]{"8701","--episode-badge","--frame","--heal-source-ref=C049","--heal-source-serial=1000018"}));
     var bright=InspectNativeInput.parseHealSourceSelection(new String[]{"8701","--episode-skills","--frame","--heal-source-ref=C049","--heal-source-serial=1000018"});
     check(bright.ref().equals("C049")&&bright.serial()==1000018L);
     var tyltyl=InspectNativeInput.parseHealSourceSelection(new String[]{"8701","--episode-skills","--frame","--heal-source-serial=1000005","--heal-source-ref=C004"});
     check(tyltyl.ref().equals("C004")&&tyltyl.serial()==1000005L);
-    for(String mode:new String[]{"--episode-badge","--episode-touch","--cards"})
+    for(String mode:new String[]{"--episode-fever","--episode-touch","--cards"})
       refuse("8701",mode,"--frame","--heal-source-ref=C049","--heal-source-serial=1000018");
     refuse("8701","--episode-skills","--heal-source-ref=C049","--heal-source-serial=1000018");
     refuse("8701","--episode-skills","--frame","--heal-source-ref=C049");
@@ -26,6 +31,17 @@ public class TestHealSourceSelection {
     refuse("8701","--episode-skills","--frame","--heal-source-ref=C049","--heal-source-serial=1000018","extra");
     refuse("--heal-source-ref=C049","--episode-skills","--frame","extra","--heal-source-serial=1000018");
     refuse("8701","--episode-skills","--frame","--heal-source-ref=C049","--heal-source-bogus=1000018");
+    for(String[] args:new String[][]{{"8701","--episode-badge"},{"8701","--episode-badge","--touch"},
+      {"8701","--episode-badge","--frame","--source-serial=1000018"},
+      {"8701","--episode-badge","--frame","--heal-source-ref=C049"},
+      {"8701","--episode-badge","--frame","--heal-source-ref=C049","--heal-source-ref=C004"},
+      {"8701","--episode-badge","--frame","--heal-source-ref=C005","--heal-source-serial=1000018"},
+      {"8701","--episode-badge","--frame","--heal-source-ref=C049","--heal-source-serial=0"},
+      {"8701","--episode-badge","--frame","--heal-source-ref=C049","--heal-source-serial=4294967296"},
+      {"8701","--episode-badge","--frame","--heal-source-ref=C049","--heal-source-serial=1000018","extra"}}) {
+      try {InspectNativeInput.parseEpisodeBadgeMode(args);throw new AssertionError("Unsafe badge options accepted");}
+      catch(IllegalArgumentException expected) {}
+    }
     check(InspectNativeInput.parseHealSourceSelection(new String[]{"8701","--episode-skills","--frame","--heal-source-ref=C049","--heal-source-serial=4294967295"}).serial()==0xffffffffL);
     System.out.println("Heal source selection: closed refs, paired opt-in/frame-only CLI, low-word bounds and old default isolation passed; no native access.");
   }

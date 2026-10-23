@@ -1,7 +1,7 @@
 # Opt-in Bright healer qualification
 
-Host observer source only; compilation and native use remain pending with the
-runtime owner. This adds no APK code, native call, memory write or input action.
+Host observer opt-in; native use remains with the runtime owner. This adds no
+APK code, native call, memory write or input action.
 
 After the runtime owner qualifies the instrumented process and its existing
 JDWP forward, the exact host invocation is:
@@ -17,13 +17,13 @@ The output's selectedCombatId must independently establish CB0602. Selection
 does not claim that the healer is currently eligible or that healing occurred.
 
 Both options are mandatory together, unique, and accepted only after exactly
-`--episode-skills --frame`. References are closed to exact `C004` or `C049`;
+`--episode-skills --frame` or `--episode-badge --frame`. References are closed to exact `C004` or `C049`;
 the decimal serial must be positive, canonical, and at most4294967295 with high
 word0. This permits explicit selection of a known owned instance, never a ref
 scan or an arbitrary character class. The observer independently verifies that
 the exact serial-map actor has that exact ref before returning output.
 
-The existing `--episode-badge --frame` still uses C004/1000005 exactly. The
+The existing three-argument `--episode-badge --frame` still uses C004/1000005 exactly. The
 touch helper and `--episode-touch --source-serial` are unchanged. In particular,
 this opt-in does not authorize any Bright touch or relax C004 badge guards.
 
@@ -64,3 +64,42 @@ pending note. Actual healing remains unverified; see the companion
 bright-e6-native-trials-2026-10-23.md for both outcomes and the separate
 SetFeverLV null-visibility crash. Client recovered to Village23461; rebind
 JDWP8701 before another observer. No APK rebuild or patch occurred.
+
+## Faster explicit Bright snapshot
+
+The existing badge-only observer now accepts the same paired opt-in selection:
+
+```text
+java -cp local/verification/bright-fast-host InspectNativeInput 8701 --episode-badge --frame --heal-source-ref=C049 --heal-source-serial=1000018
+```
+
+This takes exactly one selected-source snapshot through the same serial/ref,
+concrete Hunter owner, living camp0, unique group/Rage and stability checks.
+It skips `episodeMaterialSnapshot` and its all-actor detailed skills, rather than
+weakening source qualification. The three-argument form follows its original
+C004/1000005 wrapper unchanged; no Bright serial or reference becomes a default.
+The C004-specific skill-icon badge-child path and all touch helpers remain
+unchanged. Bright output names the selected serial/ref and grants no input
+authorization. Existing scene/input actor diagnostics still run; speed must
+be measured natively rather than inferred from the smaller call path.
+
+Exact mode parsing refuses partial/duplicate pairs, missing frame, extra
+options, unknown refs, invalid serials and touch-source arguments. Compilation
+and pure CLI tests pass in the separate ignored
+`local/verification/bright-fast-host` directory; existing fever pure tests also
+pass. This author's host validation never attaches to the VM. The runtime
+owner must independently qualify the actual paused stage and test latency.
+
+## Root fast-mode native verification
+
+With --episode-badge --frame and the closed C049/1000018 pair, paused CB0602
+on client23967 qualified Bright HP1696.800049, friendly Rage6.219475 and
+concrete source ownership.506reads/1.679391s versus3416reads/9.969624s for the
+earlier all-actor skills snapshot. Ignored evidence:
+local/verification/bright-fast-held-before-20261023.txt. Observer exited
+normally before any UI action. This proves selected-source observation,
+not healing or a bench position. Bright was already front; the attempted
+normal Karl drag left Bright front and moved Karl on the bench, so exchange
+success is not claimed. No subsequent heal contact was sent.24 attack taps
+then native LOSS, third option returned to E6map without crash; all three
+saved game objects exact. C004 touch helpers were not used or changed.

@@ -1,3 +1,27 @@
+## Fast Bright observer and broader fever dependency candidate (2026-10-23)
+
+GoalACTIVE. Runtimeunchanged: client23967/server40988/session58280,
+current-e6-fever-compatible-progression/140groups/stamp1634691/same+15APK.
+FreshsafeE6map/noactivebattle/helper. All3gamesEXACT to pre-bright-held backup.
+
+Newclosedpairedselection works with --episode-badge --frame aswellasfullskills;
+C004default/touchhelpers unchanged. RootnativeFastBrightqualified C049/1000018,
+HP1696.800049/SP6.219475/concreteowner+friendlyRage.506reads/1.679391s versus
+priorallactor3416reads/9.969624s. SourcealreadyFRONT; supportskillrefusesfront.
+Resume+normalKarldrag movedKarltoleftbench, Brightstayedfront; noexchangeclaim.
+Nohealcontactsent,24promptattacksthen nativeLOSS/thirdoption→safeE6map/nocrash.
+Capturedignored local/verification/bright-fast-held-before-20261023.txt.
+
+Server699c862 adds INACTIVE current-restoration-fever170/stamp1634692:
+exact169E7/Guild/Mirage/materialunion plusoriginalCFE_PUB/33provenancepins.
+Existingprofiles/settings/references preserved; currentlivecompatiblepolicy
+is NOT replaced by thisolder169policy union. Do not activate without explicit
+compatibility review of currentownedmaterialranks/skills/progression.
+Purecreate-only helper+corruption/freshness tests and actualcompiledHTTP PASS;
+root explicit build+newscript alsoPASS. E10candidatewouldlack namedM034/35/36
+originalpacks in allowedprimaryinputs; addingcutinsonlycannotclaimcomplete.
+NoAPKpatch/build/install/release, original/DD/phone/Docker/Collector untouched.
+
 ## Native original fever restoration check (2026-10-23)
 
 Goal ACTIVE, safe E6 map/Story04 uncleared, client23967/server40988/session58280,
