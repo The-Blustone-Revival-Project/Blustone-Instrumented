@@ -1,3 +1,23 @@
+## Latest continuation: native input resumed and bounded item cache (2026-10-23)
+
+Human explicitly RESUMED exclusive BlueStacks control; older Escape/input hold
+notes below are historical. Root operated only instrumentedpackage, verified
+Snowfield10nativeWIN/131stars and Gym/ownedleader selection/restoration.
+Current safe lowerVillage, noactiveordinary/Search/Arena. Same+15APK unchanged,
+Serverlistener62012/current-e6-materials/139groups/stamp1634683.
+
+Host javac requires BOTH tools/NativeCampaignMarkers.java and
+tools/InspectNativeInput.java; classes local/verification/host-java. Current
+client4606 via explicitlyqualifiedADB127.0.0.1:5555/JDWP8701. Read-only
+--item-references --frame exited0, qualifiedCSRItemInfo count22/VIP1ICON_VE/
+RP1IT_CO/DUMMYmissing, nativegettersfalse/snapshot0.738784s. Retained ignored
+local/verification/item-references-20261023.txt; no helperleft running.
+Metadataisnotblankrewardcause; sprite/mesh/residency/scale remainsunresolved.
+Server docs/vip-thumbnail-native-boundary-2026-10-23.md owns sourceevidence.
+
+No clientsource/nativepatch/APKbuild/install/release or original/DataDumpchange.
+No Docker/Collector/inference use. Normal promptbattleclickinstruction remains.
+
 ## Latest continuation: Boutique BLX audit and Guild reads (2026-10-13)
 
 Read-only Boutique UInt32 guard placement audit previously missed Thumb BLX
