@@ -1,3 +1,49 @@
+## Six additional original skill-graph adoptions (2026-10-23)
+
+Goal ACTIVE. Previous turn made progress in2835409(Mail254PASS). New opt-in
+BLUSTONE_MATERIAL_SKILL_PROFILE=episode-indexed-expanded-projection preserves
+all8 existing material donors EXACT and adds6:021Rebecca index137,024Riko136,
+039Gullveig10,041Edward140,052Windblade134,056Genovia135. Sourceidentity/art/
+role/element and ordinary Ragecost agree.020Sienna staysNEUTRAL (onlygraph3vs
+ordinarycost4); reject039index138cost3 and041index37cost4. DonorchoiceisLOCAL,
+not original ordinary balance. Rawrankgates/cost/cooldown/critical/effectorder/
+selectors/floatingcoefficients/timings retained; growth/displaybindings missing.
+
+NONEhas originaltype3; empty3 retained, and missing5 for021/041 stays empty.
+All23otherrefs exact(including22priorlive +020). No stat/birth/ownedlevel/book/
+equipment/acquisition/price/recruitment policy changes. New6 stats stayneutral;
+existingselectivebirth covers8only; disposablepaid052stillLOCALrank1samefee.
+14materialgraphs nowavailable, not14fullyrecoveredordinaryskilltables.
+
+Read Server docs/material-expanded-skills-workflow-2026-10-23.md + nativeboundary.
+Ordinary SetCard G87c466 and Episode ParseActor Gb1c130 bothcall SRSKILL_INFO
+Gf219ac. Server sendsraw052type5twoeffects:HPintervalnegative6 convertsBEFORE
+nesting into33/32main; totalmain3/nested0.056non-HPtype5 becomesnested3 under
+stat17; main1/nested1. DoNOTpre-expand/flatten serverrawinputs. Sharedparser
+sourceproof isNOTnativeordinaryactivation/damage/healproof.
+
+Inactive current-e10-expanded-skills-progression changesONLYskillmode versus
+compatible210. Same210groups/stamp1634695 (sameCDNbytes), sameallotherpolicies.
+Reference-cache refresh stillnativePENDING. Goldenartmanifest+Python verify24
+originalbody/Q/EFT/SNDpins, exactEOF/provenance/selection and30AT->S2->I2 icons.
+Python includedinpuretest. Source/compiled/P384-AESHTTP focusedPASS, old8mode
+regressionsPASS, fullnpmtestPASS256programs(254+2), all11profileprogramsPASS.
+Logs local/material-expanded-{focused,profile-tests,full-tests}-20261023.log.
+Independent source/art review found no concretecode issue.
+
+RootPRIVATEcurrent-save copies under old/new210source-module modes preserve
+ALL3actualschema14game objects and sourcefile bytes; NOcurrentgameowns these6.
+Snapshots/summaries retainedignored local/private. Important:opt-inchangesGLOBAL
+references; unrelatedsave alreadyowningnew6wouldgainnewgraphs. Reverifybefore
+activation; no per-accountmigration guard. HTTPfixture3earnedgames/paidBright3/
+legacyMowgli1 retainedexact; matchingold/newpaid052response+postdrawstateexact.
+
+No liveprofile/server/client activation/RPC/input/claim/saveedit/observer/battle/
+cast/APKpatch/build/install/release/original/DD/phone/Docker/collector/inference.
+Lastliveprobeprior170/stamp1634693/listener42732; nofreshUI/PID/battleclaim.
+BlueStacks inputheldafterprior desktopcaptures; no newrestoremessage. Native
+compatible210/expandedicons/formulas/skills and E6S04 remainpending. GoalACTIVE.
+
 ## Atomic Mail state and exact callback contracts (2026-10-23)
 
 Goal ACTIVE. Previous goalturn made progress inaa0efb1 (atomic Supply252PASS).
