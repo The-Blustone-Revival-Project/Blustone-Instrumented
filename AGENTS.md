@@ -1,3 +1,42 @@
+## Current continuation (2026-10-23): native Rupee exchange verified
+
+Goal ACTIVE. Safe lower Village, no battle/helper. Server listener54288,
+exec session15153, client4192, unchanged +15 APK. Active compatible170 profile,
+stamp1634693, local team curve, resource snapshot, recruit049. Restart from
+Server checkout with the explicit shop options preserved:
+
+```powershell
+$env:BLUSTONE_RUPEE_SHOP_MODE='archive-2021-base-only'
+$env:BLUSTONE_RUPEE_SHOP_DAILY_LIMIT='3'
+node scripts/start-local.mjs --profile current-restoration-fever-compatible-progression --team-level-profile local-linear-100 --resource-snapshot --recruit-card 049 --state-file var/state.json
+```
+
+One native five-Manda purchase completed: quote, confirmation, Successful
+Purchase coin5000, updated wallet and quota all rendered. Gold13700→18700,
+green239640→239635, paid240000 unchanged. Daily remaining3/3→2/3; stored
+Rupee counter manda1/coupon0/day20749. No stock was granted. One empty coupon
+contact displayed the original insufficient-ticket message with no new POST.
+Exactly ONE purchase request was sent. Schema1→8 captures the account journal.
+
+Cold server/client restart loaded schema8; native popup still showed18700,
+Manda479635, remaining2/3 and coupon0. Zero packages and zero new purchases on
+that reload. All three games were exact across reload; against prepurchase,
+only main gold/free Manda and normal AP/BP clocks changed. All other main
+fields, both peer games and their counters were exact. Private pre/post
+snapshots retained under local/private/native-20261023-20261023T001531493.
+
+The2021 quote5000/5 is historical. IDs, shared cap3, free-first settlement,
+UTC reset and no-jackpot policy remain LOCAL; funded coupons/original producer
+and jackpot/VIP variants remain unverified. Pure/state/external compiled
+ECDH+encrypted fixture checks passed. No transaction code was edited. See
+Server docs/rupee-shop-native-validation-2026-10-23.md and older source docs.
+
+Guild read-only screens remain verified under LOCAL teamLevel16, not a recovered
+team curve. E6S04, Bright heal, exact fever-rank2 and broader Mirage gameplay
+remain pending. JDWP8701 is stale; rebind before use. Resource snapshots are
+immutable per app; restart after resource changes. No APK patch/build/install/
+release, original/DataDump/phone/Docker/collector/inference changes this turn.
+
 ## Current continuation (2026-10-23): native Guild entry
 
 Goal ACTIVE. Safe lower Village, no battle or helper. Listener 21292 / exec
