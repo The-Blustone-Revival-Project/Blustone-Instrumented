@@ -1,3 +1,14 @@
+## Fishing End wire correction (2026-10-23)
+
+Original ARM register audit proved item/card additions belong directly under
+ret_data, NOT user. Both ordinary and tutorial producers corrected; oldtext
+and HTTP/state/practice tests corrected. See Server
+ docs/fishing-end-item-parent-correction-2026-10-23.md for exactfp/r8provenance,
+optionalquestfieldnull/empty behavior, andtype17soldfish/FS001_Vpopup closure.
+No neutralquestfieldsrequired; no quest/wallet/grant changes. Both focused
+fishing suites/build passed. Runtime remains UNCHANGED/unactivated; native
+settlement stillPENDING/taskbarrestore requested. NoAPKbuild/install/release.
+
 ## Current continuation (2026-10-23): fishing first-catch provider host-verified
 
 Goal ACTIVE. New explicit LOCAL fishing tutorial provider is IMPLEMENTED and

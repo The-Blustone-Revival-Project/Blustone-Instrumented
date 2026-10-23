@@ -1,3 +1,5 @@
+> Correction2026-10-23: ARM register provenance proves item/card additions are directly under ret_data, outside user. See sibling Server docs/fishing-end-item-parent-correction-2026-10-23.md.
+
 # Fishing cache repair and practice-fish thumbnail boundary
 
 Source-only investigation of original ARM ELF SHA256
@@ -50,13 +52,13 @@ path Gb2ee34–Gb2ee56 replaces all three counts absolutely.
 
 These consumers permit a possible **LOCAL partial fish-count/record repair**
 receipt for an already committed, exact owner/log outcome. It would retain
-only that log's true fish/grade/length, omit additive user.item/card and other
+only that log's true fish/grade/length, omit additive ret_data.item/card and other
 progression changes, use consumed_inst_list:[], and attach a no-economic
 sell subreceipt with item:[] and one complete **CURRENT** owner count row.
 No sale, currency or stock settlement is performed by constructing this
 projection. The transient AddInven+1 is then replaced by authoritative counts.
 
-`user.item` is not mandatory: its null/nonempty guard starts at Gb2a9c6;
+`ret_data.item` is not mandatory: its null/nonempty guard starts at Gb2a9c6;
 null or[] skips AddItem. Do not send the original positive `added` receipt or
 original bait/removal deltas again. ParseSell initializes model+0x80 sale gain
 to0; missing/null user.gold skips the absolute wallet update and delta
