@@ -96,9 +96,41 @@ The server save SHA256 was exact before/after. No battle was started for that
 negative control. The retained ignored log is
 `local/verification/battle-controls-village.log`.
 
-Positive paused-Episode HUD traversal, native mode classification, actual mode
-transition and a manual heal remain pending. Windows activation failed twice
-after fresh selection before that next step; game input was held. The negative
-control and pure tests do not establish live DASH selection or healing.
-No server/private-save edit, original/DataDump/phone change, Docker/collector
-operation, APK rebuild/install or instrumented release occurred.
+## Subsequent positive paused Episode observation
+
+After Windows restoration, native CB0602 was entered and normally paused.
+The new reader verified the full actual FC component, selected UI_BATTLE,
+attachment chain and both control branches. All ancestors through BATTLE_ROOT
+were effective/local0/0; AUTO_TOGGLE and AUTO_LOCK were both1/1. Their children
+were ALL1/1, DASH1/1, OFF1/0 and LOCK1/0. The correct result was
+**ANCESTOR_HIDDEN / setting unavailable**, not an inferred OFF or DASH mode.
+This positive traversal used1121 reads/4820bytes and3.243602seconds. It is a
+paused diagnostic, not a measured fast unpaused input loop.
+
+The recovered producer explains the observation: Episode.InitBeforeOpen calls
+EnableIngameUIState(2) at Gb23da4–Gb23da6, leaving the timer enabled while
+hiding AUTO, lock and speed parents. The FC default0x16 and Mirage's initializer
+are separate; this result must not be generalized to Mirage. The exact source
+is added to the linked control report. No missing artwork or forced visibility
+fix is justified. The local OFF child alone does not prove stored AI mode.
+
+A separate paused selected-healer read verified living Bright/C049 serial
+1000018 with HP1720 and group Rage2.609351; current front Nene was601.408020.
+That snapshot took1.773802seconds. It does not prove an input-time eligible
+healing bubble under pause. After resume, a Captain swap was visible, but a
+Karl skill contact did not establish activation and no heal was verified.
+The attempt was lost. Input gaps remained too long; do not repeat that pacing
+or report this as successful manual skill control. Prepare the exact next
+action before resuming and keep analysis/tool-request overhead minimal during
+an unpaused fight; pause again before any source or log inspection.
+
+The third loss-dialogue option returned safely to the E6 map. Story4 remains
+uncleared. All three saved games and all account fields were exact against the
+pretrial backup, including the older abandoned Mirage journal. Retained ignored
+logs are `local/verification/battle-controls-episode-paused.log` and
+`local/verification/episode-controls-bright-paused.log`; the paused screenshot
+is in Server's `local/native-validation-20261023/episode-controls/`.
+
+No native DASH selection or manual heal is proved. No host-authenticated live
+gameplay request, private-save edit, original/DataDump/phone change,
+Docker/collector operation, APK rebuild/install or instrumented release occurred.
