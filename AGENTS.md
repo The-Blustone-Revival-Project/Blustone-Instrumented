@@ -1,3 +1,33 @@
+## Current constraint (2026-10-23): public Mirage policy verified; native input held
+
+Goal ACTIVE. User restored BlueStacks, but fresh selection/activation plus one
+retry still returned "failed to activate captured window". The refreshed
+capture showed desktop wallpaper, not game pixels. No game input was sent.
+Do not reuse coordinates or activate Mirage until a usable fresh game screen
+is available. Last verified lower Village; no battle/helper was started.
+Listener54288 on8080 remains live; current Rupee/LOCALteam/snapshot options
+below remain unchanged. Mirage is NOT enabled and no live run was enrolled.
+
+Server commit2d09574 publishes config/policies/mirage-local-zero-reward.json,
+docs/mirage-local-zero-reward-setup-2026-10-23.md and the repeatable compiled
+coexistence test. Root independently ran npm run test:mirage-public-policy:
+PASS (including build). Three disposable accounts exercise real dummy Rupee
+purchase/schema8 -> Mirage schema12, exact counter retention, duplicate-family
+enrollment, three zero-gold End/Reward replays, disabled holds, dead/crash
+abandonment and final owned-HP release. Supplied End packets are NOT native
+combat proof. The public recipe stays opt-in and LOCAL authored content.
+
+Earlier PRIVATE COPY enrollment captured5families and reopened schema12 with
+exact Rupee journal; original live file stayed byte-exact. Native enrollment,
+party UI, combat and Retry warning/owner gate remain unverified on this recipe.
+Source binding: TU37 -> n_01_10 (Snowfield10), whose actual save has all3flags;
+not literal mission37 or helptext27. Prefer fresh Search -> red NPC0023 ->
+explicit third Mirage choice, never guessed house coordinates. See Instrumented
+docs/mirage-village-entry-binding-2026-10-23.md (b9a6711).
+Pre-native backup: local/private/native-20261023-20261023T001531493/
+pre-mirage-native-141854.json. No APK change/build/install/release, active-server
+restart, private live mutation, original/DataDump/phone/Docker/collector change.
+
 ## Current continuation (2026-10-23): native Rupee exchange verified
 
 Goal ACTIVE. Safe lower Village, no battle/helper. Server listener54288,
