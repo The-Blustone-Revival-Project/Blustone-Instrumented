@@ -1,3 +1,48 @@
+## Nine later material skill graphs (2026-10-23)
+
+Goal ACTIVE. Previous turn made progress inc24e9c9(E11..18 original280batch).
+Newoptin BLUSTONE_MATERIAL_SKILL_PROFILE=episode-indexed-later-projection keeps
+old14 donors EXACT +9 new:008Akasha87/019Balian84/023Hermes61/028Octavia78/
+043Papillon76/046Harley39/057Pansy117/064Geranium43/068Selene46.23total.
+Exactbaseart/actor/role/element/Ragecost verified; NOTordinaryfinalmagnitudes.
+035Joy hasNOgraph;071Anemone ONLYsource38role1Offense vsordinarycatalogue
+Defense2 -> EXCLUDE, don'tretunerole. C008B/C028B/C068A variants notmerged.
+
+Pansy117 EVCB0301_C057 chosenwhole:slot2stat21attackban+slot5teamblock align
+ordinarysymbolicmechanics morecloselythan116workarounds; cooldown5000retained.
+No partialmerge. All9missingtype3 stayempty; only046/057/068 have5, othersempty5.
+All31otherrefs(includingold14) exact. Sourcecoefficients/rankgates/selectors/
+timing/critical retained. Localserials/growth0/display/cutin limits unchanged.
+NOnewstats/birth/grants/equipment/book/acquisition/recruitment policy. Actual
+paid008before/afterreply+postdrawstate identical(rank1samefeeunderoldpolicy).
+
+Read Server docs/later-material-skills-workflow-2026-10-23.md and nativeboundary.
+Native rawversusnormalizedfields matter:stat22Rage callsAddSkillPoint usingraw
+magnitude, not normalizedcoefficient*reference. refselector10=GetCriticalBonus,
+NOTRageconstant. Stat20positive/rawguard excludesMonsterGroupID thenHunter
+switchcontrol.046stat17+effect6/stat14interval0 nestsas4; donotpreflatten.
+Noeffect7/shield/resurrection row exists in selected9. Ordinaryexecution pending.
+Sharedvalidatorrefactor retainsoldsixAPI/ordering/errorstrings, frozen donors/
+pinnedinput/defensivecopies andold8/14 regressions PASS. Goldenmanifest36original
+body/Q/EFT/SNDpins+45 AT->S2->I2chains PASS, including explicitread-onlyDD match.
+
+Inactive current-later-episodes-skills differsONLYskillmode fromcurrent-later-
+episodes. Same280groups/stamp1634696/policies. Native referencecacherefresh not
+verified. Build/focuspure-art/P384-AESHTTP/oldmodes PASS; fullnpmtestPASS261
+programs(259+2), all13profileprogramsPASS. Logs local/later-material-skills-
+{focused,profile-tests,full-tests}-20261023.log. Read-onlyreview no concreteissue.
+
+PRIVATEcurrent-save old/newcopies preserveALL3actualschema14games andfiles;
+live source bytes exact. FinalPansy117 restorechecked23donors andNOownednew9.
+Private snapshots/summaries ignored local/private. Other saves owningnew9 would
+receiveGLOBALreferencechanges; reverify independently beforeactivation.
+
+Freshread-onlyBlueStacksselection/captureagainshowedDESKTOP,notgame; noinputs.
+No liveactivation/RPC/claim/saveedit/restart/observer/battle/cast/APKpatch/build/
+install/release/original/DD/phone/Docker/collector/inference. LastliveCDNprobe
+prior170/stamp1634693/listener42732, nofreshPID/battleassertion. Native280cache/
+icons/formulas/skills/damage/heal/retreat/Rage and E6S04 remainpending. GoalACTIVE.
+
 ## E11–E18 batch original-resource continuation (2026-10-23)
 
 Goal ACTIVE. Previous turn made progress inf3b1ae3(character259PASS). Newinactive
