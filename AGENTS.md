@@ -1,32 +1,50 @@
-## Current constraint (2026-10-23): public Mirage policy verified; native input held
+## Current continuation (2026-10-23): native Mirage trial and safe release
 
-Goal ACTIVE. User restored BlueStacks, but fresh selection/activation plus one
-retry still returned "failed to activate captured window". The refreshed
-capture showed desktop wallpaper, not game pixels. No game input was sent.
-Do not reuse coordinates or activate Mirage until a usable fresh game screen
-is available. Last verified lower Village; no battle/helper was started.
-Listener54288 on8080 remains live; current Rupee/LOCALteam/snapshot options
-below remain unchanged. Mirage is NOT enabled and no live run was enrolled.
+Goal ACTIVE. Safe upper Village, no battle/helper. User explicitly handed
+exclusive control back after taking over stair1; Codex resumed. Server30580/
+exec32101, native client4750, unchanged +15APK. Compatible170/stamp1634693,
+LOCALteam100-EXP curve, snapshots, Rupee2021cap3 and recruit049 retained.
+Mirage now explicitly ENABLED with local-configured and public policy JSON
+config/policies/mirage-local-zero-reward.json. Preserve these plus prior Rupee
+options on restart. The captured single attempt is abandoned, not completed;
+no automatic new enrollment. Do not change its captured recipe or edit the save.
 
-Server commit2d09574 publishes config/policies/mirage-local-zero-reward.json,
-docs/mirage-local-zero-reward-setup-2026-10-23.md and the repeatable compiled
-coexistence test. Root independently ran npm run test:mirage-public-policy:
-PASS (including build). Three disposable accounts exercise real dummy Rupee
-purchase/schema8 -> Mirage schema12, exact counter retention, duplicate-family
-enrollment, three zero-gold End/Reward replays, disabled holds, dead/crash
-abandonment and final owned-HP release. Supplied End packets are NOT native
-combat proof. The public recipe stays opt-in and LOCAL authored content.
+Native verified Search -> redNPC thirdMiragechoice -> Floor1, separate five-
+Hunter formation/RegisterDeck, real combat and carry, two zero-gold claims,
+third-stair LOSS, Retry warning/Yes -> GetNextFloor -> reset/stay GetInfo ->
+roster release -> Village. Stair1 was HUMAN-ASSISTED after Codex reacted too
+slowly; stair2 Codex WIN; stair3 Codex LOSS. No Codex manual-heal claim.
+After abandon: entry/deck empty, state0, abandonedtrue, claims[1,2], highest0,
+all11ownedHP1000. Native map labels all3 COMPLETE despite failure: inactive
+state0+retainedstair3 presentation is NOT third-win/floor-completion proof.
+See Server docs/mirage-native-validation-2026-10-23.md and setup doc.
 
-Earlier PRIVATE COPY enrollment captured5families and reopened schema12 with
-exact Rupee journal; original live file stayed byte-exact. Native enrollment,
-party UI, combat and Retry warning/owner gate remain unverified on this recipe.
-Source binding: TU37 -> n_01_10 (Snowfield10), whose actual save has all3flags;
-not literal mission37 or helptext27. Prefer fresh Search -> red NPC0023 ->
-explicit third Mirage choice, never guessed house coordinates. See Instrumented
-docs/mirage-village-entry-binding-2026-10-23.md (b9a6711).
-Pre-native backup: local/private/native-20261023-20261023T001531493/
-pre-mirage-native-141854.json. No APK change/build/install/release, active-server
-restart, private live mutation, original/DataDump/phone/Docker/collector change.
+Post-release all main gameplay EXACT except AP/BP clocks; both peer games
+EXACT. Rupee journal EXACT; OTP/login time changed at deliberate restart.
+Wallet18700/free239635/paid240000 unchanged. New schema12 abandoned journal
+is retained. Evidence local/native-validation-20261023/mirage/; private backups
+local/private/native-20261023-20261023T001531493/pre-mirage-restored-20261023T144814.json
+and post-mirage-abandon.json. Trace local/native-mirage-20261023-server.log.
+No APK patch/build/install/release, DD/original/phone/Docker/collector change.
+
+**Combat control correction — explicit user instruction, 2026-10-23:**
+React VERY QUICKLY after battle entry: spam ordinary attacks, activate timely
+abilities and switch endangered heroes. AUTO alone is not sufficient. Prepare
+combat controls/skill costs/swap plan BEFORE Begin; do no source/log analysis
+while an unpaused fight is running. Use short attack bursts with immediate
+fresh HUD checks; stop at result/stage change. Do not start another fight
+until the AUTO/manual-skill toggle and healing inputs are understood. Root's
+third-stair heal plan did not activate; manual Captain-for-Tyltyl swap did.
+Outside-input warnings during stair1 were the human taking control, not an
+emulator mystery. Honor control handoffs and do not claim their actions.
+
+New source progress while UI was unavailable: Instrumented commit e71ab29,
+docs/fishing-cache-repair-boundary-2026-10-23.md closes actual PLC001/distance
+selectors1..3 and thumbnail_id+"_V" (FS001/FS001_V original spritepair).
+A partial End cache-repair seam exists, but cannot repair general item/bait
+inventory and has consume/race/record limits; no implementation/native claim.
+Server9a02b00 documents Tyltyl bag Lv1/10 HP0->7/displaycost487, exactDDidx598;
+full equipment rows/materials/discount remain unknown, no activation.
 
 ## Current continuation (2026-10-23): native Rupee exchange verified
 
