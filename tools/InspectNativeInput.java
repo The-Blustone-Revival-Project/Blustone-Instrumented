@@ -42,6 +42,7 @@ public class InspectNativeInput {
   static boolean touchLayoutOnly;
   static boolean episodeBadgeOnly;
   static boolean episodeFeverOnly;
+  static boolean episodeControlsOnly;
   static boolean arenaConfirmOnly;
   static boolean episodeTouchOnly;
   static int episodeTouchSkipEvents;
@@ -358,6 +359,31 @@ public class InspectNativeInput {
       u32(modelControl)==base+0x21532bcL && (int)u32(modelControl+4)>=0 && u32(modelControl+0xc)==model &&
       u32(model+0x24)==combat && u32(model+0x28)==combatControl &&
       u32(combatControl)==base+0x2153248L && (int)u32(combatControl+4)>=0 && combat==combatControl+0xc;
+  }
+  /** UI-only observer: no combat-model, actor, modal or background traversal.
+   * Read-only evidence of panel state; never authorizes an input. */
+  static void inspectEpisodeControls(long base) throws Exception {
+    long app=u32(base+0x21ef1e0L);
+    if(app==0 || (app&3)!=0)throw new IllegalStateException("Episode controls app unavailable");
+    long manager=u32(app+8);
+    if(manager==0 || (manager&3)!=0 || u32(manager)!=base+0x21735a4L)
+      throw new IllegalStateException("Episode controls scene manager unproved");
+    long current=u32(manager+0x34),currentControl=u32(manager+0x38);
+    if(current==0 || currentControl==0 || (current&3)!=0 || (currentControl&3)!=0 ||
+       u32(current)!=base+0x216f90cL || (int)u32(currentControl+4)<0 || u32(current+0x660)!=7)
+      throw new IllegalStateException("Episode controls requires owned CSRSceneGame mode7; no UI reads");
+    long currentControlVptr=u32(currentControl),game=u32(current+0x658),control=u32(current+0x65c);
+    if(game==0 || control==0 || (game&3)!=0 || (control&3)!=0 ||
+       u32(game)!=base+0x215352cL || u32(control)!=base+0x216faa4L ||
+       (int)u32(control+4)<0 || game!=control+0x10)
+      throw new IllegalStateException("Episode controls child emplace owner unproved or expired");
+    long controlVptr=u32(control),pause=u32(game+0x140),gameMode=u32(game+0x2ec);
+    String snapshot=episodeControlsSnapshot(base,game);
+    if(!episodeOwnerStable(base,app,manager,current,currentControl,currentControlVptr,game,control,controlVptr) ||
+       u32(game+0x140)!=pause || u32(game+0x2ec)!=gameMode)
+      throw new IllegalStateException("Episode controls owner/fields changed; discard snapshot");
+    System.out.printf("Episode controls sceneELFvptr=215352c gameMode2ec=%d pause140=%x combatModelRead=false actorsRead=false nativeGettersCalled=false inputAuthorization=none%n",gameMode,pause);
+    System.out.print(snapshot);
   }
   static void inspectEpisodeScene(long base) throws Exception {
     // Live default observer and original CSRSceneGame.OnInit case7 prove wrapper
@@ -962,6 +988,101 @@ public class InspectNativeInput {
     for(var n:names.entrySet()) if(!cppString(n.getKey()+0x258,64).equals(n.getValue())) throw new IllegalStateException("Exchange UI final name changed");
     result.append("Episode exchange UI limits: typed shared-node links/repeated base consumers only; concrete child allocation and drop eligibility unproved.\n");
     return result.toString();
+  }
+  static String episodeControlsSnapshot(long base,long game) throws Exception {
+    Map<Long,Long> reads=new LinkedHashMap<>();Map<Long,String> names=new LinkedHashMap<>(),types=uiTypes(base);
+    // Episode InitBeforeOpen Gb23cd2 selects FC, not normal UIStage.
+    // make_shared G92816e/170/174: control+10, allocationa0.
+    long component=exchangeObserved(game+0x20c,reads),componentControl=exchangeObserved(game+0x210,reads);
+    if(component==0 || componentControl==0 || (component&3)!=0 || (componentControl&3)!=0 ||
+       component!=componentControl+0x10 || exchangeObserved(component,reads)!=base+0x214828cL ||
+       exchangeObserved(componentControl,reads)!=base+0x2147030L || (int)exchangeObserved(componentControl+4,reads)<0)
+      throw new IllegalStateException("Episode controls exact FC component owner unavailable");
+    // FC constructor G951dca retains CMDrawable UI_BATTLE; emplace G952f40.
+    long fragment=exchangeObserved(component+0x44,reads),fragmentControl=exchangeObserved(component+0x48,reads);
+    if(fragment==0 || fragmentControl==0 || (fragment&3)!=0 || (fragmentControl&3)!=0 ||
+       fragment!=fragmentControl+0x10 || exchangeObserved(fragment,reads)!=base+0x2136948L ||
+       exchangeObserved(fragmentControl,reads)!=base+0x2136a10L || (int)exchangeObserved(fragmentControl+4,reads)<0)
+      throw new IllegalStateException("Episode controls exact UI_BATTLE emplace owner unavailable");
+    return episodeControlsUiSnapshot(base,game,fragment,fragmentControl,"UI_BATTLE",reads,names,types);
+  }
+  /** Match an owned selected fragment to the actual game root by parent pairs
+   * and unique child membership, not by concatenating a static XML path. */
+  static String episodeControlsUiSnapshot(long base,long game,long fragment,long fragmentControl,String expectedFragmentName,
+      Map<Long,Long> reads,Map<Long,String> names,Map<Long,String> types) throws Exception {
+    long root=exchangeObserved(game+0x2c,reads),rootControl=exchangeObserved(game+0x30,reads);
+    if(!exchangeUiName(base,root,rootControl,types,reads,names).equals("SR_INGAME/INGAME_NM") ||
+       !exchangeUiName(base,fragment,fragmentControl,types,reads,names).equals(expectedFragmentName))
+      throw new IllegalStateException("Episode controls selected view/fragment name unproved");
+    List<long[]> reverse=new ArrayList<>();Set<Long> seen=new HashSet<>();
+    long object=fragment,control=fragmentControl;
+    while(true) {
+      if(reverse.size()>=12 || !seen.add(object))
+        throw new IllegalStateException("Episode controls ancestry bound/cycle");
+      String name=exchangeUiName(base,object,control,types,reads,names);
+      reverse.add(new long[]{object,control});
+      if(object==root) {
+        if(control!=rootControl)throw new IllegalStateException("Episode controls root owner mismatch");
+        break;
+      }
+      long parent=exchangeObserved(object+0x54,reads),parentControl=exchangeObserved(object+0x58,reads);
+      exchangeUiName(base,parent,parentControl,types,reads,names);
+      long[] member=exchangeUiChild(base,parent,name,types,reads,names);
+      if(member[0]!=object || member[1]!=control)
+        throw new IllegalStateException("Episode controls unique parent membership mismatch");
+      object=parent;control=parentControl;
+    }
+    Collections.reverse(reverse);
+    List<NativeBattleControls.Visibility> ancestors=new ArrayList<>(),panels=new ArrayList<>();
+    StringBuilder result=new StringBuilder();
+    for(long[] pair:reverse) {
+      var visibility=episodeControlVisibility(pair[0],names.get(pair[0]),reads);
+      ancestors.add(visibility);result.append("Episode controls ancestor="+visibility+"\n");
+    }
+    // CSRFCUITimer retains/attaches BATTLE_ROOT to UI_BATTLE at G956f8c.
+    long[] battle=exchangeUiChild(base,fragment,"BATTLE_ROOT",types,reads,names);
+    if(exchangeObserved(battle[0]+0x54,reads)!=fragment || exchangeObserved(battle[0]+0x58,reads)!=fragmentControl)
+      throw new IllegalStateException("Episode controls BATTLE_ROOT parent mismatch");
+    var battleVisibility=episodeControlVisibility(battle[0],"BATTLE_ROOT",reads);
+    ancestors.add(battleVisibility);result.append("Episode controls ancestor="+battleVisibility+"\n");
+    List<NativeBattleControls.Visibility> lockAncestors=new ArrayList<>(ancestors);
+    long[] toggle=exchangeUiChild(base,battle[0],"AUTO_TOGGLE",types,reads,names);
+    if(exchangeObserved(toggle[0]+0x54,reads)!=battle[0] || exchangeObserved(toggle[0]+0x58,reads)!=battle[1])
+      throw new IllegalStateException("Episode controls toggle parent mismatch");
+    var toggleVisibility=episodeControlVisibility(toggle[0],"AUTO_TOGGLE",reads);
+    ancestors.add(toggleVisibility);result.append("Episode controls ancestor="+toggleVisibility+"\n");
+    for(String key:NativeBattleControls.NORMAL_PANEL_NAMES) {
+      long[] panel=exchangeUiChild(base,toggle[0],key,types,reads,names);
+      if(exchangeObserved(panel[0]+0x54,reads)!=toggle[0] || exchangeObserved(panel[0]+0x58,reads)!=toggle[1])
+        throw new IllegalStateException("Episode controls panel parent mismatch");
+      var visibility=episodeControlVisibility(panel[0],key,reads);
+      panels.add(visibility);result.append("Episode controls panel="+visibility+"\n");
+      if(visibility.effective270()==0)result.append(exchangeUiRect(base,panel[0],key,reads));
+    }
+    long[] lock=exchangeUiChild(base,battle[0],"AUTO_LOCK",types,reads,names);
+    if(exchangeObserved(lock[0]+0x54,reads)!=battle[0] || exchangeObserved(lock[0]+0x58,reads)!=battle[1])
+      throw new IllegalStateException("Episode controls lock parent mismatch");
+    var lockVisibility=episodeControlVisibility(lock[0],"AUTO_LOCK",reads);
+    lockAncestors.add(lockVisibility);result.append("Episode controls lock ancestor="+lockVisibility+"\n");
+    long[] lockPanel=exchangeUiChild(base,lock[0],"PA_AUTO_LOCK",types,reads,names);
+    if(exchangeObserved(lockPanel[0]+0x54,reads)!=lock[0] || exchangeObserved(lockPanel[0]+0x58,reads)!=lock[1])
+      throw new IllegalStateException("Episode controls lock panel parent mismatch");
+    var lockPanelVisibility=episodeControlVisibility(lockPanel[0],"PA_AUTO_LOCK",reads);
+    result.append("Episode controls lock panel="+lockPanelVisibility+"\n");
+    if(lockPanelVisibility.effective270()==0)result.append(exchangeUiRect(base,lockPanel[0],"PA_AUTO_LOCK",reads));
+    var mode=NativeBattleControls.classifyQualified(ancestors,panels,lockAncestors,lockPanelVisibility);
+    for(var read:reads.entrySet())if(u32(read.getKey())!=read.getValue())
+      throw new IllegalStateException("Episode controls owner/path/visibility changed; discard snapshot");
+    for(var name:names.entrySet())if(!cppString(name.getKey()+0x258,64).equals(name.getValue()))
+      throw new IllegalStateException("Episode controls name changed; discard snapshot");
+    result.append("Episode controls mode="+mode+" setting="+
+      (mode.setting().isPresent()?Integer.toString(mode.setting().getAsInt()):"unavailable")+
+      " currentFragmentOwner=verified parentPairsAndUniqueMembership=verified concreteUiAllocations=unproved nativeGettersCalled=false inputAuthorization=none\n");
+    return result.toString();
+  }
+  static NativeBattleControls.Visibility episodeControlVisibility(long object,String name,Map<Long,Long> reads) throws Exception {
+    long hidden=exchangeObserved(object+0x270,reads);
+    return new NativeBattleControls.Visibility(name,(int)(hidden&255),(int)((hidden>>>8)&255));
   }
   /** Exact original make_shared<CSRUIImageNode> G7a6d58: object=control+10,
    * primary control213b5cc, primary object213bd20. No generic owner fallback. */
@@ -2018,6 +2139,7 @@ public class InspectNativeInput {
       if(campaignMarkersOnly) {inspectCampaignMarkers(base);return;}
       if(fishingHookOnly) {inspectFishingHook(base);return;}
       if(rendererLayoutOnly || touchLayoutOnly) {inspectRendererLayout(base);if(!episodeTouchOnly)return;}
+      if(episodeControlsOnly) {inspectEpisodeControls(base);return;}
       if(episodeSceneOnly) {inspectEpisodeScene(base);return;}
       long app=u32(base+0x21ef1e0L),manager=u32(app+8);
       long managerVtable=u32(manager);
@@ -2050,6 +2172,7 @@ public class InspectNativeInput {
     } finally {close(mem);}
   }
   public static void main(String[] args) throws Exception {
+    episodeControlsOnly=NativeBattleControls.parseMode(args);
     episodeFeverOnly=parseEpisodeFeverMode(args);
     episodeHealSource=parseHealSourceSelection(args);
     cardsOnly=args.length>1 && args[1].equals("--cards");

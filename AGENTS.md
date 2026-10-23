@@ -1,3 +1,39 @@
+## Current continuation (2026-10-23): control-only observer ready; restore pending
+
+Goal ACTIVE. No new battle started. Current server30580/session32101 and
+instrumented client4750 retained; last safe Village. Fresh BlueStacks selection
+and one activation retry both returned "failed to activate captured window".
+Restore question is pending; hold game inputs until usable fresh screen.
+Do not restart the server/client because Windows activation failed.
+
+Host-only tools/InspectNativeInput.java now supports strict frame-only
+--episode-controls --frame using tools/NativeBattleControls.java. Compile
+with NativeCampaignMarkers.java AND NativeBattleControls.java. Full commands
+and bounds: Instrumented docs/episode-controls-observer-2026-10-23.md.
+This skips actors/combat/background/modal walks. ExactEpisodewrapper ->
+game20c/210 CSRFCUIBase -> FC44/48 UI_BATTLE emplace owners are qualified.
+Actualparent/childmembership is walked back to ownedINGAME_NM root; controls
+are under UI_BATTLE/BATTLE_ROOT/AUTO_TOGGLE. AUTO_LOCK is a SEPARATE parent.
+The normal-expedition UI_NORMAL fragment is NOT the Episode/Mirage HUD.
+Source correction in Instrumented36dffbc; descendantXMLallocations remain
+unproved, cachedrect is diagnostic/noinputauthorization.
+
+Build + puremode/visibility/lock tests + existingfever/healersource tests PASS;
+two independent source reviews clear. Actual Village frame REFUSED as intended
+before UI/actors:6reads/24bytes,0.236455s; server saveSHA exact before/after.
+Log local/verification/battle-controls-village.log; classeslocal/verification/
+battle-controls-host. Positive pausedEpisodeHUD, nativeDASHselection andmanual
+heal remain PENDING. Do not relabel earlyVillage refusal as positiveUIproof.
+
+After restoration: fresh visibleEpisode navigation, bounded pausedHUD check,
+then qualify actual mode/panel before resuming. Ordinarypause blocks OnTouch;
+a pausedREAD does not prove a toggle. When active, react VERY QUICKLY with
+attackbursts, funded opaque255 benchskill taps and swaps; no unpausedsource/
+logwork. Sourcecycle OFF0->ALL2->DASH1->OFF0; DASH1 is intendedmanualskillmode.
+Existing mode7/childvptr guards deliberately REFUSE Mirage/otherfamilies.
+No APK patch/build/install/release, private gameplay edit or DataDump/original/
+phone/Docker/collector/inference changes. Prior Miragejournal remainsabandoned.
+
 ## Current continuation (2026-10-23): native Mirage trial and safe release
 
 Goal ACTIVE. Safe upper Village, no battle/helper. User explicitly handed
