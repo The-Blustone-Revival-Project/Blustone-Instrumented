@@ -1,38 +1,68 @@
-## Current continuation (2026-10-23): control-only observer ready; restore pending
+## Current continuation (2026-10-23): native Mirage re-entry and schema14 durable
 
-Goal ACTIVE. No new battle started. Current server30580/session32101 and
-instrumented client4750 retained; last safe Village. Fresh BlueStacks selection
-and one activation retry both returned "failed to activate captured window".
-Restore question is pending; hold game inputs until usable fresh screen.
-Do not restart the server/client because Windows activation failed.
+Goal ACTIVE. Safe upper Village, no battle/helper. Exclusive BlueStacks control
+was handed back by the human. Current listener42732/exec67901/client27060,
+unchanged +15APK. JDWP8701 is STALE: rebind to fresh instrumented PID first.
+Compatible170/stamp1634693, LOCALteam100-EXP curve, snapshot and recruit049
+retained. New Server feature cd30f31 enables explicit terminal adoption into
+existing re-entry. Initial legacy capture is DONE; one-time flag now DISABLED.
+The matching captured re-entry policy remains enabled. Full restart settings:
 
-Host-only tools/InspectNativeInput.java now supports strict frame-only
---episode-controls --frame using tools/NativeBattleControls.java. Compile
-with NativeCampaignMarkers.java AND NativeBattleControls.java. Full commands
-and bounds: Instrumented docs/episode-controls-observer-2026-10-23.md.
-This skips actors/combat/background/modal walks. ExactEpisodewrapper ->
-game20c/210 CSRFCUIBase -> FC44/48 UI_BATTLE emplace owners are qualified.
-Actualparent/childmembership is walked back to ownedINGAME_NM root; controls
-are under UI_BATTLE/BATTLE_ROOT/AUTO_TOGGLE. AUTO_LOCK is a SEPARATE parent.
-The normal-expedition UI_NORMAL fragment is NOT the Episode/Mirage HUD.
-Source correction in Instrumented36dffbc; descendantXMLallocations remain
-unproved, cachedrect is diagnostic/noinputauthorization.
+```powershell
+$env:BLUSTONE_RUPEE_SHOP_MODE='archive-2021-base-only'
+$env:BLUSTONE_RUPEE_SHOP_DAILY_LIMIT='3'
+$env:BLUSTONE_MIRAGE_MODE='local-configured'
+$env:BLUSTONE_MIRAGE_POLICY_JSON=Get-Content -Raw config/policies/mirage-local-zero-reward.json
+$env:BLUSTONE_MIRAGE_REENTRY_JSON=Get-Content -Raw config/policies/mirage-local-zero-reward-reentry.json
+$env:BLUSTONE_MIRAGE_REENTRY_ADOPTION='disabled'
+node scripts/start-local.mjs --profile current-restoration-fever-compatible-progression --team-level-profile local-linear-100 --resource-snapshot --recruit-card 049 --state-file var/state.json
+```
 
-Build + puremode/visibility/lock tests + existingfever/healersource tests PASS;
-two independent source reviews clear. Actual Village frame REFUSED as intended
-before UI/actors:6reads/24bytes,0.236455s; server saveSHA exact before/after.
-Log local/verification/battle-controls-village.log; classeslocal/verification/
-battle-controls-host. Positive pausedEpisodeHUD, nativeDASHselection andmanual
-heal remain PENDING. Do not relabel earlyVillage refusal as positiveUIproof.
+Native: boot/GetInfo keptschema12/noSeries/oldrun/allgamesEXACT; nativeRetry
+GetNextFloor->samefloorreset capturedschema14/gen2used2 withoriginalgen1
+begin1792756155/claims[1,2]/abandonedtrue/completedfalse intact. Freshmap
+clearedoldCOMPLETElabels; 5familiesHP10000/deckempty. SecondRetrywarningYes
+createdgen3used3/day20749, archivingUNPLAYEDgen2. ThirdRetryatquota abandoned
+currentgen3 (NOgen4), entry/deckempty/all11ownedHP1000. NoEnd/Reward/RegisterDeck
+or battle during adoptioncheck. Quota3TOTALattempts/UTC/free/samefloor is LOCAL.
+No more attempts until configured nextUTCday; do not edit history/clock/policy.
 
-After restoration: fresh visibleEpisode navigation, bounded pausedHUD check,
-then qualify actual mode/panel before resuming. Ordinarypause blocks OnTouch;
-a pausedREAD does not prove a toggle. When active, react VERY QUICKLY with
-attackbursts, funded opaque255 benchskill taps and swaps; no unpausedsource/
-logwork. Sourcecycle OFF0->ALL2->DASH1->OFF0; DASH1 is intendedmanualskillmode.
-Existing mode7/childvptr guards deliberately REFUSE Mirage/otherfamilies.
-No APK patch/build/install/release, private gameplay edit or DataDump/original/
-phone/Docker/collector/inference changes. Prior Miragejournal remainsabandoned.
+All main gameplay exact against pre-adoption except AP/BP clocks; both peer
+games EXACT, allRupeecounters EXACT, wallet18700/free239635/paid240000 unchanged.
+Coldserver/clientreload withADOPTIONDISABLED passed: schema14/run/series/history
+and ALL3games EXACT acrossreload; onlymainOTP/loginTime changed. Nativequota
+countdown retained (~10h22 atobservation); noGetNextFloor onreload. SafeVillage.
+See Server docs/mirage-terminal-adoption-native-2026-10-23.md +setupdoc.
+Traces local/native-mirage-adoption[-reload]-20261023-server.log; screenshots
+local/native-validation-20261023/mirage-adoption/. Privatepre/post/reload copies
+remain local/private/native-20261023-20261023T001531493. No hostlivegameplayRPC/
+saveedit or original/DD/phone/Docker/collector/inference changes. No APK build/
+install/release owed. Fullsuite+focusedstate/pure/encryptedHTTP+oldHTTP passed.
+
+Combat control: the new host --episode-controls --frame now has POSITIVE
+pausedCB0602 ownedFC/UI_BATTLE/path/visibility proof (3.243602s/1121reads).
+All ancestorsroot->BATTLE_ROOT0/0; AUTO_TOGGLE andAUTO_LOCK1/1, OFFchild1/0:
+ANCESTOR_HIDDEN, settingUNAVAILABLE. Episode DELIBERATELY calls
+EnableIngameUIState(2), leavingtimer only; speed/AUTO/lock hidden. Do NOT seek
+or force DASH/TAP in Episode. FCdefault0x16 and Mirage are different. Hidden
+OFFchild alone doesnot provepersistedAI value. See Instrumented fd1560b +
+docs/episode-controls-observer-2026-10-23.md. Reader isEpisode-only/refusesMirage.
+
+This E6 party uses Bright/C0491000018, NOT Tyltyl; fixedKarl5 remainsunowned.
+PausedBrightHP1720/SP2.609351/frontNene601.408020 verified. ResumeCaptain swap
+visible, but Karlskill contact/heal NOTverified. NativeLOSS; returnedthrough
+thirdlossoption toE6map. All3games/accounts EXACT overEpisodeattempt. S04still
+uncleared. Prior inputgaps remained TOO LONG; do not repeat this pacing. Prepare
+fastcontrols/skillplan BEFOREBegin, keep reasoning/commandpayloads minimal in
+livecombat, immediateattackbursts/eligibleabilities/swaps; PAUSE before any
+source/logwork. No observer is a livecombatcontroller. CurrentNode session has
+blustoneClick(x,y,n=1) helper: ONE skyclick +200ms +freshcapture; blustoneDrag
+likewise ONEdrag+capture (currentlyno200ms). No autonomousUIloops. Use fresh
+visiblelabels/positions; EpisodeMap settles/moves (oldStory4point hitStory1).
+
+Broad revival remains incomplete: E6S04/healing, original numeric gaps, truthful
+abandonedmap labels and fullMiragefloorwin remain open. Older runtime/context
+sections below are historical and superseded by this continuation.
 
 ## Current continuation (2026-10-23): native Mirage trial and safe release
 
