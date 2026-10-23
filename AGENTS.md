@@ -1,3 +1,52 @@
+## Active original fever resource candidate (2026-10-23)
+
+Supersedes runtime details immediately below. Server listener40988/session58280
+now serves current-e6-fever-compatible-progression:140 groups/stamp1634691,
+exact139-compatible baseline plus original pinned CFE_PUB.jet. Latestbuilt
+Bibi serial0 code now loaded. Sameexplicit recruit049 and state file. Existing
+profiles preserved; older E7/E8/E9 candidates require new dependency/stamp
+review before activation. Transport/build/9-profile tests PASS; independent
+reviewclear. Native downloaded140uniquegroups including CFE_PUB206 and reached
+Village23967/AP58/BP10/132stars. All3savedgames remain EXACT to pretrial.
+
+Current UI safe E6 map after fresh catalogue entry, no battle/helper. Native
+fever-node/level2 transition verification PENDING; boot is not crash-fix proof.
+Root has exclusive input; agent preparing bounded READ-ONLY fever UI observer.
+No APK/native patch/rebuild/install or release; originals/DD/Docker untouched.
+See Server docs/fever-original-resource-restoration-2026-10-23.md and
+Instrumented docs/fever-cfe4-crash-source-2026-10-23.md.
+
+## Current continuation: restored UI, Bright trials and fever crash (2026-10-23)
+
+The user restored BlueStacks; exclusive input resumed. Older UI-held notes
+below are historical. Goal ACTIVE. Safe Village freshly verified after app
+relaunch, client 23461/same +15 APK, server listener 46444/session 66496,
+loaded revision 9882693/current-e6-materials-compatible-progression with
+recruit049, 139 groups/stamp 1634683. Bibi serial0 source/build is newer and
+NOT hotloaded. E9 205-group profile remains inactive. No APK rebuild/release.
+
+Two native CB0602 attempts: first native LOSS, second native SIGSEGV after
+friendly bodies disappeared. No Bright heal or E6S04 clear claimed. Read-only
+observer qualified living C049/1000018/HP1720 and friendly Rage group at
+SP2.916827 (trial1), SP4.287144 (trial2). Front support skill explicitly
+refused by original ornithopter-only toast. Bench contacts lacked attributable
+cut-in/debit/heal proof. Moving hearts and input latency remain a constraint.
+
+Episode editor removal leaves holes; reselect fills earliest hole. Back
+returned correct party to prep but NO SetDeck/server save mutation. Latest
+session trial order Nene/Captain/Mowgli/Bright/fixed Karl; ordinary type1
+remains Mowgli/Nene/Captain/Bright/0, Arena4/5 retain Tyltyl. Episode editor
+party persistence across reboot is unproved. Do not grant fixed Karl ownership.
+
+Crash ARM-PC0x7782b1 CMUpdatable::SetVisible, LR0x9c298b
+CSRGameBase::SetFeverLV, r0=0/fault0x271. Source trace identifies null CFE4
+image lookup; lifetime/resource root cause pending. Do not blame heal graph.
+No further battle until crash path understood. All three games exact across
+both attempts AND relaunch; preboot entire state file byte-exact. AP58/BP10,
+132 stars, no battle/helper. JDWP8701 is STALE to dead7068; rebind to fresh PID.
+See Instrumented docs/bright-e6-native-trials-2026-10-23.md for evidence.
+Original/DataDump/phone/Docker/Collector/inference unchanged.
+
 ## Latest source integration while UI held (2026-10-23)
 
 Windowsactivationfailedtwice afterreselection; userrestorequestionpending.

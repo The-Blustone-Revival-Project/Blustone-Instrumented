@@ -54,3 +54,13 @@ Windows control failed activation twice after reselection, so root held inputs
 and requested a user window restore. Client7068 and server46444 are verified
 live; all three games remain exact to the pre-trial backup. Native observation
 and healing are pending; no process was restarted because capture failed.
+
+## Native qualification after the user restored BlueStacks
+
+Two paused CB0602 snapshots qualified C049/1000018, HP1720, exact native
+serial-map/concrete Hunter ownership and friendly Rage SP2.916827/4.287144.
+Observer exited normally before input. This supersedes the earlier attach
+pending note. Actual healing remains unverified; see the companion
+bright-e6-native-trials-2026-10-23.md for both outcomes and the separate
+SetFeverLV null-visibility crash. Client recovered to Village23461; rebind
+JDWP8701 before another observer. No APK rebuild or patch occurred.
