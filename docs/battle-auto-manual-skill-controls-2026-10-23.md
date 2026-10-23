@@ -99,14 +99,23 @@ The independent read-only art lane identified original UI_XML_RO row468,
 KO/SR_INGAME/UI_LYR_NM, raw XML SHA256
 `d7b4d78385751bcc1cc1b131825f0c4c0c9013abb84e4ddb0b9f1291dad6a908`:
 
+Source owners are Server
+`resources/reference/recovered-data/leveldb-tables/all-tables.json` and
+read-only DataDump
+`sources/client-tables/recovered-data/leveldb-tables/all-tables.json`.
+Their whole-file bytes match SHA256
+`f166f857d45c6dd68e97bd4b8f055be795796400fa10ba9f040aaa1b1d8f0a78`.
+
 - UI_NORMAL/AUTO_TOGGLE/PA_AUTO_ALL uses rotating AUTO2_T and textbox
   AUTO_AUTO; its EN UI_JSON text is **AUTO**,14px.
 - PA_AUTO_DASH uses the **same** rotating AUTO2_T and textbox AUTO_TAP;
   its EN UI_JSON text is **TAP**,16px.
 - PA_AUTO_OFF uses static AUTO2_F and no textbox.
 
-Original INGAME_NM row462 supplies the UI anchor
-VIEWER/UICamera/UI_ROOT/UI. This is not the fever path
+Original INGAME_NM row462, raw SHA256
+`cbaa8506d069cd102fdb9d42473ae51562bb3139622f84902b8bbafd5f714e16`,
+supplies the UI anchor rect VIEWER→panel UICamera→rect UI_ROOT
+(visible=true)→rect UI (visible=false). This is not the fever path
 MainCamera/RUNNER_ROOT. Runtime attachment of UI_LYR_NM's fragment beneath
 that anchor was not directly verified, so a future observer must qualify the
 actual child chain and unique names rather than concatenate guessed pointers.
@@ -114,7 +123,8 @@ actual child chain and unique names rather than concatenate guessed pointers.
 For qualified panels, report both effective/inherited hidden byte+0x270 and
 local-hidden byte+0x271, plus ancestor visibility. SetVisible G7882a0 writes
 the local byte+0x271 at G7882c8; effective visibility can settle later in the
-frame. Do not infer a mode from one stale byte, a hidden ancestor or only a
+frame. InvalidateVisible G78891e computes byte270 from parent270 OR local271;
+DrawAll G7861f8 returns when270 is nonzero. Do not infer a mode from one stale byte, a hidden ancestor or only a
 caption. A stable exclusive ALL/DASH/OFF panel selection, matching native
 setting/behavior where qualified, is stronger evidence. Root did not see TAP
 or verify DASH during this turn.
