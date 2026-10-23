@@ -1,3 +1,41 @@
+## Guild request/support records (2026-10-23)
+
+Goal ACTIVE. Server adds opt-in guildFuelMode / BLUSTONE_GUILD_FUEL_MODE=
+local-requests; requires persistent state, local-memory Guild Chat, explicit
+1..86400-second request TTL and contribution actions1..4 (action4 >=0).
+DEFAULT DISABLED; no live policy/save/process/profile changes. Native creation
+is outer11000/inner11010 with EMPTY message. SupportFuel accepts native auth
+plus request_id, records up to5 distinct other joined same-server/Guild donors,
+and credits configured LOCAL member+aggregate contribution ONCE. NO AP payout,
+wallet, roster, account or game progression mutation. Native constructor12 is
+NOT proof of12AP/support. Recipient AP settlement remains unrecovered.
+
+Native callback reads ONLY fuel_requests[0]. Inner11011 is a separate donor
+relay bound to its committed receipt, not authority to create support. Fanout
+uses current count and recipient-specific supported flags, authenticated sender
+who and owner pvid. Forgery/self/duplicate/expired/full/foreign actions refuse.
+Persist BEFORE delivery; no durable outbox or hot-cache lost-reply repair claim.
+Schema20 retains nonempty global ledger, donor points/relay receipts/cooldown.
+Membership cancellation committed in same rename transaction; rejoin cannot
+reactivate or bypass cooldown. Modeoff retains scoped reads/expired timestamps.
+Real write+rename failures restore nested refs and saved bytes. Earlier cohorts
+and active mixed paid dispatch receipts survive schema20 and cold modeoff.
+
+Correction: FUEL_INFO +0x20=REGDATE, +0x24=EXPDATE. Requester UpdateFuelTime
+receives EXPDATE at Gba6236, formats remaining time; it does not grant AP.
+Read Server docs/guild-fuel-record-workflow-2026-10-23.md. Focused compiled
+pure/state/encrypted HTTP+WS/cohort checks and build PASS; full suite PASS250
+programs (247prior +3new). Logs Server local/guild-fuel-{focused,full-tests}-
+20261023.log. Read-only integration review found no concrete issues.
+
+Human reported BlueStacks restored; fresh activation still failed with exact
+'failed to activate captured window'. Fresh returned-window retry captured
+desktop, not game. INPUTS HELD; no battle started or observer attached. Last
+known safe Village/runtime42732/67901/client27060/+15/170groups/1634693 remain
+HISTORICAL, not newly verified. No restart/live RPC/cast/helper/APK build/install/
+release/original/DD/phone/Docker/collector/inference changes. Exclusive control
+authorization persists. Native paused-HUD/fishing/new workflow validation pending.
+
 ## Sequential individual dispatch skips (2026-10-23)
 
 Goal ACTIVE. New opt-in dispatchSkipMode / BLUSTONE_DISPATCH_SKIP_MODE=
