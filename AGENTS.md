@@ -1,3 +1,39 @@
+## Latest source integration while UI held (2026-10-23)
+
+Windowsactivationfailedtwice afterreselection; userrestorequestionpending.
+Do notsendinputs untilfreshactualgamewindow isavailable. Client7068/server
+46444 verifiedLIVE, no newEpisodebattle, entireprivate stateBYTEEXACT.
+HostBrightread-onlyselection compiled/pureCLI+Marker/CDN tests PASS and
+reviewclear; NOattachorBrighthealcontactyet. OldC004/default/touchguardssame.
+
+Server source/build Bibi040active serial0 nowvalidatedbut NOT hotloaded.
+RunningloadedrevisionremainsBright-validated9882693/139/stamp1634683,
+compatiblematerialprofile/recruit049/currentordinarypartywithBright1000018.
+InactiveE9prepared205/stamp1634690/68pins, all9profile+230runtimechecks/build
+PASS, no activation/ownershipgrant. E6S04nativegateunchanged. No APK rebuild
+or releaseowed; original/DD/Docker/Collector/inferenceuntouched.
+
+## Current UI constraint and explicit Bright read-only selection (2026-10-23)
+
+GoalACTIVE/sourceworkcontinues; UIinputsHELD. WindowsactivatefailedTWICE even
+afterfreshapp/windowreselection; capturewasdesktopwallpaper. Userrestore
+questionpending. Existingexclusivecontrolauthorizationpersists; thisiswindow
+availability, not renewedpermission. NO newEpisodebattle started. Read-only
+PID7068 alive/server46444 alive; all3games exact topre-bright-e6-trial backup.
+Do NOTrestartapp/server justbecause Windowsactivation/capturefailed.
+
+InspectNativeInput nowaccepts EXACTpairedclosedC004/C049 ref+positiveuint32
+lowword onlywith --episode-skills --frame. ForBright:
+java -cp local/verification/host-java InspectNativeInput 8701 --episode-skills
+--frame --heal-source-ref=C049 --heal-source-serial=1000018
+RebindJDWP8701explicitlytofreshPID beforeliveuse. ExistingC0041000005 badge
+andtouchhelper/sourceguards unchanged. Sameowner/livingcamp0/serialmap/ref/
+Ragegroup/stability checks, outputinputAuthorizationnone. Hostjavac needs
+NativeCampaignMarkers+InspectNativeInput+TestHealSourceSelection; compileand
+pureCLI/Marker/CDN tests PASS; independentreviewclear. NOnativeattach/input
+performed; nativeBrightqualification/activation STILLpending. No APK build,
+install/release or original/DataDump/Docker/Collector changes.
+
 ## Latest continuation: paid Bright, original icons and ordinary WIN (2026-10-23)
 
 Goal ACTIVE; exclusiveBlueStackscontrol resumed. SafeVillage/no activeordinary/

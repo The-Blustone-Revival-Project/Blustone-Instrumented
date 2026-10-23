@@ -45,6 +45,29 @@ public class InspectNativeInput {
   static boolean episodeTouchOnly;
   static int episodeTouchSkipEvents;
   static long episodeTouchSourceSerial;
+  record HealSourceSelection(String ref,long serial) {
+    HealSourceSelection {
+      if(ref==null || !Set.of("C004","C049").contains(ref) || serial<=0 || serial>0xffffffffL)
+        throw new IllegalArgumentException("Heal source requires C004/C049 and a positive low-word serial");
+    }
+  }
+  static HealSourceSelection episodeHealSource;
+  static HealSourceSelection parseHealSourceSelection(String[] args) {
+    String ref=null,serial=null;
+    for(int i=0;i<args.length;i++) {
+      String arg=args[i];
+      if(!arg.startsWith("--heal-source"))continue;
+      if(i<3 || args.length!=5 || !args[1].equals("--episode-skills") || !args[2].equals("--frame"))
+        throw new IllegalArgumentException("Heal source selection requires --episode-skills --frame and exactly one ref/serial pair");
+      if(arg.startsWith("--heal-source-ref=") && ref==null)ref=arg.substring("--heal-source-ref=".length());
+      else if(arg.startsWith("--heal-source-serial=") && serial==null)serial=arg.substring("--heal-source-serial=".length());
+      else throw new IllegalArgumentException("Unknown or duplicate heal source argument");
+    }
+    if(ref==null && serial==null)return null;
+    if(ref==null || serial==null || !serial.matches("[1-9][0-9]{0,9}"))
+      throw new IllegalArgumentException("Heal source requires one exact ref and positive decimal low-word serial");
+    return new HealSourceSelection(ref,Long.parseLong(serial));
+  }
   static long memoryReadCalls,memoryRequestedBytes,memoryReadNanos;
   static int[] observedLogicalDown;
   static List<Region> regions = new ArrayList<>();
@@ -385,6 +408,7 @@ public class InspectNativeInput {
     }
     String materials=episodeMaterialsOnly ? episodeMaterialSnapshot(base,scene) : "";
     if(episodeBadgeOnly) materials=episodeHealSourceSnapshot(base,scene);
+    if(episodeHealSource!=null) materials+=episodeHealSourceSnapshot(base,scene,episodeHealSource);
     String exchange=episodeExchangeOnly ? episodeExchangeCaughtSnapshot(base,scene)+episodeExchangeReserveSnapshot(base,scene)+episodeExchangeUiSnapshot(base,scene) : "";
     if(!episodeOwnerStable(base,app,manager,current,currentControl,currentControlVptr,scene,control,controlVptr) ||
        !episodeCombatOwnerStable(base,model,modelControl,combat,combatControl) || !cppString(combat).equals(combatId) ||
@@ -1079,6 +1103,9 @@ public class InspectNativeInput {
     return result.toString();
   }
   static String episodeHealSourceSnapshot(long base,long game) throws Exception {
+    return episodeHealSourceSnapshot(base,game,new HealSourceSelection("C004",1000005L));
+  }
+  static String episodeHealSourceSnapshot(long base,long game,HealSourceSelection selection) throws Exception {
     Map<Long,Long> reads=new LinkedHashMap<>();Set<Long> visited=new HashSet<>();
     long node=exchangeObserved(game+0x400,reads),count=exchangeObserved(game+0x404,reads);
     if(count>32) throw new IllegalStateException("Heal source map exceeds32");
@@ -1086,17 +1113,17 @@ public class InspectNativeInput {
     while(node!=0) {
       if(visited.size()>=32 || !visited.add(node)) throw new IllegalStateException("Heal source map depth/cycle");
       long low=exchangeObserved(node+0x10,reads),high=exchangeObserved(node+0x14,reads);
-      int comparison=Long.compare(0,high);if(comparison==0)comparison=Long.compare(1000005L,low);
+      int comparison=Long.compare(0,high);if(comparison==0)comparison=Long.compare(selection.serial(),low);
       if(comparison==0) {actor=exchangeObserved(node+0x18,reads);control=exchangeObserved(node+0x1c,reads);break;}
       node=exchangeObserved(node+(comparison<0?0:4),reads);
     }
     if(actor==0 || control==0 || actor!=control+0x10 || exchangeObserved(actor,reads)!=base+0x214a3fcL ||
        exchangeObserved(control,reads)!=base+0x214bdc4L || (int)exchangeObserved(control+4,reads)<0 ||
-       exchangeObserved(actor+0x880,reads)!=1000005L || exchangeObserved(actor+0x884,reads)!=0 || exchangeObserved(actor+0x988,reads)!=0)
+       exchangeObserved(actor+0x880,reads)!=selection.serial() || exchangeObserved(actor+0x884,reads)!=0 || exchangeObserved(actor+0x988,reads)!=0)
       throw new IllegalStateException("Heal source living camp0 Hunter owner unproved");
     float hp=Float.intBitsToFloat((int)exchangeObserved(actor+0x8b0,reads));String ref=cppString(actor+0x888);
-    if(!Float.isFinite(hp) || hp<=0 || !ref.equals("C004")) throw new IllegalStateException("Heal source absent/dead/ref mismatch");
-    String result=String.format("Episode heal source serial=1000005 ref=%s hp=%f selection=exact_serial_map concreteHunterOwner=verified inputAuthorization=none%n",ref,hp)+episodeHealGroupRageSnapshot(base,game,actor,control)+episodeSkillSnapshot(base,actor);
+    if(!Float.isFinite(hp) || hp<=0 || !ref.equals(selection.ref())) throw new IllegalStateException("Heal source absent/dead/ref mismatch");
+    String result=String.format("Episode heal source serial=%d ref=%s hp=%f selection=exact_serial_map concreteHunterOwner=verified inputAuthorization=none%n",selection.serial(),ref,hp)+episodeHealGroupRageSnapshot(base,game,actor,control)+episodeSkillSnapshot(base,actor);
     for(var read:reads.entrySet()) if(u32(read.getKey())!=read.getValue()) throw new IllegalStateException("Heal source map/actor changed");
     if(!cppString(actor+0x888).equals(ref))throw new IllegalStateException("Heal source ref changed");
     return result;
@@ -1971,6 +1998,7 @@ public class InspectNativeInput {
     } finally {close(mem);}
   }
   public static void main(String[] args) throws Exception {
+    episodeHealSource=parseHealSourceSelection(args);
     cardsOnly=args.length>1 && args[1].equals("--cards");
     arenaConfirmOnly=args.length>1 && args[1].equals("--arena-confirm");
     itemReferencesOnly=args.length>1 && args[1].equals("--item-references");
