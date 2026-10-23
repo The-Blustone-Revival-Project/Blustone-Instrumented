@@ -1,3 +1,62 @@
+## Current continuation (2026-10-23): native Guild entry
+
+Goal ACTIVE. Safe lower Village, no battle or helper. Listener 21292 / exec
+session 12467, client 3400, same installed +15 APK. Active resource profile:
+current-restoration-fever-compatible-progression, 170 groups, stamp 1634693.
+Current explicit options: recruit049, LOCAL team curve, resource snapshot.
+Equivalent restart command from the Server checkout:
+
+```powershell
+node scripts/start-local.mjs --profile current-restoration-fever-compatible-progression --team-level-profile local-linear-100 --resource-snapshot --recruit-card 049 --state-file var/state.json
+```
+
+The original team curve is UNKNOWN. The default legacy two-row table remains.
+Explicit local-linear-100 extends the fixture to 100 levels at 100 EXP/step.
+Existing earned EXP1500 now displays native Level16; no EXP or rewards granted.
+First boot fetched all170 originals, including GUILD/MIRAGE/CFE. The next
+reference reload fetched zero native packages. All three games survived intact.
+
+Native Guild Bar introduction, attendant, Join Guild discovery/banner/empty
+recommendations and Rank tab rendered. Only the main game's native tutorial33
+clear and AP/BP clocks changed; every other main field and both other games
+were exact. No creation, membership, fee or reward transaction was attempted.
+Keep zero GetDetailInfo query refusal: its preload sends own Guild0, but empty
+success dispatches default INFO into joined rendering and an unsafe empty
+Guild-level-table path. Do not invent a blank Guild or missing numeric tables.
+
+See Server docs/guild-native-entry-2026-10-23.md and Instrumented
+ docs/guild-nonmember-entry-2026-10-23.md. E6S04, Bright heal and the exact
+fever-rank2 transition remain pending. JDWP8701 is stale; rebind before use.
+
+Full230-program npm test passed. The later snapshot conditional/range P2 was
+fixed in ad2c16c and independently re-reviewed; focused compiled HTTP checks
+passed. Local-curve save/load/revert and earned level4-to5 checks passed.
+Snapshot bytes/config stay fixed per app and use RAM: restart after changing
+resource inputs. Live warm manifest repeat5.87ms and original16-byte range
+5.05ms/206 were verified; native fresh-download acceleration remains unproved.
+No APK patch/build/install/release, original/DataDump/phone/Docker/collector or
+inference-service changes. Root retains exclusive Windows input authorization.
+
+## Compatible170 migration in progress (2026-10-23)
+
+GoalACTIVE. Server50816/session88963 now runs current-restoration-fever-
+compatible-progression/170groups/stamp1634693/recruit049, sourceccd9258.
+Oldserver40988/session58280 intentionallystopped aftersafeVillage/clientclose.
+Nativeclient2922/same+15APK freshboot is downloadingoriginalresources; no
+battle/helper. Do NOTrestart justfor aslowdownload; inspect exactlivehandle
+and local/native-restoration170-20261023-server.log. RootownsWindowsinput.
+
+All140nonresourcepolicies retained, all14priorcompiledrefs EXACT;8neutral/
+unownedrefsadded (22total). ThreefakeaccountHTTP andprivatecopyofall3live
+savedgamesexactundernewconstructor; originalsaveunchangedbycopycheck.
+Rootbuild/compiledencryptedHTTP+9profiles PASS, independentreviewclear.
+Preactivationprivatebackup: local/private/native-20261023-20261023T001531493/
+pre-restoration170-125800.json. Actualpersisted3gamesremainexactduringdownload.
+
+Nativeboot/Guildread-onlyexploration next; no E7gatebypass, Guildfee/provider,
+membershipgrant or Miragefloor/provider policy enabled. Original33pins verified.
+NoAPKpatch/build/install/release; nooriginal/DD/phone/Docker/Collector changes.
+
 ## Fast Bright observer and broader fever dependency candidate (2026-10-23)
 
 GoalACTIVE. Runtimeunchanged: client23967/server40988/session58280,
