@@ -1,3 +1,42 @@
+## Pass-entitled instant Expedition dispatch (2026-10-23)
+
+Goal ACTIVE. New opt-in BLUSTONE_DISPATCH_INSTANT_MODE=local-entitled /
+dispatchInstantMode restores /mission/EntrustByIAP behind existinglocal-timed
+policy AND separatelysupplied currentownerpass expiry>servernow. Equality
+expires. SourceAuto button selects instantONLYwithpass; otherwiseordinary
+Entrust. NOprestartMandaquote/budget and NOTongoingGetSkipPrice. Zeroadditional
+Manda isexplicitLOCALpolicy; normalAP/configuredgoldEXP/capsulerewards apply.
+No passsale/acquisition/extension/inference. No defaultprofile/liveactivation.
+
+Read Server docs/expedition-instant-pass-native-2026-10-23.md. Preparecomplete
+entrust.data Start/AP, skip.data inrangeserials/stringitempreviews+bothabsolute
+Manda scalars, end.data.result specializedawards; oneatomiccollectedjournal
+commit. Unexpectedproducerfields/expiredmissingpass/pendingjob/Mirage/invalid
+countdeckstage/unearnedstars/funds/overflowrefuse. Fullwrite+rename rollback
+restoresnestedgame/journalrefs. Existing schema2-or-newer terminaljournal has
+active:null/last_id/last_deck; newschemaNOTneeded. Endrepairnonadditive; repeating
+instantrequest isNEWfundedwork because nativebuilderhasNONONCE/jobID. No
+transportexactlyonceclaim. Ownerconfiguredpass hydratesfreshidleGetMissionInst
+viaid0/stage''/cnt0/sec0/list[]+pass, with NOjob/reward/savewrite. It doesNOT
+repair a pre-existingnonzeronativejobcache. Modeoffdoesnotpublishidlepass.
+
+Separate src/expedition-skip-quote.ts recovers GetSkipPrice G9bacc8: low32
+scheduleprefix/remainingtime, exactf32 dividebyserverrate,+1,truncuint. NOTceil;
+exact100/100 costs2 andremaining0 gives1. Cachedskip_price+70unusedthere;
+nojob/rate0/wrapping quirks projected only, strictpaid-admission helperseparate.
+Originalrateunknown; conflictingoldFinishNow screenshotscannotfilluniversal
+rate. OngoingSkipstillret_data:null refusal: clickedrowserial vsallserial-1
+andstampedcompletiontimes requireexplicitnewaccelerationjournal beforeenable.
+
+Fullnpmtest PASSED240programs (ALL237priorinexactorder+3new), build and
+ test:dispatch-instant passedquote/state/encryptedHTTP/ordinarytimed/Mirage
+regressions. Logs local/dispatch-instant-{focused,full-tests}-20261023.log.
+Instrumented+15APK/profile170/stamp1634693/runtime42732/67901/client27060 last
+knownunchanged; gameinputHELDafteractivationfailure/taskbarrestorationpending.
+NoUI/battle/cast/restart/liveRPC/saveedit/phone/original/DD/Docker/collector/
+inference/APKbuild/install/release actions. Nextnativefishingguide/coldreload
+remainpending; exclusivecontrolauthorizationretained. No nativeinstantclaim.
+
 ## Manda jewel removal and Windows test runner (2026-10-23)
 
 Goal ACTIVE. Gem Equip now supports explicit suppliedprice_type1/Manda quotes
