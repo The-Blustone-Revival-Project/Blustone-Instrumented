@@ -1,3 +1,51 @@
+## E11–E18 batch original-resource continuation (2026-10-23)
+
+Goal ACTIVE. Previous turn made progress inf3b1ae3(character259PASS). Newinactive
+current-later-episodes:280groups/stamp1634696, exact210expanded-character prefix
+and ALLnonresourcepolicies retained +70 originalpacks/73,697,109bytes. Ancestor
+73 +new70 =143 provenancepins, both preferred/fallback conflicts guarded; strict
+future/idempotent/overflow/create-only/inspect/unknown-option tests. Oldprofiles
+byteexact. No new ordinary balance, ownedgrant, reward or earnedclear.
+
+Read Server docs/later-episodes-batch-workflow-2026-10-23.md and combat/dialogue
+readiness docs. Batch61stories E11..18 has19directchapterbattles but23ACTUAL
+structuralcombatdependencies: outcomeXMLs introduceCB1304/1305/1704/1705.
+Read-only audit-later-episodes.py follows win/lose/lose2 and combat_goto:84entry/
+outcomeXMLs/2027reachable nodes +sharedEP0000A/B50nodes. Conditions/scripts NOT
+hostexecuted. SomeE13LOSS pointswin-labelledEP2007B and continues; doNOTforcewin.
+47uniqueoriginal literalowners (45entry/outcome+2sharedloss), flat774JETcensus.
+
+Aggregateowners: CUTIN_E1801+E1802 bothCUT_E1801; CUTIN003/EF inCUT_002;
+N010_BG insideN010; BG011_1 inDIAL_BG011. ExactN502 NPCbundle original, noalias.
+EnvironmentCORRECTION: game_res7→CSVPreFixSTI001/ST001, NOTST007; game_res200→
+STI007/ST007, NOTST200. EarlierE10docs corrected; oldcoverage alreadyhadboth.
+M014 ownsM040/41/42; M012 ownsM034/35/36. M100originalRUN AT→M100_R01 S2 has
+auxiliarylayout unsupportedbyboundedhostdecoder; bytes/hash/EOF retained,
+NOreconstructedalias. Native rendering pending, not proved impossible.
+
+C509/C510 specialdialogue IDs defaultdrawpath sourceclosed: MakeDlgID fallback
+formats C509/C510 directly→SwitchChar/AddChar→SRCreateSpinePortrait binaryload;
+noordinaryGetCardData oninspected defaultpath. Wornskin/otherconsumers remain
+separate. Combat refs009/010 retained. NEVERinvent509/510ordinaryHunterrows.
+Old29refsexact→40 with11neutralunowned libraryrows008/019/023/028/035/043/046/
+057/064/068/071. Allskills/stats/birth policies retained; noacquisitionlinks.
+E18has5stories andNObattlegraph; don'tinventfinalcombat orgrantchapterrewards.
+
+Build+focusedgraph/preparer/compiledP384-AESHTTP PASS. All13profileprogramsPASS.
+HTTPsnapshotON actual280manifest and8exactoriginalPKGI1s(M100/M014/C509/C510/
+N502/CUT_E1801/ST902/CFE), raw/coldfirst206/ranges/416/secondappidentity PASS.
+3disposableearnedgames paidBright3/legacyMowgli1 unchanged. RootPRIVATEcurrent
+sourcecopy restore210→280 preservesALL3actualschema14games/copiedfiles/live
+sourcebytes; all29priorrefsexact, new11unowned. Evidenceignored local/private.
+Logs local/later-episodes-{focused,profile-tests}-20261023.log +auditJSON.
+RuntimeTSUNCHANGED; prior259 runtimePASS separate, notrerun forthisresource-only
+checkpoint. Native280 boot/cache/memory/variants/portraits/voice/earnedentry/
+all23battles/loss/rewards PENDING. No liveprofile/server/client activation/RPC/
+input/saveedit/observer/battle/cast/APKbuild/install/release/original/DD/phone/
+Docker/collector/inference actions. InputHELD after prior desktopcapture, no new
+restoremessage. Lastliveprobeprior170/stamp1634693/listener42732; nofreshUI/PID.
+E6S04 gate unchanged. GoalACTIVE; not100percentfunctionality.
+
 ## Expanded character stats and selective birth progression (2026-10-23)
 
 Goal ACTIVE. Previous turn made progress in4c7b0c5 (six added skill graphs256PASS).
