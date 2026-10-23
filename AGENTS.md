@@ -1,3 +1,39 @@
+## E10 original aggregate recovery and continuation (2026-10-23)
+
+Goal ACTIVE. Previous goalturn made progress: committed Guildrecords2be9092,
+250testprogramsPASS. This turn closes a REAL E10artgap: M012.jet already owns
+M034/M035/M036. Direct monsterpack filenames neednotmatch internal namespaces.
+Fresh Server==allowedDD original bytes, SHA9ba4e884.../866108/135records exactEOF;
+independentreview confirmed36ATs withcompleteAT->S2->I2chains. NOsubstitution.
+Inactive current-e10 now209 orderedgroups/stamp1634694: prior205 E9 +M012 +3
+CUT_E100x.72provenancepins, allpriorpolicies exact, oldprofilesbyteunchanged;
+futurepeer freshness/idempotence/overflow/create-only/copyconflict guardsPASS.
+
+Read Server docs/e10-aggregate-monsters-readiness-2026-10-23.md. Scripts
+profiles/prepare-e10.mjs and resources/audit-e10.py; tests/resource-profile-e10.mjs.
+All10profileprogramsPASS; revisedfocusedE10PASS9originalXMLgraphs/227reachable
+nodes/13literalbg-BGM-cutowners, all8dialoguecharacterbody-Q-SNDselections,
+originalCB1001+CB1002bindings/backdrops andunchanged29Hunterreference/ownership
+snapshot. Last250runtimeprogramsremainpriorverified; noruntimeTSchangedthisturn.
+No liveprofileactivation; futureE10runtime MUSTretain existingcompatible
+materialstat/skill/birth policies. Original E10SK13x30/SK23x30metadata/settlement
+stillunknown; no laterstoryclear/reward/Huntergrant. E6S04stillpending.
+
+Neworiginalhelp recovery: guild-fuel-help-and-refresh-native-2026-10-23.md.
+UI_CSV HELP_DATA documentsonce-dailyrequest/max5helpers/TOTAL60Fuel/donorfree.
+NOTproofuniform12, timing, cap/overflow, timezoneorrollingreset. RequestMyInfo
+actuallyPOSTs /lobby/GetGuildInfo(auth5); ordinaryVillage/scene callers canSyncAP.
+ItsboolisHTTPcreationflag;11012isbanishrefresh, NOTfuelpush. APimplementation
+staysUNCHANGED/noAPpayout; lastturnLOCALTTLstillnotoriginaldailyresetlaw.
+GvGdefenderproducerboundary docrecovers OccupyDefender camp/orderstrings,
+DeployDefender filteredJSONstringcardrefs; originalseason/cards/reservation
+receiptandlifetime remainmissing. NOguessedwar/provider/ordinaryownershipjoin.
+
+BlueStacksinputstillHELDafterlastturnfailedactivation/desktopcapture, nonew
+restoremessage. NoUI/observer/battle/cast/liveRPC/restart/save/policy/original/
+DD/phone/Docker/collector/inference/APKbuild/install/release changes. Lastknown
+live42732/67901/client27060/+15/170groups/1634693 remainsHISTORICAL. GoalACTIVE.
+
 ## Guild request/support records (2026-10-23)
 
 Goal ACTIVE. Server adds opt-in guildFuelMode / BLUSTONE_GUILD_FUEL_MODE=
