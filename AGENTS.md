@@ -1,3 +1,13 @@
+## Latest runtime: ordinary formation guard loaded (2026-10-23)
+
+Server listener45504 replaces62012 after idle reload; same139/stamp1634683
+current-e6-materials, client4606/+15 unchanged. Entire save bytes EXACT across
+reload, native lowerVillage freshlyvisible, no active battle/helper. Native
+duplicateNene party attempt REFUSED same-character toast; Captainrestored,
+all3games EXACT. Server now enforces exactref uniqueness for ordinarytype1,
+full229programs/build/compiledguard PASS. No instrumentedsource/APKchange.
+Exclusivecontrolresumed still applies; original/Docker/Collector unchanged.
+
 ## Latest continuation: native input resumed and bounded item cache (2026-10-23)
 
 Human explicitly RESUMED exclusive BlueStacks control; older Escape/input hold
