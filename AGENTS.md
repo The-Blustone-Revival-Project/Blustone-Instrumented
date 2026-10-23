@@ -1,3 +1,18 @@
+## Sparse Gem fee evidence accepted (2026-10-23)
+
+Optional config/policies/gem-removal-observed-gold.json supplies ONLYhistorical
+gold2quotes levels1/6/7/15=2500/15000/17500/40000. Existingexplicitenv
+BLUSTONE_GEM_DISASSEMBLE_PRICES_JSON acceptsarray; NOdefault/mode/activation.
+Sourceclosure originaldetailSetCaseGbc5448..5508/rawtablelookup established;
+see docs/gem-removal-observed-gold-2026-10-23.md andsidecarprovenance. Five
+manualTSVanchors+fullsource/rowhashes checked; screenshotbytesUNAVAILABLE,
+no freshvisualreview. Undated/crossversionhistoricalprojection, NOTfinaltable.
+No interpolation: Lv15 is40000, not37500. Missing/payment1nativeUI can show0
+fromsentinel despite serverrefusal; NOTfreepermission. NoGemidentity/roll/
+acquisition/ownershipgrant. test:gem-observed-removal compiledchecks+durable
+replacementpassed. LatestDDreleasechecked2026-10-17/local6d2c3cc; nofish-IDjoin.
+Liveconfig/save/APK unchanged; nativefishing stillawaits taskbarrestoration.
+
 ## Fishing End wire correction (2026-10-23)
 
 Original ARM register audit proved item/card additions belong directly under
